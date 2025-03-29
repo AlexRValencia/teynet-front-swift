@@ -1,0 +1,744 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/ProjectsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Proyectos",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Buscar proyecto",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "No hay proyectos que coincidan con tu búsqueda",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Limpiar filtros",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nuevo proyecto",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gestionar clientes",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 155
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progreso: %lld%%",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 223
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fecha límite: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 233
+        }
+      },
+      {
+        "comment": "",
+        "key": "Inicio: %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 258
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nuevo Proyecto",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 401
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 403
+        }
+      },
+      {
+        "comment": "",
+        "key": "Guardar",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 406
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información básica",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 308
+        }
+      },
+      {
+        "comment": "",
+        "key": "Descripción",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 347
+        }
+      },
+      {
+        "comment": "",
+        "key": "Responsable y fechas",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 352
+        }
+      },
+      {
+        "comment": "",
+        "key": "Presupuesto",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 360
+        }
+      },
+      {
+        "comment": "",
+        "key": "Equipo",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 365
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nombre del proyecto",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 309
+        }
+      },
+      {
+        "comment": "",
+        "key": "Estado",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 340
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cliente",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 314
+        }
+      },
+      {
+        "comment": "",
+        "key": "Seleccionar cliente",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 325
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gestor del proyecto",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 353
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fecha de inicio",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 355
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fecha límite",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 357
+        }
+      },
+      {
+        "comment": "",
+        "key": "Presupuesto (MXN)",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 361
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nombre del miembro",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 375
+        }
+      },
+      {
+        "comment": "",
+        "key": "Añadir",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 384
+        }
+      },
+      {
+        "comment": "",
+        "key": "Añadir miembro",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 395
+        }
+      },
+      {
+        "comment": "",
+        "key": "Seleccionar Cliente",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 583
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 585
+        }
+      },
+      {
+        "comment": "",
+        "key": "Buscar cliente",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 485
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clientes existentes",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 506
+        }
+      },
+      {
+        "comment": "",
+        "key": "No se encontraron resultados",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 537
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nombre del cliente",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 546
+        }
+      },
+      {
+        "comment": "",
+        "key": "Usar",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 555
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ingresar cliente manualmente",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 565
+        }
+      },
+      {
+        "comment": "",
+        "key": "Crear nuevo cliente",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 577
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nuevo Cliente",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 629
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 631
+        }
+      },
+      {
+        "comment": "",
+        "key": "Guardar",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 634
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información básica",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 608
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información de contacto",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 613
+        }
+      },
+      {
+        "comment": "",
+        "key": "Notas adicionales",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 624
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nombre del cliente",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 609
+        }
+      },
+      {
+        "comment": "",
+        "key": "Persona de contacto",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 610
+        }
+      },
+      {
+        "comment": "",
+        "key": "Correo electrónico",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 614
+        }
+      },
+      {
+        "comment": "",
+        "key": "Teléfono",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 618
+        }
+      },
+      {
+        "comment": "",
+        "key": "Dirección",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 621
+        }
+      },
+      {
+        "comment": "",
+        "key": "Detalle del proyecto",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 911
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progreso del proyecto",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 707
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 712
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 727
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gestor",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 737
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fechas",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 752
+        }
+      },
+      {
+        "comment": "",
+        "key": "Inicio: %@ - Fin: %@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 756
+        }
+      },
+      {
+        "comment": "",
+        "key": "Presupuesto",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 768
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%@ MXN",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 772
+        }
+      },
+      {
+        "comment": "",
+        "key": "Descripción",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 786
+        }
+      },
+      {
+        "comment": "",
+        "key": "No hay miembros asignados a este proyecto",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 816
+        }
+      },
+      {
+        "comment": "",
+        "key": "Equipo",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 801
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ver todos",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 809
+        }
+      },
+      {
+        "comment": "",
+        "key": "Más",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 848
+        }
+      },
+      {
+        "comment": "",
+        "key": "+%lld",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 843
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tareas",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 865
+        }
+      },
+      {
+        "comment": "",
+        "key": "No hay tareas para este proyecto",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 884
+        }
+      },
+      {
+        "comment": "",
+        "key": "Añadir tarea",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 891
+        }
+      },
+      {
+        "comment": "",
+        "key": "Vista para añadir tarea",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 914
+        }
+      },
+      {
+        "comment": "",
+        "key": "Equipo del proyecto",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1036
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cerrar",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 1037
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gestión de Clientes",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1122
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cerrar",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 1124
+        }
+      },
+      {
+        "comment": "",
+        "key": "¿Eliminar cliente?",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 1145
+        }
+      },
+      {
+        "comment": "",
+        "key": "Buscar cliente",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 1072
+        }
+      },
+      {
+        "comment": "",
+        "key": "Editar",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 1105
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 1112
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 1146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 1147
+        }
+      },
+      {
+        "comment": "",
+        "key": "Esta acción eliminará permanentemente a %@. Esta acción no se puede deshacer.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 1154
+        }
+      },
+      {
+        "comment": "",
+        "key": "Editar Cliente",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1258
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 1260
+        }
+      },
+      {
+        "comment": "",
+        "key": "Guardar",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 1263
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información básica",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1227
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información de contacto",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1234
+        }
+      },
+      {
+        "comment": "",
+        "key": "Notas adicionales",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1245
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nombre del cliente",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 1228
+        }
+      },
+      {
+        "comment": "",
+        "key": "Persona de contacto",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 1229
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cliente activo",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1231
+        }
+      },
+      {
+        "comment": "",
+        "key": "Correo electrónico",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 1235
+        }
+      },
+      {
+        "comment": "",
+        "key": "Teléfono",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 1239
+        }
+      },
+      {
+        "comment": "",
+        "key": "Dirección",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 1242
+        }
+      },
+      {
+        "comment": "",
+        "key": "Este cliente está marcado como inactivo y no aparecerá en las listas de selección para nuevos proyectos.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1252
+        }
+      }
+    ]
+  },
+  "version": 1
+}

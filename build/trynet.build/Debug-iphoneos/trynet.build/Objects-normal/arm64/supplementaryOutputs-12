@@ -1,0 +1,18 @@
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/BiometricAuthService.swift":
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.d"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.o"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.dia"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.swiftconstvalues"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.swiftdeps"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/AuthViewModel.swift":
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.swiftconstvalues"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.d"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.swiftdeps"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.dia"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.o"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/AuthService.swift":
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.d"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.dia"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.swiftconstvalues"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.swiftdeps"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.o"

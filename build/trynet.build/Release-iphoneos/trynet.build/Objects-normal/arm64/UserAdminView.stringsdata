@@ -1,0 +1,224 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserAdminView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Buscar por nombre o rol",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gestión de Usuarios",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "¿Estás seguro de que deseas eliminar este usuario?",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "Agregar",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actualizar",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Aceptar",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Esta acción eliminará permanentemente al usuario '%@'.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cargando usuarios...",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "Error",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 112
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reintentar",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 128
+        }
+      },
+      {
+        "comment": "",
+        "key": "No hay usuarios disponibles",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 148
+        }
+      },
+      {
+        "comment": "",
+        "key": "Crea un nuevo usuario pulsando el botón '+' en la parte superior",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 150
+        }
+      },
+      {
+        "comment": "",
+        "key": "No se encontraron resultados",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 155
+        }
+      },
+      {
+        "comment": "",
+        "key": "Intenta con otros términos de búsqueda",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 157
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actualizar datos",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 170
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 191
+        }
+      },
+      {
+        "comment": "",
+        "key": "Editar",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 197
+        }
+      },
+      {
+        "comment": "",
+        "key": "Desactivar",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 206
+        }
+      },
+      {
+        "comment": "",
+        "key": "Activar",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 208
+        }
+      },
+      {
+        "comment": "",
+        "key": "Inactivo",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 281
+        }
+      },
+      {
+        "comment": "",
+        "key": "Editar",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 299
+        }
+      },
+      {
+        "comment": "",
+        "key": "Desactivar",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 306
+        }
+      },
+      {
+        "comment": "",
+        "key": "Activar",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 308
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ver historial",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 315
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 323
+        }
+      }
+    ]
+  },
+  "version": 1
+}

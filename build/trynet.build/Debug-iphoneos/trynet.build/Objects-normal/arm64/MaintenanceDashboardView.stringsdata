@@ -1,0 +1,224 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceDashboardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Panel de Control",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "Período",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ubicación",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tareas por Estado",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "Estado",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cantidad",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 122
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 126
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tareas por Tipo",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 145
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tipo",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 159
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tipo",
+        "location": {
+          "startingColumn": 49,
+          "startingLine": 163
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "(%lld)",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 188
+        }
+      },
+      {
+        "comment": "",
+        "key": "Solicitudes de Apoyo Pendientes",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 204
+        }
+      },
+      {
+        "comment": "",
+        "key": "No hay solicitudes pendientes",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 210
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ - %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 293
+        }
+      },
+      {
+        "comment": "",
+        "key": "Detalle de Solicitud",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 409
+        }
+      },
+      {
+        "comment": "",
+        "key": "Detalles del problema:",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 347
+        }
+      },
+      {
+        "comment": "",
+        "key": "Solicitud de Apoyo",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 331
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tarea Relacionada",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 365
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ver tarea",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 371
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actualizar Estado",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 397
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actualizar Solicitud",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 453
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actualizar estado",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 430
+        }
+      },
+      {
+        "comment": "",
+        "key": "Detalles de la respuesta",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 439
+        }
+      },
+      {
+        "comment": "",
+        "key": "Estado",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 431
+        }
+      },
+      {
+        "comment": "",
+        "key": "Guardar cambios",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 445
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 457
+        }
+      }
+    ]
+  },
+  "version": 1
+}

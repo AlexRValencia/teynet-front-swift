@@ -1,0 +1,2082 @@
+[
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "P319-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.5133118",
+                "28.7049211"
+            ]
+        },
+        "type": "LPR",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "PC4",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.521493",
+                "28.695162"
+            ]
+        },
+        "type": "",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "P316-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.5503545",
+                "28.6863312"
+            ]
+        },
+        "type": "LPR",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "P318-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.6023092",
+                "28.7722564"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "P315-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.521493",
+                "28.695162"
+            ]
+        },
+        "type": "LPR",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "PR1",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.5503545",
+                "28.6863312"
+            ]
+        },
+        "type": "",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "P317-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "",
+                ""
+            ]
+        },
+        "type": "LPR",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "P320-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.5136324",
+                "28.7060801"
+            ]
+        },
+        "type": "LPR",
+        "city": "Piedras Negras"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T209-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.449237",
+                "25.575702"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T131-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.403706",
+                "25.598031"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T118-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.436659",
+                "25.557835"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T124-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.452442",
+                "25.545423"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T130-ALARM",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.400375",
+                "25.610762"
+            ]
+        },
+        "type": "ALARM",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T121-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.437515",
+                "25.550639"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T155-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.453695",
+                "25.540254"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T226-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.420889",
+                "25.526224"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T141-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.370530",
+                "25.552096"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T140-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.379730",
+                "25.558310"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T194-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.3661103",
+                "25.504351"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T205-ALARM",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.444717",
+                "25.538553"
+            ]
+        },
+        "type": "ALARM",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T219-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.395140",
+                "25.544617"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T123-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.448767",
+                "25.548635"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T222-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.391353",
+                "25.552704"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T126-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.367810",
+                "25.643031"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T129-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.399731",
+                "25.611710"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T215-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.468961",
+                "25.544801"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TC4",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.301807",
+                "25.534207"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T183-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.237058",
+                "25.532308"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T188-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.428333",
+                "25.597051"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T154-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.452828",
+                "25.540248"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T149-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.406056",
+                "25.531395"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T162-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.431033",
+                "25.536634"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T179-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.310460",
+                "25.353455"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T168-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.403886",
+                "25.538024"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TC2",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.249866",
+                "25.534452"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T161-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.429889",
+                "25.538224"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T132-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.388631",
+                "25.611040"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T223-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.398140",
+                "25.562690"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TR8-1",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.405980",
+                "25.524154"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T230-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.392406",
+                "25.547630"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TR2",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.385656",
+                "25.566893"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T150-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.385278",
+                "25.506418"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T227-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.429064",
+                "25.533444"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T128-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.392156",
+                "25.619190"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T184-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.231922",
+                "25.522279"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T121-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.437515",
+                "25.550639"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TR3",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.348199",
+                "25.543953"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T152-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.446214",
+                "25.538553"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T174-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.357910",
+                "25.546097"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T143",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.396653",
+                "25.546097"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T173-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.361861",
+                "25.534943"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T208-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.445650",
+                "25.576468"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T170-E",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.400519",
+                "25.538388"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T185-CCT",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.216347",
+                "25.527469"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T221-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.391016",
+                "25.551952"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T225-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.396890",
+                "25.565497"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T213-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.452658",
+                "25.558133"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T127-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.377658",
+                "25.633859"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T171-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.396053",
+                "25.537977"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T116-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.429416",
+                "25.563849"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T142-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.370739",
+                "25.542926"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T232-ALARM",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.452643",
+                "25.552434"
+            ]
+        },
+        "type": "ALARM",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T175-LPR-NEW",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.32904",
+                "25.53469"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T122-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.445563",
+                "25.552263"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T153-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.446656",
+                "25.535742"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T166-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.407511",
+                "25.536647"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T169-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.400820",
+                "25.537817"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T224-E",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.398619",
+                "25.563198"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T210-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.449642",
+                "25.566535"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T137-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.402844",
+                "25.582489"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T196-ALARM",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.348199",
+                "25.543953"
+            ]
+        },
+        "type": "ALARM",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T181-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.254258",
+                "25.535242"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T233-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.413878",
+                "25.558380"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T136-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.407917",
+                "25.588767"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T114-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.415676",
+                "25.574419"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T193-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.366978",
+                "25.497820"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T198-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.383737",
+                "25.523001"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TR4",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.449019",
+                "25.574350"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T195-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.365889",
+                "25.521734"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T204-ALARM",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.434217",
+                "25.541235"
+            ]
+        },
+        "type": "ALARM",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T125-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.461347",
+                "25.544248"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T182-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.250161",
+                "25.535220"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T158-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.431303",
+                "25.544885"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TR3-1",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.365749",
+                "25.535070"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T160-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.434078",
+                "25.538242"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T190-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.343586",
+                "25.534817"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T199-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.38661",
+                "25.521946"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T147-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.415292",
+                "25.516399"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T159-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.431186",
+                "25.538224"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T197-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.375893",
+                "25.533020"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T139-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.382869",
+                "25.563960"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T167-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.407383",
+                "25.535391"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T186-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.223964",
+                "25.537883"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T145-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.410431",
+                "25.496489"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T211-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.449275",
+                "25.566509"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T133-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.374910",
+                "25.622710"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T138-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.391650",
+                "25.576380"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T156-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.434333",
+                "25.534966"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T146-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.406136",
+                "25.511292"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T178-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.300968",
+                "25.534835"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T189-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.420983",
+                "25.593535"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T203-ALARM",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.432578",
+                "25.538354"
+            ]
+        },
+        "type": "ALARM",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T135-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.446097",
+                "25.561120"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T148-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.415311",
+                "25.521078"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T134-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.373193",
+                "25.619719"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T119-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.433253",
+                "25.557717"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T115-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.420214",
+                "25.571391"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T157-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.434197",
+                "25.544782"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T172-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.416600",
+                "25.546533"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T117-CCVT",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.431510",
+                "25.562110"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T180-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.302206",
+                "25.533594"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T187-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.238511",
+                "25.538038"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T144-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.399892",
+                "25.507648"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T229-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.438897",
+                "25.520058"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "TR6",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.43447",
+                "25.536787"
+            ]
+        },
+        "type": "",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T192-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.379605",
+                "25.496426"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T176-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.325422",
+                "25.539860"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T164-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.420878",
+                "25.547558"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T324-RELAY",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.232935",
+                "25.522990"
+            ]
+        },
+        "type": "RELAY",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T120-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.440575",
+                "25.554509"
+            ]
+        },
+        "type": "LPR",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "T177-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-103.318714",
+                "25.539844"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Torre\u00f3n"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "A4-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.930422",
+                "29.322071"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Acu\u00f1a"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "A6-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.013629",
+                "29.345309"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Acu\u00f1a"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "A5-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.013629",
+                "29.345309"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Acu\u00f1a"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "A3-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.929583",
+                "29.324741"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Acu\u00f1a"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "A1-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.912208",
+                "29.292554"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Acu\u00f1a"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "AC4",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.976379",
+                "29.329472"
+            ]
+        },
+        "type": "",
+        "city": "Acu\u00f1a"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "A2-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-100.926088",
+                "29.324015"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Acu\u00f1a"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M28-CCTV-1",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.442443",
+                "26.935636"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "Mairport-1",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.460466",
+                "26.953893"
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M3-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.442707",
+                "26.859189"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M12-CCTV-1",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.458149",
+                "26.954588"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M8-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.381013",
+                "26.37181"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M14-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.449875",
+                "26.926420"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M9-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.378074",
+                "26.974825"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M4-CCTV-1",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.427344",
+                "26.866452"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M38-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.392384",
+                "26.914715"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "Mairport-2",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.459780",
+                "26.953148"
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M11-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.409178",
+                "26.958323"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "MC4",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.459456",
+                "26.952422"
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M18-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "",
+                ""
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "MR5",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.393511",
+                "26.896805"
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "MR2",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.409942",
+                "26.853445"
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M6-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.402107",
+                "26.874039"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M20-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.428983",
+                "26.913088"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M4-CCTV-2",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.426994",
+                "26.868826"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M48-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.421500",
+                "26.907995"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M13-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.416554",
+                "26.900747"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M25-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.446216",
+                "26.939724"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "MR3",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.414805",
+                "26.943789"
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M22-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.424089",
+                "26.919497"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M42-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.430798",
+                "26.927584"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M28-CCTV-2",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.443586",
+                "26.935946"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "MR4",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.436529",
+                "26.916251"
+            ]
+        },
+        "type": "",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M19-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.413680",
+                "26.906878"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M32-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.415874",
+                "26.930616"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M5-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.405131",
+                "26.871038"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M23-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.442472",
+                "26.921824"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M7-CCTV",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.390719",
+                "26.926099"
+            ]
+        },
+        "type": "CCTV",
+        "city": "Monclova"
+    },
+    {
+        "project": "67880b30012a0af691b90351",
+        "name": "M1-LPR",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                "-101.422329",
+                "26.831362"
+            ]
+        },
+        "type": "LPR",
+        "city": "Monclova"
+    }
+]

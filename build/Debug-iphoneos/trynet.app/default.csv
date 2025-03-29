@@ -1,0 +1,7 @@
+id,name,category,quantity,available,location
+1,Router Cisco 2900,Routers,8,3,Almacén Principal
+2,Switch HP ProCurve 2530,Switches,12,5,Almacén Principal
+3,Servidor Dell PowerEdge R640,Servidores,4,1,Data Center
+4,Cable UTP Cat6 (100m),Cables,20,15,Almacén Secundario
+5,Access Point Ubiquiti UAP-AC-PRO,Otros,10,6,Almacén Principal
+6,Router MikroTik RB3011,Routers,5,2,Almacén Secundario

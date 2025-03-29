@@ -1,0 +1,200 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/LoginView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Usar %@ para iniciar sesión",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "No, gracias",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "Activar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "¿Deseas usar %@ para iniciar sesión más rápido la próxima vez?",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "TryNet",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 138
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sistema de gestión de proyectos",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "Verificar",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 176
+        }
+      },
+      {
+        "comment": "",
+        "key": "Usuario",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 194
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ingresa tu nombre de usuario",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 202
+        }
+      },
+      {
+        "comment": "",
+        "key": "Contraseña",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 219
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ingresa tu contraseña",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 228
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ingresa tu contraseña",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 236
+        }
+      },
+      {
+        "comment": "",
+        "key": "El servidor local no está disponible. Puedes usar modo demo con usuario: admin y contraseña: password.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 302
+        }
+      },
+      {
+        "comment": "",
+        "key": "Iniciar Sesión",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 327
+        }
+      },
+      {
+        "comment": "",
+        "key": "Iniciando sesión...",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 319
+        }
+      },
+      {
+        "comment": "",
+        "key": "Iniciar con %@",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 353
+        }
+      },
+      {
+        "comment": "",
+        "key": "Última verificación: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 372
+        }
+      },
+      {
+        "comment": "",
+        "key": "© 2025 TryNet. Todos los derechos reservados.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 405
+        }
+      },
+      {
+        "comment": "",
+        "key": "¿Olvidaste tu contraseña?",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 382
+        }
+      },
+      {
+        "comment": "",
+        "key": "Recordar con %@",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 396
+        }
+      },
+      {
+        "comment": "",
+        "key": "Iniciando sesión...",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 424
+        }
+      },
+      {
+        "comment": "",
+        "key": "Verificando...",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 451
+        }
+      },
+      {
+        "comment": "",
+        "key": "Servidor local conectado",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 452
+        }
+      },
+      {
+        "comment": "",
+        "key": "Modo fallback activo",
+        "location": {
+          "startingColumn": 71,
+          "startingLine": 452
+        }
+      }
+    ]
+  },
+  "version": 1
+}

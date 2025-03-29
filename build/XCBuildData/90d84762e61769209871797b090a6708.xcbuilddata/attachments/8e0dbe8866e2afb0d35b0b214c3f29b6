@@ -1,0 +1,145 @@
+{
+  "" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/trynet-master.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/trynet-master.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/trynet-master.dia",
+    "emit-module-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/trynet-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/trynet-master-emit-module.dia",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/trynet-master.swiftdeps"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/AppDelegate.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/ContentView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabViewModel.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Models/UserModel.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserModel.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Services/UserAdminService.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/UserAdminViewModel.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserAdminView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserFormView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserHistoryView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/AuthViewModel.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/LoginView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/LoginView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/APIClient.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/APIClient.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/APIClient.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/APIClient.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/AuthService.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AuthService.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AuthService.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/AuthService.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/BiometricAuthService.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Inventory/InventoryItem.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Inventory/InventoryView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceFormView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceTask.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Monitoring/MonitoringView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/Client.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/Client.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/Client.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/Client.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/Project.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/Project.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/Project.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/Project.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/ProjectsView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Reports/ReportsView.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.o"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/TrynetApp.swift" : {
+    "index-unit-output-path" : "/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Release-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.o"
+  }
+}

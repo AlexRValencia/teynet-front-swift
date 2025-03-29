@@ -1,0 +1,18 @@
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabView.swift":
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.dia"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.swiftdeps"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.d"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.swiftconstvalues"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.o"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabViewModel.swift":
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.dia"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.d"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.o"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.swiftconstvalues"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.swiftdeps"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/DeviceRotationViewModifier.swift":
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.d"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.dia"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.swiftdeps"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.o"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.swiftconstvalues"

@@ -1,0 +1,232 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserAdminView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "¿Estás seguro de que deseas eliminar este usuario?",
+        "location": {
+          "startingColumn": 17,
+          "startingLine": 138
+        }
+      },
+      {
+        "comment": "",
+        "key": "Buscar por nombre o rol",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "Aceptar",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 124
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 143
+        }
+      },
+      {
+        "comment": "",
+        "key": "Esta acción eliminará permanentemente al usuario '%@'.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cargando usuarios...",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 166
+        }
+      },
+      {
+        "comment": "",
+        "key": "Error",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 178
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reintentar",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 195
+        }
+      },
+      {
+        "comment": "",
+        "key": "No hay usuarios disponibles",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 216
+        }
+      },
+      {
+        "comment": "",
+        "key": "Crea un nuevo usuario pulsando el botón '+' en la parte superior",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 218
+        }
+      },
+      {
+        "comment": "",
+        "key": "No se encontraron resultados",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 223
+        }
+      },
+      {
+        "comment": "",
+        "key": "Intenta con otros términos de búsqueda o filtros",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 225
+        }
+      },
+      {
+        "comment": "",
+        "key": "Limpiar filtros y actualizar",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 240
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 266
+        }
+      },
+      {
+        "comment": "",
+        "key": "Editar",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 272
+        }
+      },
+      {
+        "comment": "",
+        "key": "Desactivar",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 281
+        }
+      },
+      {
+        "comment": "",
+        "key": "Activar",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 283
+        }
+      },
+      {
+        "comment": "",
+        "key": "Detalle de Usuario",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 356
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información básica",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 324
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fechas y auditoría",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 332
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cerrar",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 360
+        }
+      },
+      {
+        "comment": "",
+        "key": "Inactivo",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 454
+        }
+      },
+      {
+        "comment": "",
+        "key": "Editar",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 472
+        }
+      },
+      {
+        "comment": "",
+        "key": "Desactivar",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 479
+        }
+      },
+      {
+        "comment": "",
+        "key": "Activar",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 481
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ver historial",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 488
+        }
+      },
+      {
+        "comment": "",
+        "key": "Eliminar",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 496
+        }
+      }
+    ]
+  },
+  "version": 1
+}

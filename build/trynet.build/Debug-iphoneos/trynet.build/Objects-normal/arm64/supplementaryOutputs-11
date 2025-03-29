@@ -1,0 +1,18 @@
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserFormView.swift":
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.o"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.swiftconstvalues"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.swiftdeps"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.dia"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.d"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/APIClient.swift":
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.swiftconstvalues"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.swiftdeps"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.o"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.d"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.dia"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/UserAdminViewModel.swift":
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.dia"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.swiftconstvalues"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.o"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.d"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.swiftdeps"

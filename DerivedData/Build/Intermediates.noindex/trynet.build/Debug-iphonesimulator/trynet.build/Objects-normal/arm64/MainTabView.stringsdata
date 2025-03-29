@@ -1,0 +1,160 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "¿Reconectar al servidor?",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gestión de proyectos",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Proyectos",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tareas de mantenimiento",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Mantenimiento",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reportes y análisis",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reportes",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gestión de inventario",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Inventario",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 45
+        }
+      },
+      {
+        "comment": "",
+        "key": "Monitoreo en vivo",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 53
+        }
+      },
+      {
+        "comment": "",
+        "key": "Monitoreo",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "Administración del sistema",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 62
+        }
+      },
+      {
+        "comment": "",
+        "key": "Administración",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cerrar sesión y reconectar",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "Seguir en modo fallback",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "Se ha detectado que el servidor local está disponible. ¿Deseas cerrar sesión y reconectar usando el backend real?",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 120
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cerrar sesión",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 212
+        }
+      },
+      {
+        "comment": "",
+        "key": "Modo Demo",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Salir",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 203
+        }
+      }
+    ]
+  },
+  "version": 1
+}

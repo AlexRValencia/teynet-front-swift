@@ -1,0 +1,24 @@
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/DeviceRotationViewModifier.swift":
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/DeviceRotationViewModifier.o"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/DeviceRotationViewModifier.swiftdeps"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/DeviceRotationViewModifier.d"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/DeviceRotationViewModifier.dia"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/DeviceRotationViewModifier.swiftconstvalues"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabView.swift":
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabView.d"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabView.swiftdeps"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabView.o"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabView.swiftconstvalues"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabView.dia"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Models/UserModel.swift":
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/UserModel.swiftdeps"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/UserModel.o"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/UserModel.dia"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/UserModel.swiftconstvalues"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/UserModel.d"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabViewModel.swift":
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabViewModel.swiftconstvalues"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabViewModel.dia"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabViewModel.o"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabViewModel.swiftdeps"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MainTabViewModel.d"

@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/noxshade/Documents/Goman/trynet/trynet/build/Release-iphoneos/trynet.app/trynet'
+relocations:     []
+...

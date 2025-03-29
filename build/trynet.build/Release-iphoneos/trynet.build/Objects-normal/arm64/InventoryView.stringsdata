@@ -1,0 +1,104 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Inventory/InventoryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Buscar en inventario",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 95
+        }
+      },
+      {
+        "comment": "",
+        "key": "Categoría:",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 117
+        }
+      },
+      {
+        "comment": "",
+        "key": "Categoría",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 120
+        }
+      },
+      {
+        "comment": "",
+        "key": "No se encontraron elementos que coincidan con la búsqueda",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generar Reporte de Inventario",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 173
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ %@",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 242
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@, %@, %lld total, %lld disponibles, ubicación: %@",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 320
+        }
+      },
+      {
+        "comment": "",
+        "key": "Total:",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 280
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 282
+        }
+      },
+      {
+        "comment": "",
+        "key": "Disponibles:",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 287
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 289
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nivel bajo",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 309
+        }
+      }
+    ]
+  },
+  "version": 1
+}

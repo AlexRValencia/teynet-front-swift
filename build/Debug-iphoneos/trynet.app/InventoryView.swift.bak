@@ -1,0 +1,351 @@
+import SwiftUI
+
+// Importamos el modelo InventoryItem desde el módulo principal
+import Foundation
+import UIKit // Aseguramos la importación correcta de UIKit
+
+// Desactivamos el asistente de entrada globalmente para toda la aplicación
+extension UIApplication {
+    static func disableKeyboardInputAssistant() {
+        // Configuración global para TextField
+        UITextField.appearance().inputAssistantItem.leadingBarButtonGroups = []
+        UITextField.appearance().inputAssistantItem.trailingBarButtonGroups = []
+        
+        // Configuración global para TextView
+        UITextView.appearance().inputAssistantItem.leadingBarButtonGroups = []
+        UITextView.appearance().inputAssistantItem.trailingBarButtonGroups = []
+    }
+}
+
+// Importamos el modelo InventoryItem
+struct InventoryView: View {
+    @State private var searchText = ""
+    @State private var selectedCategory = "Todos"
+    @FocusState private var isTextFieldFocused: Bool
+    @State private var keyboardHeight: CGFloat = 0
+    @State private var isKeyboardVisible = false
+    
+    let categories = ["Todos", "Routers", "Switches", "Servidores", "Cables", "Otros"]
+    
+    @State private var inventoryItems = [
+        InventoryItem(id: "1", name: "Router Cisco 2900", category: "Routers", quantity: 8, available: 3, location: "Almacén Principal"),
+        InventoryItem(id: "2", name: "Switch HP ProCurve 2530", category: "Switches", quantity: 12, available: 5, location: "Almacén Principal"),
+        InventoryItem(id: "3", name: "Servidor Dell PowerEdge R640", category: "Servidores", quantity: 4, available: 1, location: "Data Center"),
+        InventoryItem(id: "4", name: "Cable UTP Cat6 (100m)", category: "Cables", quantity: 20, available: 15, location: "Almacén Secundario"),
+        InventoryItem(id: "5", name: "Access Point Ubiquiti UAP-AC-PRO", category: "Otros", quantity: 10, available: 6, location: "Almacén Principal"),
+        InventoryItem(id: "6", name: "Router MikroTik RB3011", category: "Routers", quantity: 5, available: 2, location: "Almacén Secundario"),
+    ]
+    
+    var filteredItems: [InventoryItem] {
+        var filtered = inventoryItems
+        
+        if !searchText.isEmpty {
+            filtered = filtered.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        }
+        
+        if selectedCategory != "Todos" {
+            filtered = filtered.filter { $0.category == selectedCategory }
+        }
+        
+        return filtered
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Color(.systemBackground).ignoresSafeArea()
+                
+                VStack(spacing: 16) {
+                    Text("Inventario")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 5)
+                    
+                    searchAndFilterSection
+                        .padding(.horizontal)
+                    
+                    statsSection
+                        .padding(.horizontal)
+                        .padding(.bottom, 10)
+                    
+                    if filteredItems.isEmpty {
+                        emptyStateView
+                    } else {
+                        contentSection(geometry: geometry)
+                    }
+                    
+                    if !isKeyboardVisible {
+                        actionButton
+                            .padding(.bottom, 8)
+                    }
+                    
+                    // Espaciador para empujar todo hacia arriba cuando aparece el teclado
+                    Spacer(minLength: isKeyboardVisible ? keyboardHeight - 20 : 0)
+                }
+                .padding()
+                .animation(.easeInOut(duration: 0.25), value: isKeyboardVisible)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    dismissKeyboard()
+                }
+            }
+        }
+        // Usamos ignoresSafeArea para resolver problemas de layout
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .onAppear {
+            // Utilizamos la solución global y configuramos las notificaciones del teclado
+            UIApplication.disableKeyboardAssistantBar()
+            setupKeyboardNotifications()
+        }
+        .onDisappear {
+            NotificationCenter.default.removeObserver(self)
+        }
+    }
+    
+    // MARK: - UI Components
+    
+    private var searchAndFilterSection: some View {
+        VStack(spacing: 12) {
+            // Barra de búsqueda
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                
+                TextField("Buscar en inventario", text: $searchText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .focused($isTextFieldFocused)
+                    .submitLabel(.search)
+                    .onSubmit {
+                        dismissKeyboard()
+                    }
+                
+                if !searchText.isEmpty {
+                    Button(action: {
+                        searchText = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.trailing, 8)
+                }
+            }
+            .frame(height: 44)
+            
+            // Selector de categoría
+            HStack {
+                Text("Categoría:")
+                    .foregroundColor(.secondary)
+                
+                Picker("Categoría", selection: $selectedCategory) {
+                    ForEach(categories, id: \.self) { category in
+                        Text(category)
+                            .lineLimit(1)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+            }
+        }
+    }
+    
+    private var statsSection: some View {
+        HStack(spacing: 12) {
+            InventoryStat(value: "\(inventoryItems.reduce(0) { $0 + $1.quantity })", label: "Total")
+            InventoryStat(value: "\(inventoryItems.reduce(0) { $0 + $1.available })", label: "Disponibles")
+            InventoryStat(value: "\(inventoryItems.filter { $0.available == 0 }.count)", label: "Sin Stock")
+        }
+    }
+    
+    private var emptyStateView: some View {
+        VStack {
+            Spacer()
+            Text("No se encontraron elementos que coincidan con la búsqueda")
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+            Spacer()
+        }
+    }
+    
+    private func contentSection(geometry: GeometryProxy) -> some View {
+        ScrollView {
+            LazyVStack(spacing: 12) {
+                ForEach(filteredItems) { item in
+                    InventoryItemCard(item: item)
+                        .padding(.horizontal)
+                }
+            }
+            .padding(.vertical, 8)
+            .padding(.bottom, isKeyboardVisible ? keyboardHeight : 0)
+        }
+        .frame(height: isKeyboardVisible 
+               ? geometry.size.height * 0.55 
+               : geometry.size.height * 0.65)
+    }
+    
+    private var actionButton: some View {
+        Button(action: {
+            dismissKeyboard()
+            // Acción para generar reporte de inventario
+        }) {
+            HStack {
+                Image(systemName: "doc.text")
+                Text("Generar Reporte de Inventario")
+            }
+            .frame(minWidth: 44, minHeight: 44)
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(10)
+        }
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func dismissKeyboard() {
+        isTextFieldFocused = false
+    }
+    
+    private func setupKeyboardNotifications() {
+        // Eliminar observadores anteriores para evitar duplicados
+        NotificationCenter.default.removeObserver(self)
+        
+        NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillShowNotification,
+            object: nil,
+            queue: .main
+        ) { notification in
+            if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+               let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+                
+                // Calculamos la altura del teclado en el espacio de la pantalla
+                self.keyboardHeight = keyboardFrame.height
+                
+                // Usamos la misma duración de animación que el sistema
+                withAnimation(.easeOut(duration: duration)) {
+                    self.isKeyboardVisible = true
+                }
+                
+                // Forzar actualización del layout inmediatamente
+                DispatchQueue.main.async {
+                    // Volvemos a aplicar la desactivación global del asistente
+                    UIApplication.disableKeyboardAssistantBar()
+                }
+            }
+        }
+        
+        NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillHideNotification,
+            object: nil,
+            queue: .main
+        ) { notification in
+            if let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+                // Usar la misma duración de animación que el sistema
+                withAnimation(.easeIn(duration: duration)) {
+                    self.keyboardHeight = 0
+                    self.isKeyboardVisible = false
+                }
+            } else {
+                // Fallback si no se puede obtener la duración
+                withAnimation {
+                    self.keyboardHeight = 0
+                    self.isKeyboardVisible = false
+                }
+            }
+        }
+    }
+}
+
+struct InventoryStat: View {
+    var value: String
+    var label: String
+    
+    var body: some View {
+        VStack {
+            Text(value)
+                .font(.title)
+                .fontWeight(.bold)
+                .accessibilityLabel("\(value) \(label)")
+            
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+    }
+}
+
+struct InventoryItemCard: View {
+    var item: InventoryItem
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text(item.name)
+                    .font(.headline)
+                
+                Spacer()
+                
+                Text(item.category)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color(.systemGray5))
+                    .cornerRadius(4)
+            }
+            
+            Divider()
+            
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Total:")
+                            .foregroundColor(.secondary)
+                        Text("\(item.quantity)")
+                            .fontWeight(.semibold)
+                    }
+                    
+                    HStack {
+                        Text("Disponibles:")
+                            .foregroundColor(.secondary)
+                        Text("\(item.available)")
+                            .fontWeight(.semibold)
+                            .foregroundColor(item.available > 0 ? .green : .red)
+                    }
+                }
+                
+                Spacer()
+                
+                VStack(alignment: .trailing) {
+                    HStack {
+                        Image(systemName: "location")
+                            .foregroundColor(.secondary)
+                        Text(item.location)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    if item.available <= item.quantity / 4 {
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle")
+                                .foregroundColor(.orange)
+                            Text("Nivel bajo")
+                                .foregroundColor(.orange)
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(item.name), \(item.category), \(item.quantity) total, \(item.available) disponibles, ubicación: \(item.location)")
+    }
+}
+
+#Preview {
+    InventoryView()
+} 

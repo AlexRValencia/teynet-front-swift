@@ -1,0 +1,18 @@
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/ContentView.swift":
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.d"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.o"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.swiftconstvalues"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.swiftdeps"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.dia"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/TrynetApp.swift":
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.swiftconstvalues"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.d"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.swiftdeps"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.o"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.dia"
+"/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/DerivedSources/GeneratedAssetSymbols.swift":
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.dia"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.d"

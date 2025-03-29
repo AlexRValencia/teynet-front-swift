@@ -1,0 +1,318 @@
+{
+  "" : {
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/trynet-master.dia",
+    "emit-module-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/trynet-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/trynet-master-emit-module.dia",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/trynet-master.swiftdeps"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/AppDelegate.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AppDelegate~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/ContentView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/DeviceRotationViewModifier.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/DeviceRotationViewModifier~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Core/MainTabViewModel.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MainTabViewModel~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Models/UserModel.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserModel~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Services/UserAdminService.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminService~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/UserAdminViewModel.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminViewModel~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserAdminView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserAdminView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserFormView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserFormView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserHistoryView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/UserHistoryView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/AuthViewModel.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthViewModel~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/LoginView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/LoginView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/APIClient.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/APIClient~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/AuthService.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/AuthService~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Auth/Services/BiometricAuthService.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/BiometricAuthService~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Inventory/InventoryItem.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryItem~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Inventory/InventoryView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/InventoryView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceDashboardView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceDashboardView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceFormView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceFormView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceManager.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceManager~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceTask.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTask~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceTaskDetailView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceTaskDetailView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MaintenanceView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Monitoring/MonitoringView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/MonitoringView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/Client.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Client~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/Project.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/Project~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/ProjectsView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ProjectsView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Reports/ReportsView.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/ReportsView~partial.swiftmodule"
+  },
+  "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/TrynetApp.swift" : {
+    "const-values" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.swiftconstvalues",
+    "dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.d",
+    "diagnostics" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.dia",
+    "index-unit-output-path" : "/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.o",
+    "llvm-bc" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.bc",
+    "object" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.o",
+    "swift-dependencies" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp.swiftdeps",
+    "swiftmodule" : "/Users/noxshade/Documents/Goman/trynet/trynet/build/trynet.build/Debug-iphoneos/trynet.build/Objects-normal/arm64/TrynetApp~partial.swiftmodule"
+  }
+}

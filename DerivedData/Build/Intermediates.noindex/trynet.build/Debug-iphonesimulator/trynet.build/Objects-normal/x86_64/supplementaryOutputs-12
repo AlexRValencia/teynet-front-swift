@@ -1,0 +1,24 @@
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Projects/Client.swift":
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/Client.swiftdeps"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/Client.d"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/Client.dia"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/Client.swiftconstvalues"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/Client.o"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceTaskDetailView.swift":
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceTaskDetailView.o"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceTaskDetailView.swiftconstvalues"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceTaskDetailView.d"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceTaskDetailView.swiftdeps"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceTaskDetailView.dia"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Maintenance/MaintenanceView.swift":
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceView.swiftconstvalues"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceView.o"
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceView.d"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceView.swiftdeps"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MaintenanceView.dia"
+"/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Monitoring/MonitoringView.swift":
+  dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MonitoringView.d"
+  swift-dependencies: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MonitoringView.swiftdeps"
+  diagnostics: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MonitoringView.dia"
+  object: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MonitoringView.o"
+  const-values: "/Users/noxshade/Documents/Goman/trynet/trynet/DerivedData/Build/Intermediates.noindex/trynet.build/Debug-iphonesimulator/trynet.build/Objects-normal/x86_64/MonitoringView.swiftconstvalues"

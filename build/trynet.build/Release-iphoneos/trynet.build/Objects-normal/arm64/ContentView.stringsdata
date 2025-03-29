@@ -1,0 +1,32 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Sesión expirada",
+        "location": {
+          "startingColumn": 13,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "Aceptar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tu sesión ha expirado. Por favor, inicia sesión nuevamente.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 27
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,144 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Admin/Views/UserFormView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Editar Usuario",
+        "location": {
+          "startingColumn": 53,
+          "startingLine": 109
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nuevo Usuario",
+        "location": {
+          "startingColumn": 72,
+          "startingLine": 109
+        }
+      },
+      {
+        "comment": "",
+        "key": "Información del usuario",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 15
+        }
+      },
+      {
+        "comment": "",
+        "key": "Contraseña",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 45
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nombre de usuario",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 17
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nombre completo",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Rol",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "Usuario activo",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Deja en blanco para mantener la contraseña actual",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 63
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nueva contraseña (opcional)",
+        "location": {
+          "startingColumn": 56,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Contraseña",
+        "location": {
+          "startingColumn": 89,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Confirmar contraseña",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancelar",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "Guardando...",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actualizar usuario",
+        "location": {
+          "startingColumn": 61,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "Crear usuario",
+        "location": {
+          "startingColumn": 84,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cerrar",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 113
+        }
+      }
+    ]
+  },
+  "version": 1
+}

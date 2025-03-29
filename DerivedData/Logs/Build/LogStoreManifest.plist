@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>11</integer>
+	<key>logs</key>
+	<dict>
+		<key>2D8B0ADC-9176-4F40-A4EE-B5D29A68D6A5</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2D8B0ADC-9176-4F40-A4EE-B5D29A68D6A5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>trynet project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>trynet</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Cleaning project trynet with scheme trynet</string>
+			<key>timeStartedRecording</key>
+			<real>764600490.97859895</real>
+			<key>timeStoppedRecording</key>
+			<real>764600491.28591299</real>
+			<key>title</key>
+			<string>Cleaning project trynet with scheme trynet</string>
+			<key>uniqueIdentifier</key>
+			<string>2D8B0ADC-9176-4F40-A4EE-B5D29A68D6A5</string>
+		</dict>
+		<key>2F56E976-7C79-489C-A517-CAD2DC9A041E</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2F56E976-7C79-489C-A517-CAD2DC9A041E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>trynet project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>trynet</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project trynet with scheme trynet</string>
+			<key>timeStartedRecording</key>
+			<real>764600407.43768597</real>
+			<key>timeStoppedRecording</key>
+			<real>764600414.84552002</real>
+			<key>title</key>
+			<string>Building project trynet with scheme trynet</string>
+			<key>uniqueIdentifier</key>
+			<string>2F56E976-7C79-489C-A517-CAD2DC9A041E</string>
+		</dict>
+		<key>77C2B1FC-3EAB-474B-9B45-39C3A4129989</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>77C2B1FC-3EAB-474B-9B45-39C3A4129989.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>trynet project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>trynet</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project trynet with scheme trynet</string>
+			<key>timeStartedRecording</key>
+			<real>764600491.29111195</real>
+			<key>timeStoppedRecording</key>
+			<real>764600510.83155298</real>
+			<key>title</key>
+			<string>Building project trynet with scheme trynet</string>
+			<key>uniqueIdentifier</key>
+			<string>77C2B1FC-3EAB-474B-9B45-39C3A4129989</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

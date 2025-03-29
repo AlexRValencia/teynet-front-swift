@@ -1,0 +1,48 @@
+{
+  "source": "/Users/noxshade/Documents/Goman/trynet/trynet/trynet/Features/Monitoring/MonitoringView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "CPU: 42%",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "Memoria: 1.2GB/4GB",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Temperatura: 62°C",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "Conexión: 6 Mbps",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "Alertas: 0",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 58
+        }
+      }
+    ]
+  },
+  "version": 1
+}
