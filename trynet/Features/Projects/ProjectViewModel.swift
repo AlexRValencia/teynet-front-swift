@@ -98,10 +98,10 @@ class ProjectViewModel: ObservableObject {
                     // Indicar que ya cargamos los datos
                     self.hasLoadedProjects = true
                     
-                    // Si la lista está vacía después de la carga, mostramos un mensaje informativo
+                    // Ya no mostraremos mensaje de error cuando la lista esté vacía
+                    // Solo registramos en consola para debugging
                     if sortedProjects.isEmpty {
                         print("ℹ️ No se encontraron proyectos en el servidor")
-                        self.errorMessage = "No hay proyectos disponibles en el sistema"
                     }
                 }
             )
@@ -141,10 +141,10 @@ class ProjectViewModel: ObservableObject {
             // Indicar que ya cargamos los datos
             self.hasLoadedProjects = true
             
-            // Si la lista está vacía después de la recarga, mostramos un mensaje informativo
+            // Ya no mostraremos mensaje de error cuando la lista esté vacía
+            // Solo registramos en consola para debugging
             if sortedProjects.isEmpty {
                 print("ℹ️ No se encontraron proyectos en el servidor")
-                self.errorMessage = "No hay proyectos disponibles en el sistema"
             }
             
             self.isLoading = false

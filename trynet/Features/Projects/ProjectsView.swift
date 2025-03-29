@@ -237,25 +237,40 @@ struct ProjectsView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar(removing: .title)
             .onAppear {
-                // Mostrar panel de bienvenida solo en la primera ejecución
-                // Para esta demo, lo mostramos siempre por un momento
+                // Mostrar panel de bienvenida inicialmente
                 showWelcome = true
                 
-                // Para una app real, podríamos usar UserDefaults para mostrar el panel solo la primera vez
-                // o cuando no haya proyectos
-                if !viewModel.projects.isEmpty {
-                    // Ocultar después de 3 segundos si ya hay proyectos
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        if !viewModel.projects.isEmpty {
+                // Verificamos si hay proyectos después de que se carguen los datos
+                // Usamos un pequeño retraso para permitir que los datos se carguen
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    // Si hay proyectos, ocultamos la bienvenida después de 3 segundos
+                    if !viewModel.projects.isEmpty {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             withAnimation {
                                 showWelcome = false
                             }
                         }
                     }
+                    // Si no hay proyectos, el panel de bienvenida permanece visible
                 }
             }
             .refreshable {
                 await viewModel.refreshProjects()
+            }
+            .onChange(of: viewModel.projects) { newProjects in
+                // Si hay proyectos, ocultamos el panel de bienvenida después de 3 segundos
+                if !newProjects.isEmpty && showWelcome {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        withAnimation {
+                            showWelcome = false
+                        }
+                    }
+                } else if newProjects.isEmpty {
+                    // Si no hay proyectos, mostramos el panel de bienvenida
+                    withAnimation {
+                        showWelcome = true
+                    }
+                }
             }
         }
         .adaptToDeviceOrientation()
