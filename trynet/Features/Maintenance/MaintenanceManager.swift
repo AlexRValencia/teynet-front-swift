@@ -147,7 +147,11 @@ class MaintenanceManager: ObservableObject {
     func addTask(_ task: MaintenanceTask) {
         isLoading = true
         
-        maintenanceService.createMaintenanceTask(task: task)
+        // Asegurarse de que la tarea tiene status "Pendiente"
+        var newTask = task
+        newTask.status = "Pendiente"
+        
+        maintenanceService.createMaintenanceTask(task: newTask)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completion in
@@ -158,15 +162,50 @@ class MaintenanceManager: ObservableObject {
                         print("❌ Error al crear tarea de mantenimiento: \(error.message)")
                         
                         // Añadimos la tarea localmente de todos modos para no perder los datos
-                        self?.tasks.append(task)
+                        self?.tasks.append(newTask)
+                        self?.filterTasks() // Aplicar filtros actuales
                     }
                 },
-                receiveValue: { [weak self] newTask in
-                    self?.tasks.append(newTask)
-                    print("✅ Tarea de mantenimiento creada con éxito: \(newTask.id)")
+                receiveValue: { [weak self] createdTask in
+                    self?.tasks.append(createdTask)
+                    self?.filterTasks() // Aplicar filtros actuales
+                    print("✅ Tarea de mantenimiento creada con éxito: \(createdTask.id)")
                 }
             )
             .store(in: &cancellables)
+    }
+    
+    // Método para verificar si una tarea tiene campos pendientes de completar
+    func taskHasPendingFields(_ task: MaintenanceTask) -> Bool {
+        let hasPendingFields = task.description.isEmpty || 
+                              task.assignedTo.isEmpty ||
+                              task.damagedEquipment.isEmpty ||
+                              task.cableInstalled.isEmpty
+        
+        return hasPendingFields
+    }
+    
+    // Método para obtener una lista de campos pendientes de completar
+    func getPendingFields(for task: MaintenanceTask) -> [String] {
+        var pendingFields: [String] = []
+        
+        if task.description.isEmpty {
+            pendingFields.append("Descripción")
+        }
+        
+        if task.assignedTo.isEmpty {
+            pendingFields.append("Técnico asignado")
+        }
+        
+        if task.damagedEquipment.isEmpty {
+            pendingFields.append("Equipo dañado")
+        }
+        
+        if task.cableInstalled.isEmpty {
+            pendingFields.append("Cable instalado")
+        }
+        
+        return pendingFields
     }
     
     // Actualizar una tarea existente
@@ -215,15 +254,29 @@ class MaintenanceManager: ObservableObject {
     // Eliminar una tarea
     func deleteTask(id: String) {
         // Primero eliminamos localmente para actualizar la UI inmediatamente
+        let originalTasks = tasks
+        let originalFilteredTasks = filteredTasks
         tasks.removeAll { $0.id == id }
+        filterTasks() // Actualizar también las tareas filtradas
         
         // Luego enviamos la solicitud de eliminación al backend
         maintenanceService.deleteMaintenanceTask(id: id)
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { completion in
+                receiveCompletion: { [weak self] completion in
                     if case .failure(let error) = completion {
                         print("❌ Error al eliminar tarea de mantenimiento: \(error.message)")
+                        
+                        // Restaurar el estado anterior si la operación falló
+                        self?.tasks = originalTasks
+                        self?.filteredTasks = originalFilteredTasks
+                        
+                        // Notificar al usuario sobre el error
+                        NotificationCenter.default.post(
+                            name: Notification.Name("MaintenanceErrorNotification"),
+                            object: nil,
+                            userInfo: ["message": "Error al eliminar tarea: \(error.message)"]
+                        )
                     }
                 },
                 receiveValue: { success in

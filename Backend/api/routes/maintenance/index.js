@@ -31,17 +31,42 @@ router.get('/tasks/:id', (req, res) => {
     req.params.id = req.params.id;
     getMaintenanceDetails(req, res);
 });
-router.post('/tasks', createMaintenance);
+
+// Ruta de creación de tareas - ahora requiere autenticación y rol admin
+router.post('/tasks', authMiddleware, authorize(['admin']), (req, res) => {
+    createMaintenance(req, res);
+});
+
 router.put('/tasks/:id', (req, res) => {
     req.params.id = req.params.id;
+    // Si no hay usuario autenticado, asignar uno por defecto
+    if (!req.user) {
+        req.user = {
+            _id: "000000000000000000000000",
+            username: "system",
+            fullName: "Sistema",
+            role: "técnico"
+        };
+    }
     updateMaintenance(req, res);
 });
+
 router.post('/tasks/:id/stages/complete', (req, res) => {
     const { stageName } = req.body;
 
     // Buscar el stageId correspondiente según el nombre
     req.params.stageId = stageName; // Simplificado para compatibilidad
     req.params.id = req.params.id;
+
+    // Asignar usuario por defecto si no existe
+    if (!req.user) {
+        req.user = {
+            _id: "000000000000000000000000",
+            username: "system",
+            fullName: "Sistema",
+            role: "técnico"
+        };
+    }
 
     // Ajustar el cuerpo de la solicitud para el formato esperado por el nuevo endpoint
     req.body = {
@@ -55,13 +80,37 @@ router.post('/tasks/:id/stages/complete', (req, res) => {
 
     updateMaintenanceStage(req, res);
 });
+
 router.post('/tasks/:id/support', (req, res) => {
     req.params.id = req.params.id;
     req.body.requestDetails = req.body.details;
+
+    // Asignar usuario por defecto si no existe
+    if (!req.user) {
+        req.user = {
+            _id: "000000000000000000000000",
+            username: "system",
+            fullName: "Sistema",
+            role: "técnico"
+        };
+    }
+
     requestSupport(req, res);
 });
+
 router.delete('/tasks/:id', (req, res) => {
     req.params.id = req.params.id;
+
+    // Asignar usuario por defecto si no existe
+    if (!req.user) {
+        req.user = {
+            _id: "000000000000000000000000",
+            username: "system",
+            fullName: "Sistema",
+            role: "técnico"
+        };
+    }
+
     deleteMaintenance(req, res);
 });
 

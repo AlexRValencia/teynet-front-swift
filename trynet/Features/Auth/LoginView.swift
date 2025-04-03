@@ -339,8 +339,8 @@ struct LoginView: View {
                     ? 0.7 : 1.0
                 )
                 
-                // Botón de autenticación biométrica
-                if authViewModel.isBiometricAvailable {
+                // Botón de autenticación biométrica - asegurarse que sea visible si está disponible
+                if authViewModel.biometricType != .none {
                     Button(action: {
                         Task {
                             await authViewModel.loginWithBiometrics()
@@ -358,8 +358,8 @@ struct LoginView: View {
                         .foregroundColor(.primary)
                         .cornerRadius(10)
                     }
-                    .disabled(authViewModel.isLoading || !BiometricAuthService.shared.hasBiometricCredentials())
-                    .opacity(authViewModel.isLoading || !BiometricAuthService.shared.hasBiometricCredentials() ? 0.7 : 1.0)
+                    .disabled(authViewModel.isLoading)
+                    .opacity(authViewModel.isLoading ? 0.7 : 1.0)
                 }
             }
         }
@@ -385,7 +385,7 @@ struct LoginView: View {
                 }
                 .disabled(authViewModel.isLoading)
                 
-                if authViewModel.isBiometricAvailable {
+                if authViewModel.biometricType != .none {
                     Button(action: {
                         authViewModel.toggleBiometricAuth(enabled: !authViewModel.isBiometricEnabled)
                     }) {

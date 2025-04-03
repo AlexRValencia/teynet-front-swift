@@ -57,6 +57,11 @@ class AuthViewModel: ObservableObject {
     private func checkBiometricAvailability() {
         isBiometricAvailable = biometricService.isBiometricAuthAvailable()
         biometricType = biometricService.getBiometricType()
+        
+        // Asegurarse de que isBiometricAvailable sea true si hay un tipo de biometría disponible
+        if biometricType != .none {
+            isBiometricAvailable = true
+        }
     }
     
     // Método para iniciar sesión con credenciales

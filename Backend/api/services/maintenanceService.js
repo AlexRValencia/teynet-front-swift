@@ -20,35 +20,42 @@ export class MaintenanceService {
         }
 
         try {
-            // Verificar si el proyecto existe (si se proporciona)
-            if (maintenanceData.project) {
-                const projectExists = await Project.findById(maintenanceData.project);
-                if (!projectExists) {
-                    throw new Error(`El proyecto con ID ${maintenanceData.project} no existe`);
-                }
-                // Guardar el nombre del proyecto
-                maintenanceData.projectName = projectExists.name;
+            // Validar los datos de la tarea de mantenimiento
+            if (!maintenanceData.taskType || !maintenanceData.maintenanceType ||
+                !maintenanceData.description || !maintenanceData.scheduledDate ||
+                !maintenanceData.assignedTo || !maintenanceData.priority ||
+                !maintenanceData.location || !maintenanceData.siteName) {
+                throw new Error('Faltan campos requeridos para crear la tarea de mantenimiento');
             }
 
-            // Verificar si el punto existe (si se proporciona)
+            // Si se proporciona un punto, verificar que exista y usar su información
             if (maintenanceData.point) {
-                const pointExists = await Point.findById(maintenanceData.point);
-                if (!pointExists) {
-                    throw new Error(`El punto con ID ${maintenanceData.point} no existe`);
+                const point = await Point.findById(maintenanceData.point);
+                if (!point) {
+                    throw new Error(`No se encontró el punto con ID ${maintenanceData.point}`);
                 }
                 // Guardar el tipo de punto
-                maintenanceData.pointType = pointExists.type;
+                maintenanceData.pointType = point.type;
 
                 // Si hay coordenadas del punto, usarlas
-                if (pointExists.location && pointExists.location.coordinates) {
+                if (point.location && point.location.coordinates) {
                     maintenanceData.pointCoordinates = [
-                        pointExists.location.coordinates[1], // latitud
-                        pointExists.location.coordinates[0]  // longitud
+                        point.location.coordinates[1], // latitud
+                        point.location.coordinates[0]  // longitud
                     ];
                 }
             }
 
-            // Formatear las fechas
+            // Validar proyecto si se proporciona
+            if (maintenanceData.project) {
+                const project = await Project.findById(maintenanceData.project);
+                if (!project) {
+                    throw new Error(`No se encontró el proyecto con ID ${maintenanceData.project}`);
+                }
+                maintenanceData.projectName = project.name;
+            }
+
+            // Formatear fechas
             if (maintenanceData.scheduledDate && typeof maintenanceData.scheduledDate === 'string') {
                 maintenanceData.scheduledDate = new Date(maintenanceData.scheduledDate);
             }
@@ -59,9 +66,6 @@ export class MaintenanceService {
 
             if (maintenanceData.serviceDate && typeof maintenanceData.serviceDate === 'string') {
                 maintenanceData.serviceDate = new Date(maintenanceData.serviceDate);
-            } else if (!maintenanceData.serviceDate) {
-                // Si no se proporciona fecha de servicio, usar la fecha programada o la actual
-                maintenanceData.serviceDate = maintenanceData.scheduledDate || new Date();
             }
 
             // Manejar el objeto cableInstalled si viene en formato antiguo
@@ -76,16 +80,6 @@ export class MaintenanceService {
                 };
             }
 
-            // Si no se proporciona observations, usar description
-            if (!maintenanceData.observations && maintenanceData.description) {
-                maintenanceData.observations = maintenanceData.description;
-            }
-
-            // Si no se proporciona serviceType, derivarlo de maintenanceType
-            if (!maintenanceData.serviceType && maintenanceData.maintenanceType) {
-                maintenanceData.serviceType = maintenanceData.maintenanceType === 'Preventivo' ? 'Preventivo' : 'Correctivo';
-            }
-
             // Asignar usuario creador
             maintenanceData.createdBy = currentUser._id;
 
@@ -96,14 +90,16 @@ export class MaintenanceService {
             // Registrar auditoría
             await AuditTrail.create({
                 entityId: newMaintenance._id,
-                entityType: 'Maintenance',
-                action: 'CREATE',
-                changeDetails: {
+                entityType: 'maintenance',
+                action: 'create',
+                changes: {
                     before: null,
                     after: { ...maintenanceData }
                 },
-                user: currentUser._id,
-                metadata
+                performedBy: currentUser._id,
+                ipAddress: metadata.ipAddress,
+                userAgent: metadata.userAgent,
+                notes: metadata.notes
             });
 
             // Devolver la tarea creada formateada
@@ -133,6 +129,11 @@ export class MaintenanceService {
 
             if (!maintenance) {
                 throw new Error(`Mantenimiento con ID ${maintenanceId} no encontrado`);
+            }
+
+            // No devolver mantenimientos con estado "Cancelado" (eliminados lógicamente)
+            if (maintenance.status === 'Cancelado') {
+                throw new Error(`Mantenimiento con ID ${maintenanceId} no encontrado o ha sido eliminado`);
             }
 
             return this.formatMaintenanceData(maintenance);
@@ -168,6 +169,9 @@ export class MaintenanceService {
             // Filtrar por estado
             if (filters.status) {
                 query.status = filters.status;
+            } else {
+                // Por defecto, excluir tareas con estado "Cancelado" (eliminadas lógicamente)
+                query.status = { $ne: 'Cancelado' };
             }
 
             // Filtrar por tipo de tarea
@@ -302,6 +306,14 @@ export class MaintenanceService {
                 }
                 // Actualizar el tipo de punto
                 updateData.pointType = pointExists.type;
+
+                // Si hay coordenadas del punto, usarlas
+                if (pointExists.location && pointExists.location.coordinates) {
+                    updateData.pointCoordinates = [
+                        pointExists.location.coordinates[1], // latitud
+                        pointExists.location.coordinates[0]  // longitud
+                    ];
+                }
             }
 
             // Formatear las fechas
@@ -313,9 +325,8 @@ export class MaintenanceService {
                 updateData.completedDate = new Date(updateData.completedDate);
             }
 
-            // Si se completa la tarea, asignar fecha de finalización si no existe
-            if (updateData.status === 'Finalizado' && !updateData.completedDate && !existingMaintenance.completedDate) {
-                updateData.completedDate = new Date();
+            if (updateData.serviceDate && typeof updateData.serviceDate === 'string') {
+                updateData.serviceDate = new Date(updateData.serviceDate);
             }
 
             // Asignar usuario que actualiza
@@ -337,14 +348,16 @@ export class MaintenanceService {
             // Registrar auditoría
             await AuditTrail.create({
                 entityId: maintenanceId,
-                entityType: 'Maintenance',
-                action: 'UPDATE',
-                changeDetails: {
+                entityType: 'maintenance',
+                action: 'update',
+                changes: {
                     before: previousState,
                     after: updatedMaintenance.toObject()
                 },
-                user: currentUser._id,
-                metadata
+                performedBy: currentUser._id,
+                ipAddress: metadata.ipAddress,
+                userAgent: metadata.userAgent,
+                notes: metadata.notes
             });
 
             return this.formatMaintenanceData(updatedMaintenance);
@@ -423,15 +436,17 @@ export class MaintenanceService {
             // Registrar auditoría
             await AuditTrail.create({
                 entityId: maintenanceId,
-                entityType: 'Maintenance',
-                action: 'UPDATE_STAGE',
-                changeDetails: {
+                entityType: 'maintenance',
+                action: 'update',
+                changes: {
                     before: previousState,
                     after: updatedMaintenance.toObject(),
                     stageId: stageId
                 },
-                user: currentUser._id,
-                metadata
+                performedBy: currentUser._id,
+                ipAddress: metadata.ipAddress,
+                userAgent: metadata.userAgent,
+                notes: metadata.notes
             });
 
             return this.formatMaintenanceData(updatedMaintenance);
@@ -448,7 +463,7 @@ export class MaintenanceService {
      * @param {Object} metadata - Metadatos adicionales para auditoría
      * @returns {Promise<boolean>} True si se eliminó correctamente
      */
-    static async deleteMaintenance(maintenanceId, currentUser, metadata = {}) {
+    static async deleteMaintenance(maintenanceId, currentUser = { _id: "000000000000000000000000" }, metadata = {}) {
         try {
             if (!mongoose.Types.ObjectId.isValid(maintenanceId)) {
                 throw new Error("ID de mantenimiento inválido");
@@ -465,21 +480,27 @@ export class MaintenanceService {
 
             // Realizar eliminación lógica cambiando el estado a "Cancelado"
             maintenance.status = 'Cancelado';
-            maintenance.updatedBy = currentUser._id;
+
+            // Verificar si currentUser tiene _id antes de asignarlo
+            if (currentUser && currentUser._id) {
+                maintenance.updatedBy = currentUser._id;
+            }
 
             await maintenance.save();
 
             // Registrar auditoría
             await AuditTrail.create({
                 entityId: maintenanceId,
-                entityType: 'Maintenance',
-                action: 'DELETE',
-                changeDetails: {
+                entityType: 'maintenance',
+                action: 'delete',
+                changes: {
                     before: previousState,
                     after: maintenance.toObject()
                 },
-                user: currentUser._id,
-                metadata
+                performedBy: currentUser._id || "000000000000000000000000",
+                ipAddress: metadata.ipAddress,
+                userAgent: metadata.userAgent,
+                notes: metadata.notes
             });
 
             return true;
@@ -533,14 +554,16 @@ export class MaintenanceService {
             // Registrar auditoría
             await AuditTrail.create({
                 entityId: maintenanceId,
-                entityType: 'Maintenance',
-                action: 'REQUEST_SUPPORT',
-                changeDetails: {
+                entityType: 'maintenance',
+                action: 'update',
+                changes: {
                     before: previousState,
                     after: updatedMaintenance.toObject()
                 },
-                user: currentUser._id,
-                metadata
+                performedBy: currentUser._id,
+                ipAddress: metadata.ipAddress,
+                userAgent: metadata.userAgent,
+                notes: metadata.notes
             });
 
             return this.formatMaintenanceData(updatedMaintenance);
@@ -590,14 +613,16 @@ export class MaintenanceService {
             // Registrar auditoría
             await AuditTrail.create({
                 entityId: maintenanceId,
-                entityType: 'Maintenance',
-                action: 'GENERATE_REPORT',
-                changeDetails: {
+                entityType: 'maintenance',
+                action: 'update',
+                changes: {
                     before: previousState,
                     after: updatedMaintenance.toObject()
                 },
-                user: currentUser._id,
-                metadata
+                performedBy: currentUser._id,
+                ipAddress: metadata.ipAddress,
+                userAgent: metadata.userAgent,
+                notes: metadata.notes
             });
 
             return this.formatMaintenanceData(updatedMaintenance);

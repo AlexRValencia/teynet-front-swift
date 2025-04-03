@@ -434,4 +434,44 @@ extension MaintenanceTask {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: Date())
     }
+    
+    // Método para actualizar detalles como descripción, asignado, etc.
+    func updatedWithDetails(description: String, assignedTo: String, 
+                           damagedEquipment: [String], cableInstalled: [String: String]) -> MaintenanceTask {
+        var updatedAdditionalData = additionalData
+        
+        // Actualizar equipos dañados
+        if !damagedEquipment.isEmpty {
+            updatedAdditionalData["damagedEquipment"] = damagedEquipment
+        }
+        
+        // Actualizar cables instalados
+        if !cableInstalled.isEmpty {
+            updatedAdditionalData["cableInstalled"] = cableInstalled
+        }
+        
+        // Determinar el estado basado en el técnico asignado
+        let updatedStatus: String
+        if status == "Pendiente" && !assignedTo.isEmpty {
+            updatedStatus = "En desarrollo"
+        } else {
+            updatedStatus = status
+        }
+        
+        return MaintenanceTask(
+            id: id,
+            deviceName: deviceName,
+            taskType: taskType,
+            maintenanceType: maintenanceType,
+            description: description,
+            status: updatedStatus,
+            scheduledDate: scheduledDate,
+            completedDate: completedDate,
+            assignedTo: assignedTo,
+            priority: priority,
+            location: location,
+            siteName: siteName,
+            additionalData: updatedAdditionalData
+        )
+    }
 } 

@@ -26,6 +26,13 @@ struct MaintenanceDetailResponse: Codable {
     let data: MaintenanceTaskDTO
 }
 
+// Estructura para manejar la respuesta de creación de una tarea
+struct MaintenanceCreateResponse: Codable {
+    let ok: Bool
+    let message: String
+    let data: MaintenanceTaskDTO
+}
+
 // DTO para la tarea de mantenimiento (Data Transfer Object)
 struct MaintenanceTaskDTO: Codable {
     let id: String
@@ -43,6 +50,17 @@ struct MaintenanceTaskDTO: Codable {
     let stages: [MaintenanceStageDTO]?
     let supportRequested: Bool?
     let supportRequestDetails: String?
+    
+    // Propiedades adicionales que pueden estar en la respuesta
+    let projectId: String?
+    let projectName: String?
+    let pointId: String?
+    let pointType: String?
+    let pointCoordinates: [Double]?
+    let pointLatitude: Double?
+    let pointLongitude: Double?
+    let damagedEquipment: [String]?
+    let cableInstalled: [String: Double]?
     
     // Método para convertir el DTO a un modelo de dominio
     func toMaintenanceTask() -> MaintenanceTask {
@@ -64,38 +82,39 @@ struct MaintenanceTaskDTO: Codable {
             additionalData["supportRequestDetails"] = supportRequestDetails
         }
         
-        // Buscar campos adicionales en la respuesta del servidor
-        // Estos campos son agregados por la implementación del backend
-        
         // Para manejo de coordenadas
-        if let coordinates = extractDataFromAnyJSON("pointCoordinates", ofType: [Double].self) {
+        if let coordinates = processCoordinates() {
             additionalData["pointCoordinates"] = coordinates
+            if coordinates.count >= 2 {
+                additionalData["pointLatitude"] = coordinates[0]
+                additionalData["pointLongitude"] = coordinates[1]
+            }
         }
         
         // Para manejo de detalles del proyecto
-        if let projectId = extractDataFromAnyJSON("projectId", ofType: String.self) {
+        if let projectId = projectId {
             additionalData["projectId"] = projectId
         }
         
-        if let projectName = extractDataFromAnyJSON("projectName", ofType: String.self) {
+        if let projectName = projectName {
             additionalData["projectName"] = projectName
         }
         
-        if let pointId = extractDataFromAnyJSON("pointId", ofType: String.self) {
+        if let pointId = pointId {
             additionalData["pointId"] = pointId
         }
         
-        if let pointType = extractDataFromAnyJSON("pointType", ofType: String.self) {
+        if let pointType = pointType {
             additionalData["pointType"] = pointType
         }
         
         // Para el cable instalado
-        if let cableInstalled = extractDataFromAnyJSON("cableInstalled", ofType: [String: Any].self) {
-            additionalData["cableInstalled"] = cableInstalled
+        if let cableInstalledMap = processCableInstalled() {
+            additionalData["cableInstalled"] = cableInstalledMap
         }
         
         // Para el equipo dañado
-        if let damagedEquipment = extractDataFromAnyJSON("damagedEquipment", ofType: [String].self) {
+        if let damagedEquipment = damagedEquipment {
             additionalData["damagedEquipment"] = damagedEquipment
         }
         
@@ -115,13 +134,6 @@ struct MaintenanceTaskDTO: Codable {
             siteName: siteName,
             additionalData: additionalData
         )
-    }
-    
-    // Función auxiliar para extraer datos de cualquier tipo de la respuesta JSON
-    private func extractDataFromAnyJSON<T>(_ key: String, ofType: T.Type) -> T? {
-        // Esta función sería implementada en una versión real del servicio
-        // con acceso al JSON original. Para el propósito de este ejemplo, retorna nil.
-        return nil
     }
 }
 
@@ -205,54 +217,100 @@ class MaintenanceService {
     
     // Crear una nueva tarea de mantenimiento
     func createMaintenanceTask(task: MaintenanceTask) -> AnyPublisher<MaintenanceTask, APIError> {
-        // Preparar el cuerpo de la petición con los datos del modelo
+        // Preparar el cuerpo de la petición con los datos obligatorios
         var body: [String: Any] = [
             "deviceName": task.deviceName,
             "taskType": task.taskType,
             "maintenanceType": task.maintenanceType,
-            "description": task.description,
-            "status": task.status,
+            "status": "Pendiente", // Siempre pendiente al crear
             "scheduledDate": task.scheduledDate,
-            "assignedTo": task.assignedTo,
             "priority": task.priority,
             "location": task.location,
-            "siteName": task.siteName
+            "siteName": task.siteName,
+            "description": task.description.isEmpty ? "Tarea de mantenimiento programada" : task.description,
+            "assignedTo": task.assignedTo.isEmpty ? "Por asignar" : task.assignedTo,
+            "observations": task.description.isEmpty ? "Tarea de mantenimiento programada" : task.description
         ]
         
-        // Agregar datos del punto del proyecto si existen
+        // Agregar datos del punto del proyecto (obligatorio)
         if let projectId = task.additionalData["projectId"] as? String {
             body["projectId"] = projectId
+            body["project"] = projectId // Añadir también como 'project' para el backend
+        }
+        
+        if let projectName = task.additionalData["projectName"] as? String {
+            body["projectName"] = projectName
         }
         
         if let pointId = task.additionalData["pointId"] as? String {
             body["pointId"] = pointId
+            body["point"] = pointId // Añadir también como 'point' para el backend
+        }
+        
+        if let pointType = task.additionalData["pointType"] as? String {
+            body["pointType"] = pointType
         }
         
         if let pointCoordinates = task.additionalData["pointCoordinates"] as? [Double], 
            pointCoordinates.count == 2 {
             body["pointLatitude"] = pointCoordinates[0]
             body["pointLongitude"] = pointCoordinates[1]
+            body["pointCoordinates"] = pointCoordinates // Añadir como array para el backend
         }
         
-        // Agregar equipos dañados si existen
+        // Agregar campos opcionales solo si tienen valor
+        if !task.description.isEmpty {
+            body["description"] = task.description
+            body["observations"] = task.description
+        }
+        
+        if !task.assignedTo.isEmpty {
+            body["assignedTo"] = task.assignedTo
+        }
+        
+        // Agregar equipos dañados solo si existen y no están vacíos
         if let damagedEquipment = task.additionalData["damagedEquipment"] as? [String], 
            !damagedEquipment.isEmpty {
             body["damagedEquipment"] = damagedEquipment
         }
         
-        // Agregar cables instalados si existen
+        // Agregar cables instalados solo si existen y no están vacíos
         if let cableInstalled = task.additionalData["cableInstalled"] as? [String: String], 
            !cableInstalled.isEmpty {
             body["cableInstalled"] = cableInstalled
         }
+        
+        // Agregar fotos iniciales si existen
+        if let initialPhotos = task.additionalData["initialPhotos"] as? [UIImage], 
+           !initialPhotos.isEmpty {
+            // Aquí iría la lógica para procesar y subir las fotos
+            // Por ahora solo indicamos que hay fotos
+            body["hasInitialPhotos"] = true
+        }
+        
+        // Agregar fotos finales si existen
+        if let finalPhotos = task.additionalData["finalPhotos"] as? [UIImage], 
+           !finalPhotos.isEmpty {
+            // Aquí iría la lógica para procesar y subir las fotos
+            // Por ahora solo indicamos que hay fotos
+            body["hasFinalPhotos"] = true
+        }
+        
+        // Imprimir la solicitud para depuración
+        print("📤 Enviando solicitud de creación de tarea: \(body)")
         
         return APIClient.shared.request(
             endpoint: "/maintenance/tasks",
             method: "POST",
             body: body
         )
-        .map { (taskDTO: MaintenanceTaskDTO) -> MaintenanceTask in
-            return taskDTO.toMaintenanceTask()
+        .map { (response: MaintenanceCreateResponse) -> MaintenanceTask in
+            print("✅ Tarea creada con éxito: \(response.data.id)")
+            return response.data.toMaintenanceTask()
+        }
+        .catch { error in
+            print("❌ Error al crear tarea: \(error.message)")
+            return Fail<MaintenanceTask, APIError>(error: error).eraseToAnyPublisher()
         }
         .eraseToAnyPublisher()
     }
@@ -289,7 +347,7 @@ class MaintenanceService {
     func completeStage(taskId: String, stageName: String, photo: UIImage) -> AnyPublisher<MaintenanceTask, APIError> {
         // Convertir la imagen a base64
         guard let imageData = photo.jpegData(compressionQuality: 0.7) else {
-            return Fail(error: APIError.unknown).eraseToAnyPublisher()
+            return Fail<MaintenanceTask, APIError>(error: APIError.unknown).eraseToAnyPublisher()
         }
         
         let base64String = imageData.base64EncodedString()

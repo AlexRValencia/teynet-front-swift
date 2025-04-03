@@ -274,7 +274,13 @@ export const updateMaintenanceStage = async (req, res) => {
 export const deleteMaintenance = async (req, res) => {
     try {
         const maintenanceId = req.params.id;
-        const currentUser = req.user;
+
+        // Crear un usuario por defecto si req.user es undefined
+        const currentUser = req.user || {
+            _id: "000000000000000000000000",
+            username: "system",
+            fullName: "Sistema"
+        };
 
         // Metadatos para auditoría
         const metadata = {
@@ -286,7 +292,7 @@ export const deleteMaintenance = async (req, res) => {
         loggerx.info({
             action: "DELETE_MAINTENANCE_REQUEST",
             maintenanceId,
-            requestedBy: currentUser?._id.toString() || "anónimo"
+            requestedBy: currentUser._id.toString()
         });
 
         await MaintenanceService.deleteMaintenance(maintenanceId, currentUser, metadata);

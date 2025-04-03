@@ -90,7 +90,8 @@ const maintenanceSchema = new mongoose.Schema({
     // Campos originales adaptados
     deviceName: {
         type: String,
-        required: [true, 'El nombre del dispositivo es obligatorio'],
+        required: false,
+        default: '',
         trim: true
     },
     taskType: {
@@ -284,6 +285,64 @@ maintenanceSchema.virtual('hasMinimumRequiredPhotos').get(function () {
 
     // Requerimiento mínimo: al menos 3 fotos iniciales y 3 finales
     return (initialCount + finalCount + stagePhotoCount) >= 6;
+});
+
+// Middleware pre-save para establecer valores por defecto en campos requeridos
+maintenanceSchema.pre('save', function (next) {
+    // Si no se proporcionan observaciones, usar la descripción
+    if (!this.observations && this.description) {
+        this.observations = this.description;
+    }
+
+    // Si no se proporciona tipo de servicio, derivarlo del tipo de mantenimiento
+    if (!this.serviceType && this.maintenanceType) {
+        this.serviceType = this.maintenanceType === 'Preventivo' ? 'Preventivo' : 'Correctivo';
+    }
+
+    // Si no se proporciona fecha de servicio, usar la fecha programada o la actual
+    if (!this.serviceDate) {
+        this.serviceDate = this.scheduledDate || new Date();
+    }
+
+    // Si no se proporciona deviceName y hay un punto con nombre, usar el nombre del punto
+    if (!this.deviceName && this.pointType) {
+        this.deviceName = `Equipo en ${this.pointType}`;
+    } else if (!this.deviceName) {
+        // Si no hay punto y no hay deviceName, usar un valor por defecto
+        this.deviceName = `Tarea ${new Date().toLocaleDateString('es-ES')}`;
+    }
+
+    next();
+});
+
+// Middleware para actualizar documentos y aplicar los mismos valores por defecto
+maintenanceSchema.pre('findOneAndUpdate', function (next) {
+    const update = this.getUpdate();
+
+    // Solo aplicar las reglas si hay un $set
+    if (update.$set) {
+        // Si se actualiza description pero no observations, usar description para observations
+        if (update.$set.description && !update.$set.observations) {
+            update.$set.observations = update.$set.description;
+        }
+
+        // Si se actualiza maintenanceType pero no serviceType, derivar serviceType
+        if (update.$set.maintenanceType && !update.$set.serviceType) {
+            update.$set.serviceType = update.$set.maintenanceType === 'Preventivo' ? 'Preventivo' : 'Correctivo';
+        }
+
+        // Si se actualiza scheduledDate pero no serviceDate, usar scheduledDate
+        if (update.$set.scheduledDate && !update.$set.serviceDate) {
+            update.$set.serviceDate = update.$set.scheduledDate;
+        }
+
+        // Si se actualiza status a 'Finalizado' y no hay completedDate, establecerla ahora
+        if (update.$set.status === 'Finalizado' && !update.$set.completedDate) {
+            update.$set.completedDate = new Date();
+        }
+    }
+
+    next();
 });
 
 const Maintenance = mongoose.model('Maintenance', maintenanceSchema);
