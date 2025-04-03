@@ -1,21 +1,81 @@
 import SwiftUI
 import Foundation
 import PDFKit
+import Combine
 
 class MaintenanceManager: ObservableObject {
     @Published var tasks: [MaintenanceTask] = []
     @Published var supportRequests: [SupportRequest] = []
     
+    // Para filtrar tareas
+    @Published var currentStatusFilter: String = "Todos"
+    @Published var currentTypeFilter: String = "Todos"
+    @Published var filteredTasks: [MaintenanceTask] = []
+    
     // Estado para la generación de PDF
     @Published var isGeneratingPDF = false
     @Published var lastGeneratedPDF: URL?
     
+    // Estado para indicar carga y errores
+    @Published var isLoading = false
+    @Published var errorMessage: String? = nil
+    
+    // Servicio para comunicación con el backend
+    private let maintenanceService = MaintenanceService()
+    private var cancellables = Set<AnyCancellable>()
+    
     init() {
-        loadInitialTasks()
+        loadTasks()
     }
     
+    // Método para cargar tareas desde el backend
+    func loadTasks() {
+        isLoading = true
+        
+        maintenanceService.fetchMaintenanceTasks()
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    self?.isLoading = false
+                    
+                    if case .failure(let error) = completion {
+                        self?.errorMessage = error.message
+                        print("❌ Error al cargar tareas de mantenimiento: \(error.message)")
+                    }
+                },
+                receiveValue: { [weak self] fetchedTasks in
+                    guard let self = self else { return }
+                    
+                    self.tasks = fetchedTasks
+                    self.filterTasks() // Aplicar filtros actuales
+                    
+                    // Procesar para soporte - aquí se adaptaría a la nueva estructura de datos
+                    self.processSupportRequests()
+                    
+                    // Para depuración, mostramos información sobre las tareas
+                    print("📊 Tareas cargadas: \(fetchedTasks.count)")
+                    
+                    if !fetchedTasks.isEmpty {
+                        // Verificamos las coordenadas y otros datos clave
+                        for task in fetchedTasks {
+                            if let coords = task.pointCoordinates {
+                                print("📍 Coordenadas para \(task.siteName): \(coords)")
+                            }
+                            
+                            // Verificar cable instalado
+                            if !task.cableInstalled.isEmpty {
+                                print("🔌 Cable instalado para \(task.siteName): \(task.cableInstalled)")
+                            }
+                        }
+                    }
+                }
+            )
+            .store(in: &cancellables)
+    }
+    
+    // Método privado para cargar datos iniciales de ejemplo (modo offline)
     private func loadInitialTasks() {
-        // En una aplicación real, cargaríamos desde la API o base de datos
+        print("📱 Cargando datos de ejemplo para modo offline")
         tasks = [
             MaintenanceTask(
                 id: "1",
@@ -78,41 +138,151 @@ class MaintenanceManager: ObservableObject {
         ]
     }
     
-    func addTask(_ task: MaintenanceTask) {
-        tasks.append(task)
-        // En una aplicación real, guardaríamos en la API o base de datos
+    // Método para refrescar tareas (recargar desde el backend)
+    func refreshTasks() {
+        loadTasks()
     }
     
+    // Añadir una nueva tarea
+    func addTask(_ task: MaintenanceTask) {
+        isLoading = true
+        
+        maintenanceService.createMaintenanceTask(task: task)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    self?.isLoading = false
+                    
+                    if case .failure(let error) = completion {
+                        self?.errorMessage = error.message
+                        print("❌ Error al crear tarea de mantenimiento: \(error.message)")
+                        
+                        // Añadimos la tarea localmente de todos modos para no perder los datos
+                        self?.tasks.append(task)
+                    }
+                },
+                receiveValue: { [weak self] newTask in
+                    self?.tasks.append(newTask)
+                    print("✅ Tarea de mantenimiento creada con éxito: \(newTask.id)")
+                }
+            )
+            .store(in: &cancellables)
+    }
+    
+    // Actualizar una tarea existente
     func updateTask(_ updatedTask: MaintenanceTask) {
+        // Primero actualizamos localmente para que la UI refleje los cambios inmediatamente
         if let index = tasks.firstIndex(where: { $0.id == updatedTask.id }) {
             tasks[index] = updatedTask
-            // En una aplicación real, actualizaríamos en la API o base de datos
+        }
+        
+        // Luego enviamos la actualización al backend
+        maintenanceService.updateMaintenanceTask(task: updatedTask)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { completion in
+                    if case .failure(let error) = completion {
+                        print("❌ Error al actualizar tarea de mantenimiento: \(error.message)")
+                    }
+                },
+                receiveValue: { _ in
+                    print("✅ Tarea de mantenimiento actualizada con éxito: \(updatedTask.id)")
+                }
+            )
+            .store(in: &cancellables)
+    }
+    
+    // Actualizar solo el estado de una tarea
+    func updateTaskStatus(taskId: String, newStatus: String) {
+        if let index = tasks.firstIndex(where: { $0.id == taskId }) {
+            // Crear una copia de la tarea con el nuevo estado
+            var updatedTask = tasks[index]
+            updatedTask.status = newStatus
+            
+            // Si el estado es "Finalizado", actualizar la fecha de finalización
+            if newStatus == "Finalizado" {
+                updatedTask.completedDate = getCurrentDateString()
+            }
+            
+            // Actualizar localmente
+            tasks[index] = updatedTask
+            
+            // Actualizar en el backend
+            updateTask(updatedTask)
         }
     }
     
-    func updateTaskStatus(taskId: String, newStatus: String) {
-        if let index = tasks.firstIndex(where: { $0.id == taskId }) {
-            tasks[index].status = newStatus
-            // Si el estado es "Finalizado", actualizar la fecha de finalización
-            if newStatus == "Finalizado" {
-                tasks[index].completedDate = getCurrentDateString()
+    // Eliminar una tarea
+    func deleteTask(id: String) {
+        // Primero eliminamos localmente para actualizar la UI inmediatamente
+        tasks.removeAll { $0.id == id }
+        
+        // Luego enviamos la solicitud de eliminación al backend
+        maintenanceService.deleteMaintenanceTask(id: id)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { completion in
+                    if case .failure(let error) = completion {
+                        print("❌ Error al eliminar tarea de mantenimiento: \(error.message)")
+                    }
+                },
+                receiveValue: { success in
+                    if success {
+                        print("✅ Tarea de mantenimiento eliminada con éxito: \(id)")
+                    }
+                }
+            )
+            .store(in: &cancellables)
+    }
+    
+    // Filtrar tareas basado en los filtros actuales
+    func filterTasks() {
+        filteredTasks = tasks.filter { task in
+            (currentStatusFilter == "Todos" || task.status == currentStatusFilter) &&
+            (currentTypeFilter == "Todos" || task.maintenanceType == currentTypeFilter)
+        }
+    }
+    
+    // Actualizar filtros y aplicarlos
+    func updateFilters(statusFilter: String, typeFilter: String) {
+        currentStatusFilter = statusFilter
+        currentTypeFilter = typeFilter
+        filterTasks()
+    }
+    
+    // Procesar tareas para encontrar solicitudes de soporte
+    func processSupportRequests() {
+        // Limpiar las solicitudes anteriores que fueron creadas localmente
+        supportRequests.removeAll { request in
+            // Solo conservar las que tienen un ID que no sea un UUID local
+            return request.id.contains("-")
+        }
+        
+        // Buscar tareas con solicitudes de soporte
+        for task in tasks {
+            if task.supportRequested, let details = task.supportRequestDetails {
+                // Verificar si ya existe una solicitud para esta tarea
+                if !supportRequests.contains(where: { $0.taskId == task.id }) {
+                    // Crear una nueva solicitud de soporte
+                    let supportRequest = SupportRequest(
+                        id: "SR-\(task.id)", // Prefijo para distinguir de UUIDs locales
+                        taskId: task.id,
+                        details: details,
+                        status: "Pendiente",
+                        requestDate: Date(), // Usamos la fecha actual como aproximación
+                        deviceName: task.deviceName,
+                        location: task.location,
+                        siteName: task.siteName
+                    )
+                    supportRequests.append(supportRequest)
+                }
             }
         }
     }
     
-    func deleteTask(id: String) {
-        tasks.removeAll { $0.id == id }
-        // En una aplicación real, eliminaríamos de la API o base de datos
-    }
-    
-    func getFilteredTasks(statusFilter: String, typeFilter: String) -> [MaintenanceTask] {
-        return tasks.filter { task in
-            (statusFilter == "Todos" || task.status == statusFilter) &&
-            (typeFilter == "Todos" || task.maintenanceType == typeFilter)
-        }
-    }
-    
+    // Completar una etapa de mantenimiento
     func completeStage(taskId: String, stageName: String, photo: UIImage) {
+        // Primero actualizamos localmente la tarea
         if let index = tasks.firstIndex(where: { $0.id == taskId }) {
             let updatedTask = tasks[index].updatedWithCompletedStage(stageName: stageName, photo: photo)
             tasks[index] = updatedTask
@@ -124,14 +294,36 @@ class MaintenanceManager: ObservableObject {
                 updateTaskStatus(taskId: taskId, newStatus: "En desarrollo")
             }
         }
+        
+        // Luego enviamos la actualización al backend
+        maintenanceService.completeStage(taskId: taskId, stageName: stageName, photo: photo)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { completion in
+                    if case .failure(let error) = completion {
+                        print("❌ Error al completar etapa de mantenimiento: \(error.message)")
+                    }
+                },
+                receiveValue: { updatedTask in
+                    print("✅ Etapa \(stageName) completada con éxito para tarea: \(taskId)")
+                    
+                    // Actualizar la tarea local con la versión del servidor
+                    if let index = self.tasks.firstIndex(where: { $0.id == taskId }) {
+                        self.tasks[index] = updatedTask
+                    }
+                }
+            )
+            .store(in: &cancellables)
     }
     
+    // Solicitar apoyo para una tarea
     func requestSupport(taskId: String, details: String) {
+        // Primero actualizamos localmente
         if let index = tasks.firstIndex(where: { $0.id == taskId }) {
             let updatedTask = tasks[index].updatedWithSupportRequest(details: details)
             tasks[index] = updatedTask
             
-            // Crear una nueva solicitud de apoyo
+            // Crear una nueva solicitud de apoyo local
             let supportRequest = SupportRequest(
                 id: UUID().uuidString,
                 taskId: taskId,
@@ -145,45 +337,70 @@ class MaintenanceManager: ObservableObject {
             
             supportRequests.append(supportRequest)
         }
+        
+        // Luego enviamos la solicitud al backend
+        maintenanceService.requestSupport(taskId: taskId, details: details)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { completion in
+                    if case .failure(let error) = completion {
+                        print("❌ Error al solicitar apoyo: \(error.message)")
+                    }
+                },
+                receiveValue: { updatedTask in
+                    print("✅ Solicitud de apoyo enviada con éxito para tarea: \(taskId)")
+                    
+                    // Actualizar la tarea local con la versión del servidor
+                    if let index = self.tasks.firstIndex(where: { $0.id == taskId }) {
+                        self.tasks[index] = updatedTask
+                    }
+                }
+            )
+            .store(in: &cancellables)
     }
     
+    // Obtener fecha actual en formato string
+    private func getCurrentDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: Date())
+    }
+    
+    // Generar PDF para una tarea
     func generatePDFReport(for task: MaintenanceTask, completion: @escaping (URL?) -> Void) {
         // Iniciar el indicador de actividad
         isGeneratingPDF = true
         
-        // Simular la generación de un PDF (en una aplicación real, esto sería más complejo)
-        DispatchQueue.global(qos: .userInitiated).async {
-            // Crear un documento PDF
-            let pdfData = self.createPDFContent(for: task)
+        // Crear un documento PDF
+        let pdfData = createPDFContent(for: task)
+        
+        // Guardar el PDF en el sistema de archivos
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let pdfURL = documentsDirectory.appendingPathComponent("Mantenimiento_\(task.id)_\(Date().timeIntervalSince1970).pdf")
+        
+        do {
+            try pdfData.write(to: pdfURL)
             
-            // Guardar el PDF en el sistema de archivos
-            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let pdfURL = documentsDirectory.appendingPathComponent("Mantenimiento_\(task.id)_\(Date().timeIntervalSince1970).pdf")
-            
-            do {
-                try pdfData.write(to: pdfURL)
+            // Actualizar la tarea con la URL del PDF
+            if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                let updatedTask = tasks[index].updatedWithGeneratedReport(url: pdfURL)
+                tasks[index] = updatedTask
                 
-                DispatchQueue.main.async {
-                    // Actualizar la tarea con la URL del PDF
-                    if let index = self.tasks.firstIndex(where: { $0.id == task.id }) {
-                        let updatedTask = self.tasks[index].updatedWithGeneratedReport(url: pdfURL)
-                        self.tasks[index] = updatedTask
-                    }
-                    
-                    self.lastGeneratedPDF = pdfURL
-                    self.isGeneratingPDF = false
-                    completion(pdfURL)
-                }
-            } catch {
-                print("Error al guardar el PDF: \(error)")
-                DispatchQueue.main.async {
-                    self.isGeneratingPDF = false
-                    completion(nil)
-                }
+                // Actualizar en el backend
+                updateTask(updatedTask)
             }
+            
+            lastGeneratedPDF = pdfURL
+            isGeneratingPDF = false
+            completion(pdfURL)
+        } catch {
+            print("Error al guardar el PDF: \(error)")
+            isGeneratingPDF = false
+            completion(nil)
         }
     }
     
+    // Crear contenido del PDF
     private func createPDFContent(for task: MaintenanceTask) -> Data {
         // En una app real, aquí se utilizaría PDFKit para crear un PDF completo
         // Esta es una implementación simplificada
@@ -248,66 +465,72 @@ class MaintenanceManager: ObservableObject {
             addTextLine("Fecha programada:", task.scheduledDate, y: &yPos)
             
             if let completedDate = task.completedDate {
-                addTextLine("Fecha finalizado:", completedDate, y: &yPos)
+                addTextLine("Fecha finalización:", completedDate, y: &yPos)
             }
             
-            yPos += 20
+            addTextLine("Descripción:", "", y: &yPos)
             
-            // Descripción
-            let descriptionLabel = "Descripción:"
-            let descLabelRect = CGRect(x: 50, y: yPos, width: pageRect.width - 100, height: 20)
-            descriptionLabel.draw(in: descLabelRect, withAttributes: [.font: attributeFont])
-            
-            yPos += 25
-            
-            let descRect = CGRect(x: 50, y: yPos, width: pageRect.width - 100, height: 100)
-            task.description.draw(in: descRect, withAttributes: [.font: textFont])
+            let descriptionAttributes: [NSAttributedString.Key: Any] = [
+                .font: textFont,
+                .foregroundColor: UIColor.black
+            ]
+            let descriptionRect = CGRect(x: 50, y: yPos, width: pageRect.width - 100, height: 100)
+            task.description.draw(in: descriptionRect, withAttributes: descriptionAttributes)
             
             yPos += 120
             
-            // Progreso
-            let progressLabel = "Progreso: \(Int(task.progress * 100))%"
-            progressLabel.draw(in: CGRect(x: 50, y: yPos, width: 200, height: 20), withAttributes: [.font: attributeFont])
+            // Etapas del mantenimiento
+            let stagesTitle = "Etapas del mantenimiento"
+            let stagesTitleAttributes: [NSAttributedString.Key: Any] = [
+                .font: attributeFont,
+                .foregroundColor: UIColor.black
+            ]
+            let stagesTitleRect = CGRect(x: 50, y: yPos, width: pageRect.width - 100, height: 30)
+            stagesTitle.draw(in: stagesTitleRect, withAttributes: stagesTitleAttributes)
             
-            yPos += 25
-            
-            // Etapas
-            let stagesLabel = "Etapas del mantenimiento:"
-            stagesLabel.draw(in: CGRect(x: 50, y: yPos, width: 300, height: 20), withAttributes: [.font: attributeFont])
-            
-            yPos += 25
+            yPos += 40
             
             for stage in task.stages {
-                let stageText = "• \(stage.name): \(stage.isCompleted ? "Completada" : "Pendiente") - \(Int(stage.percentageValue * 100))%"
-                stageText.draw(in: CGRect(x: 50, y: yPos, width: pageRect.width - 100, height: 20), withAttributes: [.font: textFont])
-                yPos += 20
+                let stageAttributes: [NSAttributedString.Key: Any] = [
+                    .font: textFont,
+                    .foregroundColor: UIColor.black
+                ]
+                
+                let statusText = stage.isCompleted ? "✓ Completado" : "○ Pendiente"
+                let stageText = "\(stage.name) (\(Int(stage.percentageValue * 100))%): \(statusText)"
+                let stageRect = CGRect(x: 70, y: yPos, width: pageRect.width - 140, height: 20)
+                stageText.draw(in: stageRect, withAttributes: stageAttributes)
+                
+                yPos += 25
             }
             
-            // Añadir más información según sea necesario
+            // Fotos (aquí solo mencionamos que hay fotos)
+            yPos += 20
+            let photosTitle = "Fotos adjuntas: \(task.stagePhotos.filter { $0 != nil }.count)"
+            let photosTitleAttributes: [NSAttributedString.Key: Any] = [
+                .font: attributeFont,
+                .foregroundColor: UIColor.black
+            ]
+            let photosTitleRect = CGRect(x: 50, y: yPos, width: pageRect.width - 100, height: 30)
+            photosTitle.draw(in: photosTitleRect, withAttributes: photosTitleAttributes)
         }
         
         return data
     }
-    
-    private func getCurrentDateString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.string(from: Date())
-    }
 }
 
-// Modelo para las solicitudes de apoyo
+// Modelo para solicitudes de apoyo
 struct SupportRequest: Identifiable {
     let id: String
     let taskId: String
     let details: String
-    var status: String // "Pendiente", "En desarrollo", "Finalizado"
+    var status: String
     let requestDate: Date
     let deviceName: String
     let location: String
     let siteName: String
-    var responseDate: Date?
     var responseDetails: String?
+    var responseDate: Date?
     
     var formattedRequestDate: String {
         let formatter = DateFormatter()
@@ -320,5 +543,20 @@ struct SupportRequest: Identifiable {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy HH:mm"
         return formatter.string(from: date)
+    }
+    
+    var statusColor: Color {
+        switch status {
+        case "Pendiente":
+            return .orange
+        case "En proceso":
+            return .blue
+        case "Resuelto":
+            return .green
+        case "Rechazado":
+            return .red
+        default:
+            return .gray
+        }
     }
 } 

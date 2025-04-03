@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct Client: Identifiable, Hashable, Codable {
+struct Client: Identifiable, Codable, Equatable, Hashable {
     var id: String
     var name: String
     var legalName: String
@@ -45,6 +45,56 @@ struct Client: Identifiable, Hashable, Codable {
         self.notes = notes
         self.active = active
     }
+    
+    // Añadir CodingKeys para mapear _id a id
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name, legalName, rfc, contactPerson, email, phone, address, notes, active
+    }
+    
+    // Método para crear una copia sin ID para creación de nuevos clientes
+    func toCreateDTO() -> [String: Any] {
+        return [
+            "name": name,
+            "legalName": legalName,
+            "rfc": rfc,
+            "contactPerson": contactPerson,
+            "email": email,
+            "phone": phone,
+            "address": address,
+            "notes": notes,
+            "active": active
+        ]
+    }
+    
+    // Método para crear una copia para actualización
+    func toUpdateDTO() -> [String: Any] {
+        return [
+            "name": name,
+            "legalName": legalName,
+            "rfc": rfc,
+            "contactPerson": contactPerson,
+            "email": email,
+            "phone": phone,
+            "address": address,
+            "notes": notes,
+            "active": active
+        ]
+    }
+}
+
+// Estructura para manejar la paginación
+struct ClientPaginationData: Codable {
+    let total: Int
+    let page: Int
+    let limit: Int
+    let totalPages: Int
+}
+
+// Estructura para el contenido de datos de clientes en la respuesta
+struct ClientsData: Codable {
+    let clients: [Client]
+    let pagination: ClientPaginationData
 }
 
 // Respuestas del API
@@ -56,7 +106,7 @@ struct ClientResponse: Codable {
 
 struct ClientsResponse: Codable {
     let ok: Bool
-    let data: [Client]
+    let data: ClientsData
     let message: String?
 }
 
@@ -64,15 +114,18 @@ struct ClientsResponse: Codable {
 class ClientManager: ObservableObject {
     static let shared = ClientManager()
     
-    @Published var clients: [Client] = [
-        Client(id: "1", name: "Corporativo Norte", contactPerson: "Roberto Sánchez", email: "contacto@corpnorte.mx", phone: "871-123-4567", address: "Blvd. Independencia 1500, Torreón"),
-        Client(id: "2", name: "Municipio Torreón", contactPerson: "Laura Garza", email: "sistemas@torreon.gob.mx", phone: "871-765-4321", address: "Plaza Principal s/n, Centro, Torreón"),
-        Client(id: "3", name: "Grupo Empresarial MTY", contactPerson: "Carlos Martínez", email: "cmartinez@gemty.com", phone: "81-8888-5555", address: "Av. Constitución 1200, Monterrey"),
-        Client(id: "4", name: "Interno", contactPerson: "Ana Gómez", email: "agomez@trynet.mx", phone: "844-552-3344", address: "Oficinas Centrales"),
-    ]
+    @Published var clients: [Client] = []
+    @Published var pagination: ClientPaginationData?
+    @Published var isLoading = false
+    @Published var errorMessage: String? = nil
+    
+    // Estado de paginación
+    @Published var currentPage: Int = 1
+    @Published var hasMorePages: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
     private let apiClient = APIClient.shared
+    private let basePath = "/clients"
     
     // Endpoints para gestión de clientes
     private enum Endpoints {
@@ -84,57 +137,86 @@ class ClientManager: ObservableObject {
         loadClients()
     }
     
-    // Cargar todos los clientes desde el API
-    func loadClients() {
-        apiClient.request(endpoint: Endpoints.clients, method: "GET")
-            .map { (response: ClientsResponse) -> [Client] in
-                return response.data
-            }
+    // Cargar todos los clientes desde el API con paginación y filtros
+    func loadClients(page: Int = 1, search: String? = nil, active: Bool? = nil) {
+        isLoading = true
+        errorMessage = nil
+        
+        // Crear parámetros de consulta
+        var parameters: [String: String] = ["page": "\(page)"]
+        
+        // Añadir parámetros de filtrado si existen
+        if let search = search, !search.isEmpty {
+            parameters["search"] = search
+        }
+        
+        if let active = active {
+            parameters["active"] = active ? "true" : "false"
+        }
+        
+        apiClient.request(.get, path: basePath, parameters: parameters)
             .receive(on: DispatchQueue.main)
+            .handleEvents(receiveCompletion: { [weak self] completion in
+                self?.isLoading = false
+                
+                if case .failure(let error) = completion {
+                    self?.errorMessage = "Error al cargar clientes: \(error.message)"
+                }
+            })
             .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        print("Error al cargar clientes: \(error.message)")
-                    case .finished:
-                        print("Carga de clientes completada exitosamente")
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] (response: ClientsResponse) in
+                    guard let self = self else { return }
+                    
+                    self.pagination = response.data.pagination
+                    
+                    // Determinar si hay más páginas
+                    self.hasMorePages = response.data.pagination.page < response.data.pagination.totalPages
+                    
+                    // Actualizar la página actual
+                    self.currentPage = response.data.pagination.page
+                    
+                    // Si es la primera página o un refresh, reemplazar los clientes
+                    if page == 1 {
+                        self.clients = response.data.clients
+                    } else {
+                        // Agregar los nuevos clientes a la lista existente
+                        self.clients.append(contentsOf: response.data.clients)
                     }
-                },
-                receiveValue: { [weak self] clients in
-                    self?.clients = clients
                 }
             )
             .store(in: &cancellables)
     }
     
-    // Agregar un nuevo cliente
-    func addClient(_ client: Client) -> AnyPublisher<Client, APIError> {
-        let body: [String: Any] = [
-            "name": client.name,
-            "legalName": client.legalName,
-            "rfc": client.rfc,
-            "contactPerson": client.contactPerson,
-            "email": client.email,
-            "phone": client.phone,
-            "address": client.address,
-            "notes": client.notes,
-            "active": client.active
-        ]
+    // Refrescar la lista de clientes (volver a la primera página)
+    func refreshClients() {
+        // Mantener filtros actuales pero volver a la página 1
+        loadClients(page: 1)
+    }
+    
+    // Cargar la siguiente página de clientes
+    func loadNextPage() {
+        guard hasMorePages, !isLoading else { return }
         
-        return apiClient.request(
-            endpoint: Endpoints.clients,
-            method: "POST",
-            body: body
-        )
-        .map { (response: ClientResponse) -> Client in
-            let newClient = response.data
-            // Actualizamos la lista local
-            DispatchQueue.main.async {
-                self.clients.append(newClient)
-            }
-            return newClient
-        }
-        .eraseToAnyPublisher()
+        // Cargar la siguiente página
+        loadClients(page: currentPage + 1)
+    }
+    
+    // Agregar un nuevo cliente
+    func addClient(_ client: Client) -> AnyPublisher<ClientResponse, APIError> {
+        isLoading = true
+        errorMessage = nil
+        
+        // Para nuevos clientes, usamos el DTO sin ID
+        return apiClient.request(.post, path: basePath, body: client.toCreateDTO())
+            .receive(on: DispatchQueue.main)
+            .handleEvents(receiveCompletion: { [weak self] completion in
+                self?.isLoading = false
+                if case .failure(let error) = completion {
+                    self?.errorMessage = "Error al agregar cliente: \(error.message)"
+                }
+            })
+            .eraseToAnyPublisher()
     }
     
     // Obtener un cliente por ID
@@ -148,51 +230,35 @@ class ClientManager: ObservableObject {
     }
     
     // Actualizar un cliente existente
-    func updateClient(_ client: Client) -> AnyPublisher<Client, APIError> {
-        let body: [String: Any] = [
-            "name": client.name,
-            "legalName": client.legalName,
-            "rfc": client.rfc,
-            "contactPerson": client.contactPerson,
-            "email": client.email,
-            "phone": client.phone,
-            "address": client.address,
-            "notes": client.notes,
-            "active": client.active
-        ]
+    func updateClient(_ client: Client) -> AnyPublisher<ClientResponse, APIError> {
+        isLoading = true
+        errorMessage = nil
         
-        return apiClient.request(
-            endpoint: "\(Endpoints.clients)/\(client.id)",
-            method: "PUT",
-            body: body
-        )
-        .map { (response: ClientResponse) -> Client in
-            let updatedClient = response.data
-            // Actualizamos la lista local
-            DispatchQueue.main.async {
-                if let index = self.clients.firstIndex(where: { $0.id == client.id }) {
-                    self.clients[index] = updatedClient
+        return apiClient.request(.put, path: "\(basePath)/\(client.id)", body: client.toUpdateDTO())
+            .receive(on: DispatchQueue.main)
+            .handleEvents(receiveCompletion: { [weak self] completion in
+                self?.isLoading = false
+                if case .failure(let error) = completion {
+                    self?.errorMessage = "Error al actualizar cliente: \(error.message)"
                 }
-            }
-            return updatedClient
-        }
-        .eraseToAnyPublisher()
+            })
+            .eraseToAnyPublisher()
     }
     
     // Eliminar un cliente
-    func deleteClient(id: String) -> AnyPublisher<Bool, APIError> {
-        return apiClient.request(
-            endpoint: "\(Endpoints.clients)/\(id)",
-            method: "DELETE"
-        )
-        .map { (response: ClientResponse) -> Bool in
-            // Actualizamos la lista local
-            DispatchQueue.main.async {
-                self.clients.removeAll { $0.id == id }
-            }
-            return response.ok
-        }
-        .eraseToAnyPublisher()
+    func deleteClient(id: String) -> AnyPublisher<ClientResponse, APIError> {
+        isLoading = true
+        errorMessage = nil
+        
+        return apiClient.request(.delete, path: "\(basePath)/\(id)")
+            .receive(on: DispatchQueue.main)
+            .handleEvents(receiveCompletion: { [weak self] completion in
+                self?.isLoading = false
+                if case .failure(let error) = completion {
+                    self?.errorMessage = "Error al eliminar cliente: \(error.message)"
+                }
+            })
+            .eraseToAnyPublisher()
     }
     
     // Obtener todos los clientes (de la memoria)
@@ -203,5 +269,16 @@ class ClientManager: ObservableObject {
     // Obtener clientes activos
     func getActiveClients() -> [Client] {
         return clients.filter { $0.active }
+    }
+    
+    // Buscar clientes por texto
+    func searchClients(text: String) {
+        // Reiniciar a la primera página con el texto de búsqueda
+        loadClients(page: 1, search: text)
+    }
+    
+    // Filtrar clientes por estado (activo/inactivo)
+    func filterClientsByStatus(active: Bool?) {
+        loadClients(page: 1, active: active)
     }
 } 

@@ -51,8 +51,16 @@ const auditTrailSchema = new Schema({
     timestamps: true,
     toJSON: {
         transform: function (doc, ret) {
-            ret.id = ret._id.toString();
-            delete ret._id;
+            if (ret.entityId) ret.entityId = ret.entityId.toString();
+            if (ret.performedBy) ret.performedBy = ret.performedBy.toString();
+            return ret;
+        }
+    },
+    toObject: {
+        transform: function (doc, ret) {
+            if (ret.entityId) ret.entityId = ret.entityId.toString();
+            if (ret.performedBy) ret.performedBy = ret.performedBy.toString();
+            return ret;
         }
     }
 });

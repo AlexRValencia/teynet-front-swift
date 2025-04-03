@@ -17,7 +17,7 @@ class UserAdminService {
     
     // Endpoints para gestión de usuarios (actualizados para las nuevas rutas)
     private enum Endpoints {
-        static let users = "/user"  // Endpoint base para usuarios
+        static let users = "/users"  // Endpoint base para usuarios
     }
     
     private init() {}

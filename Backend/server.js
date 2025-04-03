@@ -14,6 +14,7 @@ import Client from "./api/routes/client/index.js";
 import Project from "./api/routes/projectRoutes.js";
 import Points from "./api/routes/points/points.js";
 import Materials from "./api/routes/materials/materials.js";
+import Maintenance from "./api/routes/maintenance/index.js";
 
 // Configuracion
 import "./dbConnection.js";
@@ -101,6 +102,7 @@ app.use("/api/v1/clients", Client);
 app.use("/api/v1/projects", Project);
 app.use("/api/v1/points", Points);
 app.use("/api/v1/materials", Materials);
+app.use("/api/v1/maintenance", Maintenance);
 
 // Middleware para manejar rutas no encontradas
 app.use((req, res, next) => {

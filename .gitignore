@@ -24,6 +24,8 @@ DerivedData/
 
 ## Obj-C/Swift specific
 *.hmap
+*.o
+*.xcresult
 
 ## App packaging
 *.ipa
@@ -89,5 +91,58 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-# macOS
-.DS_Store 
+# Node.js specific
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env/
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Build artifacts
+build_log.txt
+MaintenanceProject.o
+MaintenanceTask.o
+dist/
+
+# Temporary files
+tmp/
+temp/
+*/tmp/*
+*/temp/* 

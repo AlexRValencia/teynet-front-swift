@@ -12,13 +12,14 @@ const pointSchema = new mongoose.Schema({
         required: [true, 'El tipo de punto es obligatorio']
     },
     location: {
-        latitude: {
-            type: Number,
-            required: [true, 'La latitud es obligatoria']
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
         },
-        longitude: {
-            type: Number,
-            required: [true, 'La longitud es obligatoria']
+        coordinates: {
+            type: [Number],
+            required: true
         }
     },
     city: {
@@ -27,9 +28,9 @@ const pointSchema = new mongoose.Schema({
         trim: true
     },
     material: {
-        type: String,
-        required: [true, 'El material es obligatorio'],
-        trim: true
+        type: mongoose.Schema.Types.Mixed,
+        required: false,
+        default: []
     },
     operational: {
         type: Boolean,
@@ -53,6 +54,8 @@ const pointSchema = new mongoose.Schema({
 pointSchema.index({ project: 1 });
 pointSchema.index({ type: 1 });
 pointSchema.index({ city: 1 });
+// Índice geoespacial para búsquedas por ubicación
+pointSchema.index({ location: '2dsphere' });
 
 const Point = mongoose.model('Point', pointSchema);
 

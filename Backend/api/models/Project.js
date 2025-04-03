@@ -58,13 +58,7 @@ const projectSchema = new mongoose.Schema({
     }
 }, {
     timestamps: true,
-    versionKey: false,
-    toJSON: {
-        transform: function (doc, ret) {
-            ret.id = ret._id.toString();
-            delete ret._id;
-        }
-    }
+    versionKey: false
 });
 
 // Índices para mejorar el rendimiento de las consultas

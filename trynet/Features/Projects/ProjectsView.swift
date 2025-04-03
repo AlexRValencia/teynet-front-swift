@@ -1,6 +1,7 @@
 import SwiftUI
 import MapKit
 import CoreLocation
+import Combine
 
 // Importación de modelos personalizados
 import Foundation
@@ -222,13 +223,18 @@ struct ProjectsView: View {
             }
             .sheet(isPresented: $showingNewProjectSheet) {
                 NewProjectView(isPresented: $showingNewProjectSheet, onSave: { newProject in
-                    // Agregamos el proyecto a la lista local y luego recargamos desde API
-                    viewModel.projects.append(newProject)
-                    Task {
-                        await viewModel.refreshProjects()
-                    }
+                    // Usar el método createProject para guardar el proyecto en la base de datos
+                    viewModel.createProject(project: newProject)
+                        .sink(receiveValue: { _ in
+                            // Cuando se completa la creación, recargamos los proyectos
+                            Task {
+                                await viewModel.refreshProjects()
+                            }
+                            
                     // Ocultar panel de bienvenida después de crear un proyecto
                     showWelcome = false
+                        })
+                        .store(in: &viewModel.cancellables)
                 })
             }
             .sheet(isPresented: $showingClientsSheet) {
@@ -245,7 +251,7 @@ struct ProjectsView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     // Si hay proyectos, ocultamos la bienvenida después de 3 segundos
                     if !viewModel.projects.isEmpty {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             withAnimation {
                                 showWelcome = false
                             }
@@ -257,7 +263,7 @@ struct ProjectsView: View {
             .refreshable {
                 await viewModel.refreshProjects()
             }
-            .onChange(of: viewModel.projects) { newProjects in
+            .onChange(of: viewModel.projects) { _, newProjects in
                 // Si hay proyectos, ocultamos el panel de bienvenida después de 3 segundos
                 if !newProjects.isEmpty && showWelcome {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -321,13 +327,13 @@ struct ProjectsView: View {
     // Barra de búsqueda y filtros
     var searchAndFilterBar: some View {
         HStack(spacing: 12) {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.secondary)
-                
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.secondary)
+                        
                 TextField("Buscar proyecto", text: $viewModel.searchText)
-                    .disableAutocorrection(true)
-        
+                            .disableAutocorrection(true)
+                
                 if !viewModel.searchText.isEmpty {
                     Button(action: {
                         viewModel.searchText = ""
@@ -336,27 +342,27 @@ struct ProjectsView: View {
                             .foregroundColor(.gray)
                     }
                 }
-            }
-            .padding(8)
-            .background(Color(.systemGray6))
-            .cornerRadius(10)
-            
-            Menu {
-                ForEach(statusOptions, id: \.self) { status in
-                    Button(action: {
+                    }
+                    .padding(8)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    
+                    Menu {
+                        ForEach(statusOptions, id: \.self) { status in
+                            Button(action: {
                         viewModel.applyStatusFilter(status == "Todos" ? nil : status)
-                    }) {
-                        HStack {
-                            Text(status)
+                            }) {
+                                HStack {
+                                    Text(status)
                             if status == "Todos" && viewModel.selectedStatusFilter == nil {
                                 Image(systemName: "checkmark")
                             } else if status == viewModel.selectedStatusFilter {
-                                Image(systemName: "checkmark")
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
                             }
                         }
-                    }
-                }
-            } label: {
+                    } label: {
                 HStack {
                     Text(viewModel.selectedStatusFilter ?? "Todos")
                     Image(systemName: "chevron.down")
@@ -365,7 +371,7 @@ struct ProjectsView: View {
                 .padding(.vertical, 8)
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
-            }
+                    }
             
             Button(action: {
                 showingNewProjectSheet = true
@@ -376,19 +382,19 @@ struct ProjectsView: View {
                     .frame(width: 44, height: 44)
             }
         }
-    }
-    
-    // Lista de proyectos
+                }
+                
+                // Lista de proyectos
     var projectListView: some View {
         Group {
             if viewModel.isLoading && viewModel.projects.isEmpty {
                 // Vista de carga
-                VStack(spacing: 20) {
+                    VStack(spacing: 20) {
                     ProgressView()
                         .scaleEffect(1.5)
                     Text("Cargando proyectos...")
-                        .font(.headline)
-                        .foregroundColor(.secondary)
+                            .font(.headline)
+                            .foregroundColor(.secondary)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(.systemBackground))
@@ -406,7 +412,7 @@ struct ProjectsView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
-                    Button(action: {
+                        Button(action: {
                         Task {
                             await viewModel.refreshProjects()
                         }
@@ -448,24 +454,24 @@ struct ProjectsView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(.systemBackground))
-            } else {
-                List {
-                    ForEach(filteredProjects) { project in
-                        NavigationLink(destination: ProjectDetailView(project: project)) {
+                } else {
+                    List {
+                        ForEach(filteredProjects) { project in
+                            NavigationLink(destination: ProjectDetailView(project: project)) {
                             // Tarjeta adaptada según la orientación
                             if isLandscape {
                                 LandscapeProjectCard(project: project)
                             } else {
                                 ProjectCard(project: project)
                             }
+                            }
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                         }
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                     }
+                    .listStyle(PlainListStyle())
                 }
-                .listStyle(PlainListStyle())
             }
-        }
     }
 }
 
@@ -561,19 +567,8 @@ struct ProjectCard: View {
         }
     }
     
-    func healthStatusIcon(health: Double) -> String {
-        if health >= 0.8 {
-            return "checkmark.circle.fill"
-        } else if health >= 0.5 {
-            return "exclamationmark.triangle.fill"
-        } else {
-            return "xmark.circle.fill"
-        }
-    }
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // Encabezado
+        VStack(alignment: .leading, spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(project.name)
@@ -587,7 +582,7 @@ struct ProjectCard: View {
                 
                 Spacer()
                 
-                // Indicador de salud del proyecto
+                // Medidor de salud
                 HStack(spacing: 4) {
                     Image(systemName: healthStatusIcon(health: project.health))
                         .foregroundColor(healthColor(health: project.health))
@@ -619,34 +614,10 @@ struct ProjectCard: View {
                         Image(systemName: "calendar.badge.clock")
                             .font(.caption)
                             .foregroundColor(.secondary)
-                        Text("Inicio: \(project.startDate)")
+                        Text(project.startDate)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
-                }
-            }
-            
-            HStack(spacing: 20) {
-                // Información del gestor
-                HStack(spacing: 4) {
-                    Image(systemName: "person")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text(project.manager)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-                
-                // Fecha de inicio
-                HStack(spacing: 4) {
-                    Image(systemName: "calendar.badge.clock")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text("Inicio: \(project.startDate)")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
                 }
             }
         }
@@ -654,6 +625,16 @@ struct ProjectCard: View {
         .background(Color(.systemBackground))
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.05), radius: 3, x: 0, y: 1)
+    }
+    
+    func healthStatusIcon(health: Double) -> String {
+        if health >= 0.8 {
+            return "checkmark.circle.fill"
+        } else if health >= 0.5 {
+            return "exclamationmark.triangle.fill"
+        } else {
+            return "xmark.circle.fill"
+        }
     }
 }
 
@@ -724,16 +705,7 @@ struct LandscapeProjectCard: View {
                 
                 Text(project.client)
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                HStack(spacing: 4) {
-                    Image(systemName: "person")
-                        .font(.caption)
                         .foregroundColor(.secondary)
-                    Text(project.manager)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
             }
             
             // Barra de salud del sistema vertical
@@ -785,16 +757,14 @@ struct NewProjectView: View {
     @State private var clientName = ""
     @State private var selectedClient: Client?
     @State private var description = ""
-    @State private var selectedManager: AdminUser?
     @State private var status = "Diseño"
     @State private var startDate = Date()
     @State private var deadlineDate = Date(timeIntervalSinceNow: 60 * 60 * 24 * 30) // Un mes desde ahora
     @State private var teamMembers: [String] = []
     @State private var showingTeamSelector = false
-    @State private var showingManagerSelector = false
-    @State private var searchTeamMember = ""
     @State private var showingClientSelector = false
     @State private var showingNewClientSheet = false
+    @State private var searchTeamMember = ""
     @State private var searchClient = ""
     
     let statusOptions = ["Diseño", "En desarrollo", "Finalizado", "Suspendido"]
@@ -827,7 +797,7 @@ struct NewProjectView: View {
                 Section(header: Text("Información básica")) {
                     TextField("Nombre del proyecto", text: $projectName)
                     
-                    // Campo de cliente con botón para seleccionar
+                    // Cliente
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Cliente")
@@ -841,7 +811,7 @@ struct NewProjectView: View {
                                 Text(clientName)
                                     .foregroundColor(.primary)
                             } else {
-                                Text("Seleccionar cliente")
+                                Text("Seleccione un cliente")
                                     .foregroundColor(.secondary)
                             }
                         }
@@ -856,9 +826,10 @@ struct NewProjectView: View {
                         }
                     }
                     
+                    // Estado del proyecto
                     Picker("Estado", selection: $status) {
-                        ForEach(statusOptions, id: \.self) { status in
-                            Text(status).tag(status)
+                        ForEach(statusOptions, id: \.self) { option in
+                            Text(option).tag(option)
                         }
                     }
                 }
@@ -868,37 +839,7 @@ struct NewProjectView: View {
                         .frame(minHeight: 100)
                 }
                 
-                Section(header: Text("Responsable y fechas")) {
-                    // Campo de gestor con botón para seleccionar
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Gestor del proyecto")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                            
-                            if let manager = selectedManager {
-                                Text(manager.fullName)
-                                    .foregroundColor(.primary)
-                            } else if let currentUser = userAdminViewModel.currentUser {
-                                Text(currentUser.fullName)
-                                    .foregroundColor(.primary)
-                            } else {
-                                Text("Cargando usuario actual...")
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            showingManagerSelector = true
-                            userAdminViewModel.loadUsers()
-                        }) {
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.blue)
-                        }
-                    }
-                    
+                Section(header: Text("Fechas")) {
                     DatePicker("Fecha de inicio", selection: $startDate, displayedComponents: .date)
                     
                     DatePicker("Fecha límite", selection: $deadlineDate, in: startDate..., displayedComponents: .date)
@@ -936,14 +877,13 @@ struct NewProjectView: View {
                     isPresented = false
                 },
                 trailing: Button("Guardar") {
+                    // Configurar el formateador de fechas para un formato más legible
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd/MM/yyyy"
+                    dateFormatter.dateFormat = "d 'de' MMMM, yyyy"
+                    dateFormatter.locale = Locale(identifier: "es_ES")
                     
                     // Usar nombre de cliente seleccionado o texto ingresado
                     let clientNameToUse = selectedClient?.name ?? clientName
-                    
-                    // Usar gestor seleccionado o el usuario actual
-                    let managerName = selectedManager?.fullName ?? userAdminViewModel.currentUser?.fullName ?? "Usuario Actual"
                     
                     let newProject = Project(
                         id: UUID().uuidString,
@@ -952,8 +892,7 @@ struct NewProjectView: View {
                         health: status == "Finalizado" ? 1.0 : 0.0,
                         deadline: dateFormatter.string(from: deadlineDate),
                         description: description,
-                        client: clientNameToUse,
-                        manager: managerName,
+                        client: selectedClient != nil ? selectedClient!.id : clientNameToUse,
                         startDate: dateFormatter.string(from: startDate),
                         team: teamMembers,
                         tasks: []
@@ -987,133 +926,10 @@ struct NewProjectView: View {
                     availableUsers: userAdminViewModel.users
                 )
             }
-            .sheet(isPresented: $showingManagerSelector) {
-                ManagerSelectorView(
-                    isPresented: $showingManagerSelector,
-                    selectedManager: $selectedManager,
-                    availableUsers: userAdminViewModel.users
-                )
-            }
             .onAppear {
                 // Cargar usuarios al aparecer la vista
                 userAdminViewModel.loadUsers()
             }
-        }
-    }
-}
-
-struct ManagerSelectorView: View {
-    @Binding var isPresented: Bool
-    @Binding var selectedManager: AdminUser?
-    let availableUsers: [AdminUser]
-    @State private var searchText = ""
-    
-    var filteredUsers: [AdminUser] {
-        // Primero filtrar solo usuarios admin
-        let adminUsers = availableUsers.filter { user in
-            user.role.lowercased() == "admin"
-        }
-        
-        if searchText.isEmpty {
-            // Filtrar el usuario seleccionado de la lista de admins
-            return adminUsers.filter { user in
-                user.id != selectedManager?.id
-            }
-        } else {
-            // Filtrar por búsqueda y excluir el usuario seleccionado de la lista de admins
-            return adminUsers.filter { user in
-                user.id != selectedManager?.id &&
-                user.fullName.lowercased().contains(searchText.lowercased())
-            }
-        }
-    }
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                // Barra de búsqueda
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.secondary)
-                    
-                    TextField("Buscar gestor", text: $searchText)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                    
-                    if !searchText.isEmpty {
-                        Button(action: {
-                            searchText = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                }
-                .padding(8)
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
-                .padding(.horizontal)
-                .padding(.top)
-                
-                // Lista de usuarios disponibles
-                List {
-                    // Mostrar el gestor actual seleccionado en la parte superior
-                    if let currentManager = selectedManager {
-                        Section(header: Text("Gestor actual")) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(currentManager.fullName)
-                                        .foregroundColor(.primary)
-                                    
-                                    Text(currentManager.role)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
-                                
-                                Spacer()
-                                
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.blue)
-                            }
-                        }
-                    }
-                    
-                    // Lista de otros usuarios disponibles
-                    Section(header: Text("Otros gestores disponibles")) {
-                        ForEach(filteredUsers, id: \.id) { user in
-                            Button(action: {
-                                selectedManager = user
-                                isPresented = false
-                            }) {
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text(user.fullName)
-                                            .foregroundColor(.primary)
-                                        
-                                        Text(user.role)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
-                                    
-                                    Spacer()
-                                }
-                            }
-                        }
-                        
-                        if filteredUsers.isEmpty {
-                            Text("No hay otros gestores disponibles")
-                                .foregroundColor(.secondary)
-                                .italic()
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Seleccionar Gestor")
-            .navigationBarItems(
-                leading: Button("Cancelar") {
-                    isPresented = false
-                }
-            )
         }
     }
 }
@@ -1417,37 +1233,37 @@ struct ProjectHeaderView: View {
     }
     
     var body: some View {
-        VStack(spacing: 8) {
-            Text(project.name)
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-            
-            Text(project.client)
-                .font(.headline)
-                .foregroundColor(.secondary)
-            
-            HStack(spacing: 10) {
-                HStack(spacing: 4) {
-                    Image(systemName: healthStatusIcon(health: project.health))
-                        .foregroundColor(healthColor(health: project.health))
-                    
-                    Text("\(Int(project.health * 100))%")
-                        .font(.subheadline)
+                VStack(spacing: 8) {
+                    Text(project.name)
+                        .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(healthColor(health: project.health))
+                        .multilineTextAlignment(.center)
+                    
+                    Text(project.client)
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                    
+                    HStack(spacing: 10) {
+                        HStack(spacing: 4) {
+                            Image(systemName: healthStatusIcon(health: project.health))
+                                .foregroundColor(healthColor(health: project.health))
+                            
+                            Text("\(Int(project.health * 100))%")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundColor(healthColor(health: project.health))
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(healthColor(health: project.health).opacity(0.2))
+                        .cornerRadius(20)
+                    }
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(healthColor(health: project.health).opacity(0.2))
-                .cornerRadius(20)
-            }
-        }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemBackground))
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
 
@@ -1485,113 +1301,101 @@ struct ProjectHealthView: View {
     }
     
     var body: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Text("Salud del Sistema")
-                    .font(.headline)
-                    .bold()
-                
-                Spacer()
-                
-                Text("\(Int(project.health * 100))%")
-                    .font(.headline)
-                    .bold()
-                    .foregroundColor(healthColor(health: project.health))
-            }
-            
-            // Barra de salud del sistema vertical
-            VStack(spacing: 5) {
-                Text("Salud del sistema")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                ProgressView(value: project.health, total: 1.0)
-                    .progressViewStyle(LinearProgressViewStyle(tint: healthColor(health: project.health)))
-                .frame(height: 8)
-                
-                // Añadir una explicación del estado
-                HStack(spacing: 10) {
-                    Image(systemName: healthStatusIcon(health: project.health))
-                        .foregroundColor(healthColor(health: project.health))
+                VStack(spacing: 12) {
+                    HStack {
+                        Text("Salud del Sistema")
+                            .font(.headline)
+                            .bold()
+                        
+                        Spacer()
+                        
+                        Text("\(Int(project.health * 100))%")
+                            .font(.headline)
+                            .bold()
+                            .foregroundColor(healthColor(health: project.health))
+                    }
                     
-                    Text(healthStatusDescription(health: project.health))
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .padding(.top, 4)
-            }
-            .padding()
-            .background(Color(.systemBackground))
-            .cornerRadius(16)
-            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    // Barra de salud del sistema vertical
+                    VStack(spacing: 5) {
+                        Text("Salud del sistema")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        ProgressView(value: project.health, total: 1.0)
+                            .progressViewStyle(LinearProgressViewStyle(tint: healthColor(health: project.health)))
+                        .frame(height: 8)
+                        
+                        // Añadir una explicación del estado
+                        HStack(spacing: 10) {
+                            Image(systemName: healthStatusIcon(health: project.health))
+                                .foregroundColor(healthColor(health: project.health))
+                            
+                            Text(healthStatusDescription(health: project.health))
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(.top, 4)
+                    }
+                    .padding()
+                    .background(Color(.systemBackground))
+                    .cornerRadius(16)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         }
     }
-}
-
+                }
+                
 struct ProjectInfoView: View {
     let project: Project
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("Información")
-                .font(.headline)
-            
-            VStack(alignment: .leading, spacing: 15) {
-                HStack(alignment: .top) {
-                    Image(systemName: "person.fill")
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.blue)
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Información")
+                        .font(.headline)
                     
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Gestor")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        Text(project.manager)
+                    VStack(alignment: .leading, spacing: 15) {
+                        HStack(alignment: .top) {
+                            Image(systemName: "calendar")
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(.blue)
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Fechas")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                
+                        Text("Inicio: \(project.startDate)")
                             .font(.body)
+                        
+                        Text("Fin: \(project.deadline)")
+                                    .font(.body)
+                            }
+                        }
                     }
                 }
-                
-                HStack(alignment: .top) {
-                    Image(systemName: "calendar")
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.blue)
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Fechas")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        Text("Inicio: \(project.startDate) - Fin: \(project.deadline)")
-                            .font(.body)
-                    }
-                }
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
-
+                
 struct ProjectDescriptionView: View {
     let project: Project
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Descripción")
-                .font(.headline)
-            
-            Text(project.description)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Descripción")
+                        .font(.headline)
+                    
+                    Text(project.description)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color(.systemBackground))
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
 
@@ -1599,163 +1403,174 @@ struct ProjectPointsListView: View {
     let project: Project
     @Binding var showingPointsSheet: Bool
     @Binding var isAddingPoint: Bool
+    @Binding var isLoadingPoints: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            HStack {
-                Text("Puntos")
-                    .font(.headline)
-                
-                Spacer()
-                
-                HStack(spacing: 10) {
-                    Button(action: {
-                        showingPointsSheet = true
-                    }) {
-                        Label("Ver todos", systemImage: "list.bullet")
-                            .font(.subheadline)
-                            .foregroundColor(.blue)
-                    }
-                    
-                    Button(action: {
-                        isAddingPoint = true
-                    }) {
-                        Label("Añadir", systemImage: "plus.circle")
-                            .font(.subheadline)
-                            .foregroundColor(.blue)
-                    }
-                }
-            }
-            
-            if project.points?.isEmpty ?? true {
-                VStack(spacing: 10) {
-                    Image(systemName: "mappin.and.ellipse")
-                        .font(.system(size: 40))
-                        .foregroundColor(.gray.opacity(0.5))
-                    
-                    Text("No hay puntos para este proyecto")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                .frame(maxWidth: .infinity)
-                .padding()
-            } else {
-                // Contador y estadísticas rápidas
-                HStack(spacing: 12) {
-                    let totalPoints = project.points?.count ?? 0
-                    let pointsByType = Dictionary(grouping: project.points ?? [], by: { $0.type })
-                        .mapValues { $0.count }
-                    
-                    Text("\(totalPoints) puntos en total")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    if let mostCommonType = pointsByType.max(by: { $0.value < $1.value })?.key {
-                        HStack(spacing: 4) {
-                            Image(systemName: mostCommonType.icon)
-                                .foregroundColor(mostCommonType.color)
-                            
-                            Text("\(pointsByType[mostCommonType] ?? 0) \(mostCommonType.rawValue)")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(8)
-                    }
-                }
-                .padding(.bottom, 8)
-                
-                // Vista de tabla optimizada
-                VStack(spacing: 2) {
-                    // Cabecera de la tabla
+                VStack(alignment: .leading, spacing: 15) {
                     HStack {
-                        Text("Nombre")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .frame(width: 120, alignment: .leading)
-                        
-                        Text("Tipo")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .frame(width: 80, alignment: .leading)
-                        
-                        Text("Ciudad")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .frame(width: 100, alignment: .leading)
+                        Text("Puntos")
+                            .font(.headline)
                         
                         Spacer()
+                        
+                        HStack(spacing: 10) {
+                            Button(action: {
+                                showingPointsSheet = true
+                            }) {
+                                Label("Ver todos", systemImage: "list.bullet")
+                                    .font(.subheadline)
+                                    .foregroundColor(.blue)
+                            }
+                            
+                            Button(action: {
+                                isAddingPoint = true
+                            }) {
+                                Label("Añadir", systemImage: "plus.circle")
+                                    .font(.subheadline)
+                                    .foregroundColor(.blue)
+                            }
+                        }
                     }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
                     
-                    // Lista de puntos (limitada a 5)
-                    ForEach((project.points ?? []).prefix(5), id: \.id) { point in
-                        NavigationLink(destination: PointDetailView(point: point, projectId: project.id)) {
-                            HStack {
-                                HStack(spacing: 6) {
-                                    Image(systemName: point.type.icon)
-                                        .foregroundColor(point.type.color)
-                                        .frame(width: 20)
+            if isLoadingPoints {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                        .padding()
+                    Spacer()
+                }
+            } else {
+                let projectPoints = ProjectManager.shared.getProjectPoints(projectId: project.id)
+                if projectPoints.isEmpty {
+                        VStack(spacing: 10) {
+                            Image(systemName: "mappin.and.ellipse")
+                                .font(.system(size: 40))
+                                .foregroundColor(.gray.opacity(0.5))
+                            
+                            Text("No hay puntos para este proyecto")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                    } else {
+                        // Contador y estadísticas rápidas
+                        HStack(spacing: 12) {
+                        let totalPoints = projectPoints.count
+                        let pointsByType = Dictionary(grouping: projectPoints, by: { $0.type })
+                                .mapValues { $0.count }
+                            
+                            Text("\(totalPoints) puntos en total")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            
+                            if let mostCommonType = pointsByType.max(by: { $0.value < $1.value })?.key {
+                                HStack(spacing: 4) {
+                                    Image(systemName: mostCommonType.icon)
+                                        .foregroundColor(mostCommonType.color)
                                     
-                                    Text(point.name)
-                                        .lineLimit(1)
-                                        .font(.subheadline)
+                                    Text("\(pointsByType[mostCommonType] ?? 0) \(mostCommonType.rawValue)")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
                                 }
-                                .frame(width: 120, alignment: .leading)
-                                
-                                Text(point.type.rawValue)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(8)
+                            }
+                        }
+                        .padding(.bottom, 8)
+                        
+                        // Vista de tabla optimizada
+                        VStack(spacing: 2) {
+                            // Cabecera de la tabla
+                            HStack {
+                                Text("Nombre")
                                     .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .frame(width: 120, alignment: .leading)
+                                
+                                Text("Tipo")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
                                     .frame(width: 80, alignment: .leading)
                                 
-                                Text(point.city)
+                                Text("Ciudad")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                                     .frame(width: 100, alignment: .leading)
                                 
                                 Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
                             }
                             .padding(.horizontal, 10)
-                            .padding(.vertical, 8)
-                            .background(Color(.systemBackground))
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                    
-                    // Botón para ver más si hay más de 5 puntos
-                    if (project.points?.count ?? 0) > 5 {
-                        Button(action: {
-                            showingPointsSheet = true
-                        }) {
-                            HStack {
-                                Spacer()
-                                
-                                Text("Ver \((project.points?.count ?? 0) - 5) más...")
-                                    .font(.subheadline)
-                                    .foregroundColor(.blue)
-                                
-                                Spacer()
-                            }
-                            .padding(.vertical, 12)
-                            .background(Color(.systemGray6).opacity(0.5))
+                            .padding(.vertical, 6)
+                            .background(Color(.systemGray6))
                             .cornerRadius(8)
+                            
+                            // Lista de puntos (limitada a 5)
+                        ForEach(projectPoints.prefix(5), id: \.id) { point in
+                                NavigationLink(destination: PointDetailView(point: point, projectId: project.id)) {
+                                    HStack {
+                                        HStack(spacing: 6) {
+                                            Image(systemName: point.type.icon)
+                                                .foregroundColor(point.type.color)
+                                                .frame(width: 20)
+                                            
+                                            Text(point.name)
+                                                .lineLimit(1)
+                                                .font(.subheadline)
+                                        }
+                                        .frame(width: 120, alignment: .leading)
+                                        
+                                        Text(point.type.rawValue)
+                                            .font(.caption)
+                                            .frame(width: 80, alignment: .leading)
+                                        
+                                        Text(point.city)
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                            .frame(width: 100, alignment: .leading)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 8)
+                                    .background(Color(.systemBackground))
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                            
+                            // Botón para ver más si hay más de 5 puntos
+                        if projectPoints.count > 5 {
+                                Button(action: {
+                                    showingPointsSheet = true
+                                }) {
+                                    HStack {
+                                        Spacer()
+                                        
+                                    Text("Ver \(projectPoints.count - 5) más...")
+                                            .font(.subheadline)
+                                            .foregroundColor(.blue)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.vertical, 12)
+                                    .background(Color(.systemGray6).opacity(0.5))
+                                    .cornerRadius(8)
+                            }
+                                }
+                            }
                         }
                     }
                 }
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
 
@@ -1764,68 +1579,68 @@ struct ProjectTeamView: View {
     @Binding var showingTeamSheet: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            HStack {
-                Text("Equipo")
-                    .font(.headline)
-                
-                Spacer()
-                
-                Button(action: {
-                    showingTeamSheet = true
-                }) {
-                    Text("Ver todos")
-                        .font(.subheadline)
-                        .foregroundColor(.blue)
-                }
-            }
-            
-            if project.team.isEmpty {
-                Text("No hay miembros asignados a este proyecto")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .padding()
-            } else {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        ForEach(project.team.prefix(5), id: \.self) { member in
-                            VStack {
-                                Image(systemName: "person.circle.fill")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(.blue)
-                                
-                                Text(member)
-                                    .font(.caption)
-                                    .lineLimit(1)
-                            }
-                            .frame(width: 70)
-                        }
+                VStack(alignment: .leading, spacing: 15) {
+                    HStack {
+                        Text("Equipo")
+                            .font(.headline)
                         
-                        if project.team.count > 5 {
-                            VStack {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.gray.opacity(0.2))
-                                        .frame(width: 40, height: 40)
-                                    
-                                    Text("+\(project.team.count - 5)")
-                                        .font(.system(size: 16, weight: .medium))
-                                        .foregroundColor(.blue)
+                        Spacer()
+                        
+                        Button(action: {
+                            showingTeamSheet = true
+                        }) {
+                            Text("Ver todos")
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    
+                    if project.team.isEmpty {
+                        Text("No hay miembros asignados a este proyecto")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .padding()
+                    } else {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 12) {
+                                ForEach(project.team.prefix(5), id: \.self) { member in
+                                    VStack {
+                                        Image(systemName: "person.circle.fill")
+                                            .font(.system(size: 40))
+                                            .foregroundColor(.blue)
+                                        
+                                        Text(member)
+                                            .font(.caption)
+                                            .lineLimit(1)
+                                    }
+                                    .frame(width: 70)
                                 }
                                 
-                                Text("Más")
-                                    .font(.caption)
+                                if project.team.count > 5 {
+                                    VStack {
+                                        ZStack {
+                                            Circle()
+                                                .fill(Color.gray.opacity(0.2))
+                                                .frame(width: 40, height: 40)
+                                            
+                                            Text("+\(project.team.count - 5)")
+                                                .font(.system(size: 16, weight: .medium))
+                                                .foregroundColor(.blue)
+                                        }
+                                        
+                                        Text("Más")
+                                            .font(.caption)
+                                    }
+                                    .frame(width: 70)
+                                }
                             }
-                            .frame(width: 70)
                         }
                     }
                 }
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
 
@@ -1834,50 +1649,50 @@ struct ProjectTasksView: View {
     @Binding var isAddingTask: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            HStack {
-                Text("Tareas")
-                    .font(.headline)
-                
-                Spacer()
-                
-                Button(action: {
-                    isAddingTask = true
-                }) {
-                    Image(systemName: "plus")
-                        .foregroundColor(.blue)
-                }
-            }
-            
-            if project.tasks.isEmpty {
-                VStack(spacing: 10) {
-                    Image(systemName: "checklist")
-                        .font(.system(size: 40))
-                        .foregroundColor(.gray.opacity(0.5))
+                VStack(alignment: .leading, spacing: 15) {
+                    HStack {
+                        Text("Tareas")
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            isAddingTask = true
+                        }) {
+                            Image(systemName: "plus")
+                                .foregroundColor(.blue)
+                        }
+                    }
                     
-                    Text("No hay tareas para este proyecto")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    Button(action: {
-                        isAddingTask = true
-                    }) {
-                        Text("Añadir tarea")
-                            .foregroundColor(.blue)
+                    if project.tasks.isEmpty {
+                        VStack(spacing: 10) {
+                            Image(systemName: "checklist")
+                                .font(.system(size: 40))
+                                .foregroundColor(.gray.opacity(0.5))
+                            
+                            Text("No hay tareas para este proyecto")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            
+                            Button(action: {
+                                isAddingTask = true
+                            }) {
+                                Text("Añadir tarea")
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                    } else {
+                        ForEach(project.tasks) { task in
+                            TaskRow(task: task)
+                        }
                     }
                 }
-                .frame(maxWidth: .infinity)
                 .padding()
-            } else {
-                ForEach(project.tasks) { task in
-                    TaskRow(task: task)
-                }
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                .background(Color(.systemBackground))
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
 
@@ -1886,44 +1701,44 @@ struct ProjectMaterialsSectionView: View {
     @Binding var showingMaterialsSheet: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            HStack {
-                Text("Materiales")
-                    .font(.headline)
-                
-                Spacer()
-                
-                Button(action: {
-                    showingMaterialsSheet = true
-                }) {
-                    Label("Gestionar", systemImage: "shippingbox")
-                        .font(.subheadline)
-                        .foregroundColor(.blue)
-                }
-            }
-            
-            HStack(spacing: 15) {
-                // Resumen de materiales
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 15) {
                     HStack {
-                        Image(systemName: "cube.box")
-                            .foregroundColor(.blue)
+                        Text("Materiales")
+                            .font(.headline)
                         
-                        Text("Gestiona los materiales asignados a este proyecto")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                        Spacer()
+                        
+                        Button(action: {
+                            showingMaterialsSheet = true
+                        }) {
+                            Label("Gestionar", systemImage: "shippingbox")
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                        }
                     }
                     
-                    Text("Puedes asignar nuevos materiales, registrar su uso o devolución, y llevar un registro detallado de todos los movimientos.")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                    HStack(spacing: 15) {
+                        // Resumen de materiales
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: "cube.box")
+                                    .foregroundColor(.blue)
+                                
+                                Text("Gestiona los materiales asignados a este proyecto")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                            Text("Puedes asignar nuevos materiales, registrar su uso o devolución, y llevar un registro detallado de todos los movimientos.")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                    }
                 }
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
 
@@ -1936,6 +1751,7 @@ struct ProjectDetailView: View {
     @State private var showingTeamSheet = false
     @State private var showingPointsSheet = false
     @State private var showingMaterialsSheet = false
+    @State private var isLoadingPoints = false
     
     var body: some View {
         ScrollView {
@@ -1956,7 +1772,8 @@ struct ProjectDetailView: View {
                 ProjectPointsListView(
                     project: project,
                     showingPointsSheet: $showingPointsSheet,
-                    isAddingPoint: $isAddingPoint
+                    isAddingPoint: $isAddingPoint,
+                    isLoadingPoints: $isLoadingPoints
                 )
                 
                 // Equipo
@@ -1992,10 +1809,22 @@ struct ProjectDetailView: View {
             TeamSheetView(team: project.team)
         }
         .sheet(isPresented: $showingPointsSheet) {
-            ProjectPointsView(points: project.points ?? [], project: project)
+            ProjectPointsView(points: ProjectManager.shared.getProjectPoints(projectId: project.id), project: project)
         }
         .sheet(isPresented: $showingMaterialsSheet) {
             ProjectMaterialsView(projectId: project.id, projectName: project.name)
+        }
+        .onAppear {
+            loadProjectPoints()
+        }
+    }
+    
+    private func loadProjectPoints() {
+        isLoadingPoints = true
+        ProjectManager.shared.loadProjectPoints(projectId: project.id)
+        // La carga es asíncrona, así que desactivamos el indicador después de un tiempo razonable
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            isLoadingPoints = false
         }
     }
 }
@@ -2122,194 +1951,74 @@ struct TeamSheetView: View {
     }
 }
 struct ProjectPointsView: View {
-    let points: [ProjectPoint]
-    @Environment(\.dismiss) var dismiss
-    @State private var searchText = ""
-    @State private var selectedType: ProjectPoint.PointType? = nil
-    @State private var selectedCity: String? = nil
-    @State private var isAddingPoint = false
+    var points: [ProjectPoint]
     var project: Project
+    @State private var searchText = ""
+    @State private var selectedFilter: ProjectPoint.PointType? = nil
     
-    var filteredPoints: [ProjectPoint] {
-        points.filter { point in
-            // Filtrar por texto de búsqueda
-            let matchesSearch = searchText.isEmpty || 
-                point.name.localizedCaseInsensitiveContains(searchText) ||
-                (point.material?.name ?? point.materialName ?? "").localizedCaseInsensitiveContains(searchText)
-            
-            // Filtrar por tipo
-            let matchesType = selectedType == nil || point.type == selectedType
-            
-            // Filtrar por ciudad
-            let matchesCity = selectedCity == nil || point.city == selectedCity
-            
-            return matchesSearch && matchesType && matchesCity
-        }
-    }
+    @ObservedObject private var projectManager = ProjectManager.shared
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                // Barra de búsqueda y filtros
-                VStack(spacing: 10) {
-                    HStack {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.secondary)
-                            
-                            TextField("Buscar punto", text: $searchText)
-                                .disableAutocorrection(true)
-                            
-                            if !searchText.isEmpty {
-                                Button(action: {
-                                    searchText = ""
-                                }) {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                        }
-                        .padding(8)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
+            VStack {
+                // Barra de filtros
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        FilterChip(
+                            label: "Todos",
+                            isSelected: selectedFilter == nil,
+                            action: { selectedFilter = nil }
+                        )
                         
-                        Button(action: {
-                            // Restablecer filtros
-                            selectedType = nil
-                            selectedCity = nil
-                            searchText = ""
-                        }) {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .font(.title2)
-                                .foregroundColor(.blue)
-                        }
-                        .opacity(selectedType != nil || selectedCity != nil || !searchText.isEmpty ? 1 : 0.3)
-                    }
-                    
-                    // Filtros rápidos
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8) {
-                            // Filtros por tipo
                             ForEach(ProjectPoint.PointType.allCases) { type in
                                 FilterChip(
                                     label: type.rawValue, 
                                     icon: type.icon, 
                                     color: type.color,
-                                    isSelected: selectedType == type
-                                ) {
-                                    if selectedType == type {
-                                        selectedType = nil
-                                    } else {
-                                        selectedType = type
-                                    }
-                                }
-                            }
-                            
-                            Divider()
-                                .frame(height: 24)
-                            
-                            // Filtros por ciudad
-                            let cities = Array(Set(points.map { $0.city })).sorted()
-                            ForEach(cities, id: \.self) { city in
-                                FilterChip(
-                                    label: city,
-                                    icon: "building.2",
-                                    color: .gray,
-                                    isSelected: selectedCity == city
-                                ) {
-                                    if selectedCity == city {
-                                        selectedCity = nil
-                                    } else {
-                                        selectedCity = city
-                                    }
-                                }
-                            }
+                                isSelected: selectedFilter == type,
+                                action: { selectedFilter = type }
+                            )
                         }
-                        .padding(.horizontal, 4)
                     }
+                    .padding(.horizontal)
                 }
-                .padding()
-                .background(Color(.systemBackground))
+                .padding(.vertical, 8)
                 
-                // Lista de puntos
-                if filteredPoints.isEmpty {
-                    VStack {
-                        Spacer()
-                        
-                        VStack(spacing: 20) {
-                            Image(systemName: "mappin.slash")
-                                .font(.system(size: 60))
-                                .foregroundColor(.gray.opacity(0.5))
-                            
-                            Text("No se encontraron puntos")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            
-                            if selectedType != nil || selectedCity != nil || !searchText.isEmpty {
-                                Button("Limpiar filtros") {
-                                    selectedType = nil
-                                    selectedCity = nil
-                                    searchText = ""
-                                }
-                                .foregroundColor(.blue)
-                            }
-                        }
-                        
-                        Spacer()
+                // Lista de puntos filtrada
+                let filteredPoints = projectManager.getProjectPoints(projectId: project.id)
+                    .filter { point in
+                        (searchText.isEmpty || point.name.localizedCaseInsensitiveContains(searchText) || point.city.localizedCaseInsensitiveContains(searchText)) &&
+                        (selectedFilter == nil || point.type == selectedFilter)
                     }
+                
+                if filteredPoints.isEmpty {
+                    ContentUnavailableView(
+                        label: {
+                            Label(
+                                "No hay puntos",
+                                systemImage: "mappin.slash"
+                            )
+                        },
+                        description: {
+                            Text(searchText.isEmpty ? "No hay puntos que coincidan con el filtro seleccionado." : "No hay resultados para '\(searchText)'")
+                        }
+                    )
+                    .padding()
                 } else {
                     List {
-                        Section(header: Text("\(filteredPoints.count) puntos")) {
                             ForEach(filteredPoints) { point in
                                 NavigationLink(destination: PointDetailView(point: point, projectId: project.id)) {
-                                    HStack(spacing: 15) {
-                                        Image(systemName: point.type.icon)
-                                            .font(.title3)
-                                            .foregroundColor(.white)
-                                            .frame(width: 40, height: 40)
-                                            .background(point.type.color)
-                                            .cornerRadius(8)
-                                        
-                                        VStack(alignment: .leading, spacing: 4) {
-                                            Text(point.name)
-                                                .font(.headline)
-                                            
-                                            Text(point.city)
-                                                .font(.caption)
-                                                .foregroundColor(.secondary)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        Text(point.type.rawValue)
-                                            .font(.caption)
-                                            .padding(.horizontal, 8)
-                                            .padding(.vertical, 4)
-                                            .background(point.type.color.opacity(0.2))
-                                            .foregroundColor(point.type.color)
-                                            .cornerRadius(4)
-                                    }
-                                }
+                                PointRowView(point: point)
                             }
                         }
                     }
-                    .listStyle(InsetGroupedListStyle())
                 }
             }
-            .navigationTitle("Puntos del Proyecto")
-            .navigationBarItems(
-                leading: Button("Cerrar") {
-                    dismiss()
-                },
-                trailing: Button(action: {
-                    isAddingPoint = true
-                }) {
-                    Image(systemName: "plus")
-                        .font(.headline)
-                }
-            )
-            .sheet(isPresented: $isAddingPoint) {
-                AddPointView(isPresented: $isAddingPoint, project: project)
+            .navigationTitle("Puntos del proyecto")
+            .searchable(text: $searchText, prompt: "Buscar punto por nombre o ciudad")
+            .refreshable {
+                // Recargar los puntos del proyecto
+                projectManager.loadProjectPoints(projectId: project.id)
             }
         }
     }
@@ -2317,16 +2026,26 @@ struct ProjectPointsView: View {
 
 struct FilterChip: View {
     let label: String
-    let icon: String
+    let icon: String?
     let color: Color
     let isSelected: Bool
     let action: () -> Void
     
+    init(label: String, icon: String? = nil, color: Color = .blue, isSelected: Bool, action: @escaping () -> Void) {
+        self.label = label
+        self.icon = icon
+        self.color = color
+        self.isSelected = isSelected
+        self.action = action
+    }
+    
     var body: some View {
         Button(action: action) {
             HStack(spacing: 4) {
+                if let icon = icon {
                 Image(systemName: icon)
                     .font(.caption)
+                }
                 
                 Text(label)
                     .font(.caption)
@@ -2349,25 +2068,28 @@ struct PointMapView: View {
     let point: ProjectPoint
     
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            Color(.systemGray5)
-                .frame(height: 200)
-                .cornerRadius(12)
-            
-            VStack {
-                HStack {
-                    Text("Coordenadas:")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                ZStack(alignment: .topTrailing) {
+            Map {
+                Marker("Ubicación", coordinate: point.location.coordinate)
+                    .tint(.red)
+            }
+                        .frame(height: 200)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
                     
-                    Text(String(format: "%.4f, %.4f", point.location.latitude, point.location.longitude))
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                .padding(8)
-                .background(Color(.systemBackground).opacity(0.8))
-                .cornerRadius(8)
-                .padding(8)
+                    VStack {
+                        HStack {
+                            Text("Coordenadas:")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                            
+                            Text(String(format: "%.4f, %.4f", point.location.latitude, point.location.longitude))
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        .padding(8)
+                        .background(Color(.systemBackground).opacity(0.8))
+                        .cornerRadius(8)
+                        .padding(8)
             }
         }
     }
@@ -2391,93 +2113,93 @@ struct PointOperationalStatusView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Estado operativo")
-                .font(.headline)
-            
-            Picker("Estado", selection: $selectedStatus) {
-                ForEach(ProjectPoint.OperationalStatus.allCases, id: \.self) { status in
-                    HStack {
-                        Image(systemName: status.icon)
-                        Text(status.rawValue)
-                    }
-                    .foregroundColor(status.color)
-                    .tag(status)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .onChange(of: selectedStatus) { oldValue, newValue in
-                // Actualizar el estado del punto en el proyecto
-                projectManager.updatePointStatus(projectId: projectId, pointId: point.id, status: newValue)
-            }
-            
-            // Información del estado
-            VStack(alignment: .leading, spacing: 8) {
-                HStack(spacing: 8) {
-                    Image(systemName: selectedStatus.icon)
-                        .foregroundColor(selectedStatus.color)
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Estado operativo")
+                        .font(.headline)
                     
-                    Text(selectedStatus.rawValue)
-                        .foregroundColor(selectedStatus.color)
-                        .fontWeight(.semibold)
+                    Picker("Estado", selection: $selectedStatus) {
+                ForEach(ProjectPoint.OperationalStatus.allCases, id: \.self) { status in
+                            HStack {
+                                Image(systemName: status.icon)
+                                Text(status.rawValue)
+                            }
+                            .foregroundColor(status.color)
+                            .tag(status)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+            .onChange(of: selectedStatus) { _, newValue in
+                        // Actualizar el estado del punto en el proyecto
+                        projectManager.updatePointStatus(projectId: projectId, pointId: point.id, status: newValue)
+                    }
+                    
+                    // Información del estado
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(spacing: 8) {
+                            Image(systemName: selectedStatus.icon)
+                                .foregroundColor(selectedStatus.color)
+                            
+                            Text(selectedStatus.rawValue)
+                                .foregroundColor(selectedStatus.color)
+                                .fontWeight(.semibold)
+                        }
+                        
+                        Text(stateDescription(for: selectedStatus))
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(selectedStatus.color.opacity(0.1))
+                    .cornerRadius(8)
                 }
-                
-                Text(stateDescription(for: selectedStatus))
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(selectedStatus.color.opacity(0.1))
-            .cornerRadius(8)
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 3, x: 0, y: 2)
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(12)
+                .shadow(color: Color.black.opacity(0.1), radius: 3, x: 0, y: 2)
     }
 }
-
+                
 struct PointInfoView: View {
     let point: ProjectPoint
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            // Cabecera
-            HStack {
-                Image(systemName: point.type.icon)
-                    .font(.title2)
-                    .foregroundColor(.white)
-                    .frame(width: 50, height: 50)
-                    .background(point.type.color)
-                    .cornerRadius(10)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(point.name)
-                        .font(.title3)
-                        .fontWeight(.bold)
+                VStack(alignment: .leading, spacing: 15) {
+                    // Cabecera
+                    HStack {
+                        Image(systemName: point.type.icon)
+                            .font(.title2)
+                            .foregroundColor(.white)
+                            .frame(width: 50, height: 50)
+                            .background(point.type.color)
+                            .cornerRadius(10)
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(point.name)
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            
+                            Text(point.type.rawValue)
+                                .font(.subheadline)
+                                .foregroundColor(point.type.color)
+                        }
+                    }
                     
-                    Text(point.type.rawValue)
-                        .font(.subheadline)
-                        .foregroundColor(point.type.color)
+                    Divider()
+                    
+                    // Detalles
+                    Group {
+                        ProjectDetailRow(icon: "building.2", title: "Ciudad", value: point.city)
+                        
+                        ProjectDetailRow(icon: "mappin.circle", title: "Dirección", value: point.location.address ?? "Sin dirección")
+                        
+                        ProjectDetailRow(icon: "shippingbox", title: "Material", value: point.materialName ?? "Sin material")
+                    }
                 }
-            }
-            
-            Divider()
-            
-            // Detalles
-            Group {
-                ProjectDetailRow(icon: "building.2", title: "Ciudad", value: point.city)
-                
-                ProjectDetailRow(icon: "mappin.circle", title: "Dirección", value: point.location.address ?? "Sin dirección")
-                
-                ProjectDetailRow(icon: "shippingbox", title: "Material", value: point.materialName ?? "Sin material")
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 3, x: 0, y: 2)
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(12)
+                .shadow(color: Color.black.opacity(0.1), radius: 3, x: 0, y: 2)
     }
 }
 
@@ -2546,167 +2268,192 @@ struct AddPointView: View {
     @Binding var isPresented: Bool
     var project: Project
     
-    @State private var name: String = ""
-    @State private var selectedType: ProjectPoint.PointType = .CCTV
-    @State private var selectedCity: String = "Torreón"
-    @State private var materialName: String = ""
-    @State private var searchingMaterial: Bool = false
-    @State private var showingNewMaterialSheet: Bool = false
+    @State private var pointName = ""
+    @State private var selectedType = ProjectPoint.PointType.CCTV
+    @State private var city = ""
     @State private var selectedCoordinates: (Double, Double)? = nil
-    @State private var address: String = ""
-    @State private var showingMapSheet: Bool = false
+    @State private var address = ""
+    @State private var materialName: String? = nil
+    @State private var showingMapSelection = false
+    @State private var showingMaterialSelection = false
+    @State private var isSaving = false
+    @State private var errorMessage: String? = nil
     
-    // Para actualizar la lista de puntos en el proyecto
-    @StateObject private var projectManager = ProjectManager.shared
-    
-    let cityOptions = ["Torreón", "Saltillo", "Piedras Negras", "Monclova", "Acuña"]
+    private var isFormValid: Bool {
+        !pointName.isEmpty && !city.isEmpty && selectedCoordinates != nil
+    }
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Información Básica")) {
-                    TextField("Nombre del punto", text: $name)
+                Section(header: Text("Información básica")) {
+                    TextField("Nombre del punto", text: $pointName)
+                        .autocapitalization(.words)
                     
-                    Picker("Tipo", selection: $selectedType) {
+                    Picker("Tipo de punto", selection: $selectedType) {
                         ForEach(ProjectPoint.PointType.allCases) { type in
-                            Label(type.rawValue, systemImage: type.icon)
+                            Label {
+                                Text(type.rawValue)
+                            } icon: {
+                                Image(systemName: type.icon)
                                 .foregroundColor(type.color)
+                            }
                                 .tag(type)
                         }
                     }
                     
-                    Picker("Ciudad", selection: $selectedCity) {
-                        ForEach(cityOptions, id: \.self) { city in
-                            Text(city).tag(city)
-                        }
-                    }
+                    TextField("Ciudad", text: $city)
+                        .autocapitalization(.words)
                 }
                 
                 Section(header: Text("Ubicación")) {
+                    if let coordinates = selectedCoordinates {
                     Button(action: {
-                        showingMapSheet = true
+                            showingMapSelection = true
                     }) {
                         HStack {
-                            if selectedCoordinates != nil {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Ubicación seleccionada")
-                                        .font(.subheadline)
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(address.isEmpty ? "Ubicación seleccionada" : address)
+                                        .foregroundColor(address.isEmpty ? .secondary : .primary)
+                                        .lineLimit(1)
                                     
-                                    if !address.isEmpty {
-                                        Text(address)
+                                    Text(String(format: "Lat: %.4f, Long: %.4f", coordinates.0, coordinates.1))
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                     }
                                     
-                                    if let (lat, long) = selectedCoordinates {
-                                        Text(String(format: "Lat: %.4f, Long: %.4f", lat, long))
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
+                                Spacer()
+                                
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
                                     }
                                 }
                             } else {
-                                Text("Seleccionar en el mapa")
-                                    .foregroundColor(.blue)
-                            }
-                            
-                            Spacer()
-                            
-                            Image(systemName: "map")
-                                .foregroundColor(.blue)
+                        Button("Seleccionar ubicación") {
+                            showingMapSelection = true
                         }
                     }
                 }
                 
                 Section(header: Text("Material")) {
+                    if let material = materialName {
                     Button(action: {
-                        searchingMaterial = true
+                            showingMaterialSelection = true
                     }) {
                         HStack {
-                            if !materialName.isEmpty {
                                 VStack(alignment: .leading) {
-                                    Text("Material seleccionado")
-                                        .font(.subheadline)
-                                    
-                                    Text(materialName)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
-                            } else {
-                                Text("Seleccionar material")
-                                    .foregroundColor(.blue)
+                                    Text(material)
                             }
                             
                             Spacer()
-                            
-                            Image(systemName: "shippingbox")
-                                .foregroundColor(.blue)
-                        }
-                    }
                     
                     Button(action: {
-                        showingNewMaterialSheet = true
-                    }) {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                                .foregroundColor(.green)
-                            Text("Crear nuevo material")
-                                .foregroundColor(.green)
+                                    materialName = nil
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                                .buttonStyle(BorderlessButtonStyle())
+                            }
+                        }
+                    } else {
+                        Button("Seleccionar material") {
+                            showingMaterialSelection = true
                         }
                     }
                 }
+                
+                if let error = errorMessage {
+                    Section {
+                        Text(error)
+                            .foregroundColor(.red)
+                            .font(.footnote)
+                    }
+                }
             }
-            .navigationTitle("Añadir Punto")
+            .navigationTitle("Nuevo punto")
             .navigationBarItems(
                 leading: Button("Cancelar") {
                     isPresented = false
                 },
                 trailing: Button("Guardar") {
-                    // Aquí se guardaría el punto en el proyecto
-                    if let (latitude, longitude) = selectedCoordinates {
-                        // Crear el nuevo punto
+                    savePoint()
+                }
+                .disabled(!isFormValid || isSaving)
+            )
+            .sheet(isPresented: $showingMapSelection) {
+                MapSelectionView(selectedCoordinates: $selectedCoordinates, address: $address)
+            }
+            .sheet(isPresented: $showingMaterialSelection) {
+                MaterialSelectionView(selectedMaterial: $materialName, onMaterialSelected: { material in
+                    materialName = material
+                    showingMaterialSelection = false
+                })
+            }
+            .overlay(
+                Group {
+                    if isSaving {
+                        VStack {
+                            ProgressView("Guardando...")
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.black.opacity(0.2))
+                        .edgesIgnoringSafeArea(.all)
+                    }
+                }
+            )
+        }
+    }
+    
+    private func savePoint() {
+        guard let coordinates = selectedCoordinates else {
+            errorMessage = "Por favor selecciona una ubicación"
+            return
+        }
+        
+        isSaving = true
+        errorMessage = nil
+        
+        // Crear un nuevo punto con los datos del formulario
                         let newPoint = ProjectPoint(
-                            name: name,
+            name: pointName,
                             type: selectedType,
                             location: ProjectPoint.Location(
-                                latitude: latitude,
-                                longitude: longitude,
-                                address: address
-                            ),
-                            city: selectedCity,
+                latitude: coordinates.0,
+                longitude: coordinates.1,
+                address: address.isEmpty ? nil : address
+            ),
+            city: city,
                             materialName: materialName
                         )
                         
-                        // Añadir el punto al proyecto
-                        projectManager.addPointToProject(projectId: project.id, point: newPoint)
-                        
-                        // Mostrar mensaje de éxito (en una aplicación real)
-                        print("Nuevo punto creado: \(newPoint.name)")
-                    }
+        // Guardar el punto utilizando el ProjectManager
+        ProjectManager.shared.addPointToProject(projectId: project.id, point: newPoint)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { completion in
+                    isSaving = false
+                    
+                    switch completion {
+                    case .finished:
+                        // Cerrar la vista después de guardar exitosamente
                     isPresented = false
-                }
-                .disabled(name.isEmpty || selectedCoordinates == nil)
+                    case .failure(let error):
+                        // Mostrar error al usuario
+                        errorMessage = "Error al guardar: \(error.localizedDescription)"
+                    }
+                },
+                receiveValue: { _ in }
             )
-            .sheet(isPresented: $searchingMaterial) {
-                // En una implementación real, aquí iría un buscador de materiales
-                MaterialSelectorView(selectedMaterial: $materialName)
-            }
-            .sheet(isPresented: $showingNewMaterialSheet) {
-                // En una implementación real, aquí iría un formulario para crear nuevos materiales
-                NewMaterialView(isPresented: $showingNewMaterialSheet, onSave: { newMaterialName in
-                    materialName = newMaterialName
-                })
-            }
-            .sheet(isPresented: $showingMapSheet) {
-                MapSelectionView(selectedCoordinates: $selectedCoordinates, address: $address)
-            }
-        }
+            .store(in: &ProjectManager.shared.cancellables)
     }
 }
 
 // Vista simplificada para seleccionar material (demo)
-struct MaterialSelectorView: View {
+struct MaterialSelectionView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var selectedMaterial: String
+    @Binding var selectedMaterial: String?
+    var onMaterialSelected: ((String) -> Void)? = nil
     @State private var searchText = ""
     
     let demoMaterials = [
@@ -2733,7 +2480,11 @@ struct MaterialSelectorView: View {
                 ForEach(filteredMaterials, id: \.self) { material in
                     Button(action: {
                         selectedMaterial = material
+                        if let onSelected = onMaterialSelected {
+                            onSelected(material)
+                        } else {
                         dismiss()
+                        }
                     }) {
                         Text(material)
                     }
@@ -2781,29 +2532,179 @@ struct NewMaterialView: View {
     }
 }
 
+// Estructura para la respuesta del API al crear un punto
+struct PointResponse: Codable {
+    var ok: Bool
+    var data: PointData
+}
+
+// Respuesta para una lista de puntos
+struct PointsResponse: Codable {
+    var ok: Bool
+    var data: [PointData]
+}
+
+// Estructura para representar un punto recuperado de la API
+struct PointData: Codable {
+    var id: String
+    var name: String
+    var type: String
+    var location: LocationData
+    var city: String
+    var material: [String]
+    var operational: Bool
+    var project: String
+    var createdBy: CreatedByData?
+    var createdAt: String?
+    var updatedAt: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case type
+        case location
+        case city
+        case material
+        case operational
+        case project
+        case createdBy
+        case createdAt
+        case updatedAt
+    }
+    
+    // Propiedades computadas para facilitar acceso a latitud y longitud
+    var latitude: Double {
+        return location.latitude
+    }
+    
+    var longitude: Double {
+        return location.longitude
+    }
+}
+
+// Estructura para manejar el creador del punto
+struct CreatedByData: Codable {
+    var id: String
+    var fullName: String
+    var name: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case fullName
+        case name
+    }
+}
+
+// Estructura para manejar la localización en formato GeoJSON
+struct LocationData: Codable {
+    let type: String
+    let coordinates: [Double]
+    
+    var longitude: Double {
+        return coordinates[0]
+    }
+    
+    var latitude: Double {
+        return coordinates[1]
+    }
+}
+
+// Servicio para operaciones con puntos
+class PointService {
+    static let shared = PointService()
+    private let apiClient = APIClient.shared
+    private init() {}
+    
+    func createPoint(projectId: String, point: ProjectPoint) -> AnyPublisher<PointData, APIError> {
+        print("📍 Enviando punto al servidor: \(point.name)")
+        
+        // Crear el diccionario con los datos a enviar
+        let pointDict: [String: Any] = [
+            "name": point.name,
+            "type": point.type.rawValue,
+            "latitude": point.location.latitude,
+            "longitude": point.location.longitude,
+            "city": point.city,
+            "material": point.materialName != nil ? [point.materialName!] : [],
+            "operational": true
+        ]
+        
+        // Realizar la petición POST - Se corrige la ruta para usar la correcta en el backend
+        return apiClient.request(
+            .post, 
+            path: "/points/project/\(projectId)",
+            body: pointDict
+        )
+        .map { (response: PointResponse) -> PointData in
+            print("✅ Punto creado exitosamente en el servidor: \(response.data.id)")
+            return response.data
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func loadProjectPoints(projectId: String) -> AnyPublisher<[PointData], APIError> {
+        print("🔍 Cargando puntos para el proyecto: \(projectId)")
+        
+        return apiClient.request(
+            .get,
+            path: "/points/project/\(projectId)"
+        )
+        .map { (response: PointsResponse) -> [PointData] in
+            print("✅ Puntos cargados correctamente: \(response.data.count) puntos")
+            return response.data
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
 // Clase para gestionar los proyectos y sus puntos
 class ProjectManager: ObservableObject {
     static let shared = ProjectManager()
     
     @Published var projects: [Project] = []
     @Published var projectPoints: [String: [ProjectPoint]] = [:] // Mapa de puntos por ID de proyecto
+    private let pointService = PointService.shared
+    var cancellables = Set<AnyCancellable>() // Cambiado de private a public para poder usarlo en savePoint
     
     private init() {
         // Inicializar con los proyectos actuales en un escenario real
         // Esto sería cargado desde una base de datos o API
     }
     
-    func addPointToProject(projectId: String, point: ProjectPoint) {
+    func addPointToProject(projectId: String, point: ProjectPoint) -> AnyPublisher<PointData, APIError> {
         // En una aplicación real, esto actualizaría el modelo y la base de datos
         print("Añadiendo punto '\(point.name)' al proyecto '\(projectId)'")
         
-        // Añadir punto a la colección
-        var currentPoints = projectPoints[projectId] ?? []
-        currentPoints.append(point)
-        projectPoints[projectId] = currentPoints
+        // Enviar al backend
+        return pointService.createPoint(projectId: projectId, point: point)
+            .receive(on: DispatchQueue.main)
+            .handleEvents(receiveOutput: { [weak self] pointData in
+                guard let self = self else { return }
+                print("✅ Punto guardado en el servidor: \(pointData.id)")
+                
+                // Crear el nuevo punto con el ID recibido del servidor
+                let serverPoint = ProjectPoint(
+                    id: pointData.id,
+                    name: pointData.name,
+                    type: ProjectPoint.PointType(rawValue: pointData.type) ?? .CCTV,
+                    location: ProjectPoint.Location(
+                        latitude: pointData.latitude,
+                        longitude: pointData.longitude,
+                        address: nil // No tenemos dirección del servidor
+                    ),
+                    city: pointData.city,
+                    materialName: pointData.material.first
+                )
+                
+                // Añadir punto a la colección local con el ID del servidor
+                var currentPoints = self.projectPoints[projectId] ?? []
+                currentPoints.append(serverPoint)
+                self.projectPoints[projectId] = currentPoints
         
         // Actualizar la salud del proyecto
-        updateProjectHealth(projectId: projectId)
+                self.updateProjectHealth(projectId: projectId)
+            })
+            .eraseToAnyPublisher()
     }
     
     func updatePointStatus(projectId: String, pointId: String, status: ProjectPoint.OperationalStatus) {
@@ -2852,6 +2753,54 @@ class ProjectManager: ObservableObject {
     func getProjectPoints(projectId: String) -> [ProjectPoint] {
         return projectPoints[projectId] ?? []
     }
+    
+    func loadProjectPoints(projectId: String) {
+        print("Cargando puntos para el proyecto: \(projectId)")
+        
+        pointService.loadProjectPoints(projectId: projectId)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        print("✅ Carga de puntos completada")
+                    case .failure(let error):
+                        print("❌ Error al cargar puntos: \(error.localizedDescription)")
+                    }
+                },
+                receiveValue: { [weak self] pointsData in
+                    guard let self = self else { return }
+                    
+                    let points = pointsData.map { pointData -> ProjectPoint in
+                        return ProjectPoint(
+                            id: pointData.id,
+                            name: pointData.name,
+                            type: ProjectPoint.PointType(rawValue: pointData.type) ?? .CCTV,
+                            location: ProjectPoint.Location(
+                                latitude: pointData.location.latitude,
+                                longitude: pointData.location.longitude,
+                                address: nil
+                            ),
+                            city: pointData.city,
+                            materialName: pointData.material.first,
+                            material: nil,
+                            operationalStatus: pointData.operational ? .operational : .offline
+                        )
+                    }
+                    
+                    self.projectPoints[projectId] = points
+                    
+                    // Actualizar la salud del proyecto según el estado de los puntos
+                    self.updateProjectHealth(projectId: projectId)
+                    
+                    // Actualizar la lista de puntos en el proyecto si existe
+                    if let index = self.projects.firstIndex(where: { $0.id == projectId }) {
+                        self.projects[index].points = points
+                    }
+                }
+            )
+            .store(in: &cancellables)
+    }
 }
 
 struct MapSelectionView: View {
@@ -2872,114 +2821,114 @@ struct MapSelectionView: View {
     
     // Extrayendo la vista del mapa a una función separada para simplificar
     private var mapView: some View {
-        Map(position: $position, selection: $selectedMapItem) {
-            // Marcador para la ubicación de Torreón (punto de referencia)
-            Marker("Torreón", coordinate: CLLocationCoordinate2D(latitude: 25.5428, longitude: -103.4068))
-                .tint(.blue)
-            
-            // Marcadores para los resultados de búsqueda
-            ForEach(searchResults, id: \.self) { result in
-                Marker(item: result)
-                    .tint(.red)
-            }
-            
-            // Marcador para la ubicación seleccionada por el usuario
-            if let location = userSelectedLocation, selectedMapItem == nil {
-                Marker("Ubicación seleccionada", coordinate: location)
-                    .tint(.green)
-            }
-        }
-        .mapStyle(.standard)
-        .onMapCameraChange { context in
-            self.visibleRegion = context.region
-        }
-        .onChange(of: selectedMapItem) { _, newSelection in
-            if let mapItem = newSelection {
-                // Borrar la ubicación seleccionada manualmente al seleccionar un resultado de búsqueda
-                userSelectedLocation = nil
-                
-                let location = mapItem.placemark.coordinate
-                selectedCoordinates = (location.latitude, location.longitude)
-                
-                let addressParts = [
-                    mapItem.placemark.thoroughfare,
-                    mapItem.placemark.locality,
-                    mapItem.placemark.administrativeArea,
-                    mapItem.placemark.country
-                ].compactMap { $0 }
-                
-                address = addressParts.joined(separator: ", ")
-            }
-        }
+                        Map(position: $position, selection: $selectedMapItem) {
+                            // Marcador para la ubicación de Torreón (punto de referencia)
+                            Marker("Torreón", coordinate: CLLocationCoordinate2D(latitude: 25.5428, longitude: -103.4068))
+                                .tint(.blue)
+                            
+                            // Marcadores para los resultados de búsqueda
+                            ForEach(searchResults, id: \.self) { result in
+                                Marker(item: result)
+                                    .tint(.red)
+                            }
+                            
+                            // Marcador para la ubicación seleccionada por el usuario
+                            if let location = userSelectedLocation, selectedMapItem == nil {
+                                Marker("Ubicación seleccionada", coordinate: location)
+                                    .tint(.green)
+                            }
+                        }
+                        .mapStyle(.standard)
+                        .onMapCameraChange { context in
+                            self.visibleRegion = context.region
+                        }
+                        .onChange(of: selectedMapItem) { _, newSelection in
+                            if let mapItem = newSelection {
+                                // Borrar la ubicación seleccionada manualmente al seleccionar un resultado de búsqueda
+                                userSelectedLocation = nil
+                                
+                                let location = mapItem.placemark.coordinate
+                                selectedCoordinates = (location.latitude, location.longitude)
+                                
+                                let addressParts = [
+                                    mapItem.placemark.thoroughfare,
+                                    mapItem.placemark.locality,
+                                    mapItem.placemark.administrativeArea,
+                                    mapItem.placemark.country
+                                ].compactMap { $0 }
+                                
+                                address = addressParts.joined(separator: ", ")
+                            }
+                        }
     }
     
     // Extrayendo el panel de acciones a una función separada
     private var actionsPanel: some View {
-        VStack(spacing: 12) {
-            if let coordinates = selectedCoordinates {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Ubicación seleccionada")
-                        .font(.headline)
-                    
-                    if !address.isEmpty {
-                        Text(address)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                    VStack(spacing: 12) {
+                        if let coordinates = selectedCoordinates {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Ubicación seleccionada")
+                                    .font(.headline)
+                                
+                                if !address.isEmpty {
+                                    Text(address)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                Text(String(format: "Lat: %.4f, Long: %.4f", coordinates.0, coordinates.1))
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
+                            
+                            Button(action: {
+                                dismiss()
+                            }) {
+                                Text("Usar esta ubicación")
+                                    .fontWeight(.medium)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                        } else {
+                            Text("Busca una ubicación o utiliza el botón 'Ubicar aquí'")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .padding()
+                        }
+                        
+                        Button("Cancelar") {
+                            dismiss()
+                        }
+                        .padding(.vertical, 8)
                     }
-                    
-                    Text(String(format: "Lat: %.4f, Long: %.4f", coordinates.0, coordinates.1))
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                
-                Button(action: {
-                    dismiss()
-                }) {
-                    Text("Usar esta ubicación")
-                        .fontWeight(.medium)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-            } else {
-                Text("Busca una ubicación o utiliza el botón 'Ubicar aquí'")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
                     .padding()
-            }
-            
-            Button("Cancelar") {
-                dismiss()
-            }
-            .padding(.vertical, 8)
-        }
-        .padding()
-        .background(Color(.systemBackground))
-    }
-    
+                    .background(Color(.systemBackground))
+                }
+                
     // Extrayendo el botón de ubicación a una función separada
     private var locationButton: some View {
-        Button(action: {
-            if let region = visibleRegion {
-                setLocationFromCenter(region: region)
-            }
-        }) {
-            Text("Ubicar aquí")
-                .font(.subheadline)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .clipShape(Capsule())
-                .shadow(radius: 2)
-        }
-        .padding()
+                Button(action: {
+                    if let region = visibleRegion {
+                        setLocationFromCenter(region: region)
+                    }
+                }) {
+                    Text("Ubicar aquí")
+                        .font(.subheadline)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .shadow(radius: 2)
+                }
+                .padding()
     }
     
     // Función para establecer la ubicación desde el centro del mapa
@@ -3076,6 +3025,40 @@ struct SearchLocationView: View {
         }
         .searchable(text: $searchText, prompt: "Buscar ubicación")
         .navigationTitle("Buscar ubicación")
+    }
+}
+
+struct PointRowView: View {
+    var point: ProjectPoint
+    
+    var body: some View {
+        HStack(spacing: 15) {
+            Image(systemName: point.type.icon)
+                .font(.title3)
+                .foregroundColor(.white)
+                .frame(width: 40, height: 40)
+                .background(point.type.color)
+                .cornerRadius(8)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(point.name)
+                    .font(.headline)
+                
+                Text(point.city)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            Text(point.type.rawValue)
+                .font(.caption)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(point.type.color.opacity(0.2))
+                .foregroundColor(point.type.color)
+                .cornerRadius(4)
+        }
     }
 }
 

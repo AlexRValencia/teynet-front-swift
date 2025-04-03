@@ -79,6 +79,7 @@ export const getClientDetails = async (req, res) => {
         const clientId = req.params.id;
         const client = await ClientService.getClientById(clientId);
 
+        // Asegurar que el ID sea devuelto como string en la propiedad id
         return res.status(200).json({
             ok: true,
             data: client
@@ -124,6 +125,7 @@ export const getAllClients = async (req, res) => {
         // Obtener clientes a través del servicio
         const result = await ClientService.getClients(filters, pagination, sort);
 
+        // Asegurar que los IDs sean manejados correctamente
         return res.status(200).json({
             ok: true,
             data: {
@@ -258,53 +260,51 @@ export const deleteClient = async (req, res) => {
 };
 
 /**
- * Obtiene historial de cambios de un cliente
+ * Obtiene el historial de cambios de un cliente
  */
 export const getClientHistory = async (req, res) => {
     try {
         const clientId = req.params.id;
+
         const pagination = {
             page: parseInt(req.query.page) || 1,
             limit: parseInt(req.query.limit) || 20
         };
 
-        loggerx.info({
-            action: "GET_CLIENT_HISTORY_REQUEST",
-            clientId,
-            pagination
-        });
-
         const result = await ClientService.getClientHistory(clientId, pagination);
+
+        // Transformar los ObjectId a strings para la respuesta
+        const formattedHistory = result.history.map(entry => {
+            const formattedEntry = entry.toObject();
+            if (formattedEntry.performedBy) {
+                formattedEntry.performedBy = formattedEntry.performedBy.toString();
+            }
+            if (formattedEntry.entityId) {
+                formattedEntry.entityId = formattedEntry.entityId.toString();
+            }
+            return formattedEntry;
+        });
 
         return res.json({
             ok: true,
             data: {
-                history: result.history,
+                history: formattedHistory,
                 pagination: result.pagination
             }
         });
     } catch (error) {
-        loggerx.error({
-            action: "GET_CLIENT_HISTORY_ERROR",
-            error: {
-                message: error.message,
-                stack: error.stack
-            },
-            clientId: req.params.id
-        });
-
-        console.error("Error detallado en historial:", error);
+        loggerx.error(`Error en getClientHistory: ${error.message}`);
 
         if (error.message.includes("no encontrado")) {
             return res.status(404).json({
                 ok: false,
-                error: error.message
+                error: 'Cliente no encontrado'
             });
         }
 
         return res.status(500).json({
             ok: false,
-            error: `Error al obtener historial de cliente: ${error.message}`
+            error: 'Error al obtener historial de cliente'
         });
     }
 }; 

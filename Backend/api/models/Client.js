@@ -60,8 +60,16 @@ const clientSchema = new mongoose.Schema({
     versionKey: false,
     toJSON: {
         transform: function (doc, ret) {
-            ret.id = ret._id.toString();
-            delete ret._id;
+            if (ret.createdBy) ret.createdBy = ret.createdBy.toString();
+            if (ret.updatedBy) ret.updatedBy = ret.updatedBy.toString();
+            return ret;
+        }
+    },
+    toObject: {
+        transform: function (doc, ret) {
+            if (ret.createdBy) ret.createdBy = ret.createdBy.toString();
+            if (ret.updatedBy) ret.updatedBy = ret.updatedBy.toString();
+            return ret;
         }
     }
 });

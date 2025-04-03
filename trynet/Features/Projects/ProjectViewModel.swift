@@ -14,7 +14,7 @@ class ProjectViewModel: ObservableObject {
     
     // Servicios
     private let projectService = ProjectService.shared
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
     
     init() {
         // Configurar enlace entre searchText y filteredProjects
@@ -190,5 +190,53 @@ class ProjectViewModel: ObservableObject {
             self.errorMessage = "Error desconocido al cargar los proyectos: \(error.localizedDescription)"
             self.isLoading = false
         }
+    }
+    
+    // Crear nuevo proyecto
+    func createProject(project: Project) -> AnyPublisher<Project, Never> {
+        print("📝 Solicitando creación de proyecto: \(project.name)")
+        
+        // Indicamos que estamos cargando
+        isLoading = true
+        errorMessage = nil
+        
+        return projectService.createProject(project: project)
+            .receive(on: DispatchQueue.main)
+            .handleEvents(
+                receiveOutput: { [weak self] newProject in
+                    guard let self = self else { return }
+                    
+                    print("✅ Proyecto creado con éxito: \(newProject.name) (ID: \(newProject.id))")
+                    
+                    // Añadir el nuevo proyecto a la lista y ordenar
+                    self.projects.append(newProject)
+                    self.projects.sort { $0.name < $1.name }
+                    
+                    // Actualizar la lista filtrada
+                    self.filterProjects(searchText: self.searchText)
+                    
+                    // Refrescar la lista completa desde el servidor para asegurar consistencia
+                    Task {
+                        await self.refreshProjects()
+                    }
+                },
+                receiveCompletion: { [weak self] completion in
+                    guard let self = self else { return }
+                    
+                    self.isLoading = false
+                    
+                    if case .failure(let error) = completion {
+                        print("❌ Error al crear proyecto: \(error.message)")
+                        self.errorMessage = "No se pudo crear el proyecto: \(error.message)"
+                    }
+                }
+            )
+            .catch { error -> AnyPublisher<Project, Never> in
+                // En caso de error, devolver un publisher que nunca emite valor
+                // pero que no falla, para manejar el error internamente
+                return Empty(completeImmediately: true)
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
 } 

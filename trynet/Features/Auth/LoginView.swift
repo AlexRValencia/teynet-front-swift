@@ -117,9 +117,9 @@ struct LoginView: View {
             serverCheckTimer?.invalidate()
             serverCheckTimer = nil
         }
-        .onChange(of: authViewModel.errorMessage) {
+        .onChange(of: authViewModel.errorMessage) { _, newValue in
             // Resetear el estado de visualización de error detallado cuando cambia el mensaje
-            if authViewModel.errorMessage.isEmpty {
+            if newValue.isEmpty {
                 showDetailedError = false
             }
         }

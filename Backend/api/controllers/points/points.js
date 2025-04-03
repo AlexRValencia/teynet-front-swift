@@ -22,6 +22,48 @@ export const getPoints = async (req, res) => {
     }
 };
 
+// Obtener todos los puntos con sus proyectos
+export const getAllPoints = async (req, res) => {
+    try {
+        // Opciones para la consulta (paginación, filtros, etc.)
+        const { limit = 100, page = 1, type, city, operational } = req.query;
+        const skip = (page - 1) * limit;
+
+        // Construir filtros
+        const filters = {};
+        if (type) filters.type = type;
+        if (city) filters.city = city;
+        if (operational !== undefined) filters.operational = operational === 'true';
+
+        // Contar total para paginación
+        const total = await Point.countDocuments(filters);
+
+        // Obtener puntos con sus proyectos como IDs, no como objetos populados
+        const points = await Point.find(filters)
+            .populate('createdBy', 'fullName')
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(parseInt(limit));
+
+        res.json({
+            ok: true,
+            data: points,
+            pagination: {
+                total,
+                page: parseInt(page),
+                pages: Math.ceil(total / limit),
+                limit: parseInt(limit)
+            }
+        });
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            message: 'Error al obtener los puntos',
+            error: error.message
+        });
+    }
+};
+
 // Obtener un punto específico
 export const getPoint = async (req, res) => {
     try {
@@ -53,11 +95,64 @@ export const getPoint = async (req, res) => {
 export const createPoint = async (req, res) => {
     try {
         const { projectId } = req.params;
-        const pointData = {
+
+        // Verificar que req.user exista y tenga la propiedad adecuada
+        if (!req.user) {
+            return res.status(401).json({
+                ok: false,
+                message: 'Usuario no autenticado'
+            });
+        }
+
+        // Usar _id si está disponible, si no, usar uid
+        const userId = req.user._id || req.user.uid || req.user.id;
+
+        if (!userId) {
+            console.error("Detalles del usuario:", JSON.stringify(req.user));
+            return res.status(400).json({
+                ok: false,
+                message: 'No se pudo determinar el ID del usuario',
+                userDetails: {
+                    hasUser: !!req.user,
+                    keys: req.user ? Object.keys(req.user) : []
+                }
+            });
+        }
+
+        // Construir los datos del punto
+        let pointData = {
             ...req.body,
             project: projectId,
-            createdBy: req.user.uid
+            createdBy: userId
         };
+
+        // Verificar si se recibió longitude y latitude sin el formato GeoJSON
+        if (req.body.longitude !== undefined && req.body.latitude !== undefined) {
+            pointData.location = {
+                type: 'Point',
+                coordinates: [req.body.longitude, req.body.latitude]
+            };
+            // Eliminar los campos individuales
+            delete pointData.longitude;
+            delete pointData.latitude;
+        }
+        // Verificar si location ya tiene el formato correcto
+        else if (req.body.location && req.body.location.latitude !== undefined && req.body.location.longitude !== undefined) {
+            // Si location viene como un objeto con latitude y longitude (desde el frontend)
+            pointData.location = {
+                type: 'Point',
+                coordinates: [req.body.location.longitude, req.body.location.latitude]
+            };
+        }
+        // Si no hay location, o no está en ninguno de los formatos esperados
+        else if (!pointData.location || !pointData.location.type || !pointData.location.coordinates) {
+            return res.status(400).json({
+                ok: false,
+                message: 'Se requiere información de ubicación válida (latitude/longitude o location)'
+            });
+        }
+
+        console.log("Intentando crear punto con datos:", JSON.stringify(pointData, null, 2));
 
         const point = await Point.create(pointData);
 
@@ -73,6 +168,7 @@ export const createPoint = async (req, res) => {
             data: point
         });
     } catch (error) {
+        console.error("Error detallado:", error);
         res.status(500).json({
             ok: false,
             message: 'Error al crear el punto',

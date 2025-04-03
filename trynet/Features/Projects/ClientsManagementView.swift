@@ -8,116 +8,284 @@ struct ClientsManagementView: View {
     @State private var showingAddClientSheet = false
     @State private var selectedClient: Client? = nil
     @State private var showingDeleteConfirmation = false
-    @State private var isLoading = false
-    @State private var errorMessage: String? = nil
+    @State private var selectedStatusFilter: StatusFilter = .all
     
-    // Añadir una propiedad para almacenar las cancelables
+    // Estado para el debounce de la búsqueda
+    @State private var debouncedSearchText = ""
     @State private var cancellables = Set<AnyCancellable>()
     
-    var filteredClients: [Client] {
-        if searchText.isEmpty {
-            return clientManager.clients
-        } else {
-            return clientManager.clients.filter { client in
-                client.name.localizedCaseInsensitiveContains(searchText) ||
-                client.contactPerson.localizedCaseInsensitiveContains(searchText) ||
-                client.email.localizedCaseInsensitiveContains(searchText)
+    // Enum para filtrado por estado
+    enum StatusFilter: String, CaseIterable, Identifiable {
+        case all = "Todos"
+        case active = "Activos"
+        case inactive = "Inactivos"
+        
+        var id: String { self.rawValue }
+        
+        var value: Bool? {
+            switch self {
+            case .all: return nil
+            case .active: return true
+            case .inactive: return false
             }
         }
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(.systemGroupedBackground)
-                    .edgesIgnoringSafeArea(.all)
+        VStack(spacing: 0) {
+            // Encabezado personalizado
+            headerView
+            
+            // Contenido principal
+            clientsContentView
+                .navigationTitle("Gestión de Clientes")
+        }
+        .sheet(isPresented: $showingAddClientSheet) {
+            ClientFormView(
+                isPresented: $showingAddClientSheet,
+                clientToEdit: nil,
+                onSave: { addClient($0) }
+            )
+            .presentationDetents([.medium, .large])
+            .presentationContentInteraction(.scrolls)
+            .presentationCornerRadius(20)
+            .presentationSizing(.form)
+        }
+        .sheet(item: $selectedClient) { client in
+            ClientFormView(
+                isPresented: .constant(true),
+                clientToEdit: client,
+                onSave: { updateClient($0); selectedClient = nil },
+                onCancel: { selectedClient = nil }
+            )
+            .presentationDetents([.medium, .large])
+            .presentationContentInteraction(.scrolls)
+            .presentationCornerRadius(20)
+            .presentationSizing(.form)
+        }
+        .alert("¿Eliminar cliente?", isPresented: $showingDeleteConfirmation, presenting: selectedClient) { client in
+            Button("Cancelar", role: .cancel) {}
+            Button("Eliminar", role: .destructive) {
+                deleteClient(client.id)
+            }
+        } message: { client in
+            Text("Esta acción eliminará permanentemente al cliente '\(client.name)' y no se puede deshacer.")
+        }
+        .onAppear {
+            // Limpiar búsqueda y filtros al aparecer
+            searchText = ""
+            selectedStatusFilter = .all
+            refreshClients()
+        }
+    }
+    
+    // Encabezado personalizado
+    private var headerView: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Button("Cerrar") {
+                    isPresented = false
+                }
                 
-                if isLoading {
-                    ProgressView("Cargando clientes...")
-                } else if let error = errorMessage {
-                    errorView(message: error)
-                } else {
-                    clientsList
+                Spacer()
+                
+                Text("Gestión de Clientes")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Button(action: {
+                    showingAddClientSheet = true
+                }) {
+                    Image(systemName: "plus")
                 }
             }
-            .navigationTitle("Gestión de Clientes")
-            .searchable(text: $searchText, prompt: "Buscar cliente")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cerrar") {
-                        isPresented = false
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            
+            // Barra de búsqueda y filtros
+            HStack {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                    
+                    TextField("Buscar cliente", text: $searchText)
+                        .onChange(of: searchText) { _, newValue in
+                            performDebouncedSearch(newValue)
+                        }
+                    
+                    if !searchText.isEmpty {
+                        Button(action: {
+                            searchText = ""
+                            applyFilters()
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
+                .padding(8)
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showingAddClientSheet = true
-                    }) {
-                        Image(systemName: "plus")
+                Menu {
+                    ForEach(StatusFilter.allCases) { filter in
+                        Button(action: {
+                            selectedStatusFilter = filter
+                            applyFilters()
+                        }) {
+                            Label(filter.rawValue, systemImage: filter == selectedStatusFilter ? "checkmark" : "")
+                        }
                     }
+                } label: {
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                        .font(.title3)
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        loadClients()
-                    }) {
-                        Image(systemName: "arrow.clockwise")
-                    }
+                Button(action: {
+                    refreshClients()
+                }) {
+                    Image(systemName: "arrow.clockwise")
+                        .font(.title3)
                 }
             }
-            .sheet(isPresented: $showingAddClientSheet) {
-                ClientFormView(isPresented: $showingAddClientSheet, clientToEdit: nil, onSave: { newClient in
-                    addClient(newClient)
-                })
-            }
-            .sheet(item: $selectedClient) { client in
-                ClientFormView(isPresented: .constant(true), clientToEdit: client, onSave: { updatedClient in
-                    updateClient(updatedClient)
-                    selectedClient = nil
-                })
-            }
-            .alert("¿Eliminar cliente?", isPresented: $showingDeleteConfirmation, presenting: selectedClient) { client in
-                Button("Cancelar", role: .cancel) {}
-                Button("Eliminar", role: .destructive) {
-                    deleteClient(client.id)
-                }
-            } message: { client in
-                Text("Esta acción eliminará permanentemente al cliente '\(client.name)' y no se puede deshacer.")
-            }
-            .onAppear {
-                loadClients()
+            .padding(.horizontal)
+            .padding(.bottom, 10)
+            
+            Divider()
+        }
+        .background(Color(.systemBackground))
+    }
+    
+    @ViewBuilder
+    private var clientsContentView: some View {
+        ZStack {
+            Color(.systemGroupedBackground)
+                .ignoresSafeArea()
+            
+            if clientManager.isLoading && clientManager.clients.isEmpty {
+                ProgressView("Cargando clientes...")
+            } else if let error = clientManager.errorMessage, clientManager.clients.isEmpty {
+                errorView(message: error)
+            } else {
+                clientsList
             }
         }
     }
     
+    // Implementar el debounce de búsqueda utilizando Timer
+    private func performDebouncedSearch(_ searchText: String) {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
+        Just(searchText)
+            .delay(for: .milliseconds(300), scheduler: RunLoop.main)
+            .sink { text in
+                if self.debouncedSearchText != text {
+                    self.debouncedSearchText = text
+                    self.applyFilters()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    // Aplicar todos los filtros activos
+    private func applyFilters() {
+        clientManager.loadClients(
+            page: 1,
+            search: searchText.isEmpty ? nil : searchText,
+            active: selectedStatusFilter.value
+        )
+    }
+    
     // Vista de la lista de clientes
     private var clientsList: some View {
-        List {
-            if filteredClients.isEmpty {
-                Text("No se encontraron clientes")
-                    .foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .center)
+        VStack(spacing: 0) {
+            List {
+                if clientManager.clients.isEmpty {
+                    Text("No se encontraron clientes")
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding()
+                        .listRowBackground(Color.clear)
+                } else {
+                    clientsSection
+                    paginationSection
+                }
+            }
+            .listStyle(InsetGroupedListStyle())
+            .scrollContentBackground(.hidden)
+            .refreshable {
+                refreshClients()
+            }
+            
+            if let pagination = clientManager.pagination, !clientManager.clients.isEmpty {
+                paginationInfoFooter(pagination: pagination)
+            }
+        }
+    }
+    
+    private var clientsSection: some View {
+        ForEach(clientManager.clients) { client in
+            ClientRow(client: client)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    selectedClient = client
+                }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                        selectedClient = client
+                        showingDeleteConfirmation = true
+                    } label: {
+                        Label("Eliminar", systemImage: "trash")
+                    }
+                }
+        }
+    }
+    
+    @ViewBuilder
+    private var paginationSection: some View {
+        if clientManager.hasMorePages {
+            HStack {
+                Spacer()
+                if clientManager.isLoading {
+                    ProgressView()
+                        .padding()
+                } else {
+                    Button("Cargar más...") {
+                        clientManager.loadNextPage()
+                    }
                     .padding()
-                    .listRowBackground(Color.clear)
-            } else {
-                ForEach(filteredClients) { client in
-                    ClientRow(client: client)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            selectedClient = client
-                        }
-                        .swipeActions(edge: .trailing) {
-                            Button(role: .destructive) {
-                                selectedClient = client
-                                showingDeleteConfirmation = true
-                            } label: {
-                                Label("Eliminar", systemImage: "trash")
-                            }
-                        }
+                }
+                Spacer()
+            }
+            .listRowBackground(Color.clear)
+            .onAppear {
+                if !clientManager.isLoading {
+                    clientManager.loadNextPage()
                 }
             }
         }
-        .listStyle(InsetGroupedListStyle())
+    }
+    
+    private func paginationInfoFooter(pagination: ClientPaginationData) -> some View {
+        HStack {
+            Text("Mostrando \(clientManager.clients.count) de \(pagination.total) clientes")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            
+            Spacer()
+            
+            if pagination.totalPages > 1 {
+                Text("Página \(pagination.page) de \(pagination.totalPages)")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .background(Color(.systemGroupedBackground))
     }
     
     // Vista para mostrar errores
@@ -136,7 +304,7 @@ struct ClientsManagementView: View {
                 .padding(.horizontal)
             
             Button(action: {
-                loadClients()
+                refreshClients()
             }) {
                 Text("Reintentar")
                     .padding(.horizontal, 20)
@@ -149,34 +317,17 @@ struct ClientsManagementView: View {
         .padding()
     }
     
-    // Cargar los clientes
-    private func loadClients() {
-        isLoading = true
-        errorMessage = nil
-        
-        // Simular una carga asíncrona
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            clientManager.loadClients()
-            isLoading = false
-        }
+    // Refrescar clientes
+    private func refreshClients() {
+        clientManager.refreshClients()
     }
     
     // Agregar un nuevo cliente
     private func addClient(_ client: Client) {
         clientManager.addClient(client)
             .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        errorMessage = "Error al agregar cliente: \(error.message)"
-                    case .finished:
-                        // Nada que hacer aquí
-                        break
-                    }
-                },
-                receiveValue: { _ in
-                    // Cliente agregado con éxito
-                }
+                receiveCompletion: { _ in },
+                receiveValue: { _ in refreshClients() }
             )
             .store(in: &cancellables)
     }
@@ -185,18 +336,8 @@ struct ClientsManagementView: View {
     private func updateClient(_ client: Client) {
         clientManager.updateClient(client)
             .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        errorMessage = "Error al actualizar cliente: \(error.message)"
-                    case .finished:
-                        // Nada que hacer aquí
-                        break
-                    }
-                },
-                receiveValue: { _ in
-                    // Cliente actualizado con éxito
-                }
+                receiveCompletion: { _ in },
+                receiveValue: { _ in refreshClients() }
             )
             .store(in: &cancellables)
     }
@@ -205,18 +346,8 @@ struct ClientsManagementView: View {
     private func deleteClient(_ id: String) {
         clientManager.deleteClient(id: id)
             .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        errorMessage = "Error al eliminar cliente: \(error.message)"
-                    case .finished:
-                        // Nada que hacer aquí
-                        break
-                    }
-                },
-                receiveValue: { _ in
-                    // Cliente eliminado con éxito
-                }
+                receiveCompletion: { _ in },
+                receiveValue: { _ in refreshClients() }
             )
             .store(in: &cancellables)
     }
@@ -267,6 +398,7 @@ struct ClientFormView: View {
     @Binding var isPresented: Bool
     let clientToEdit: Client?
     let onSave: (Client) -> Void
+    var onCancel: (() -> Void)? = nil
     
     @State private var name = ""
     @State private var legalName = ""
@@ -283,20 +415,20 @@ struct ClientFormView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(header: Text("Información Principal")) {
                     TextField("Nombre del cliente", text: $name)
                     TextField("Razón social", text: $legalName)
                     TextField("RFC", text: $rfc)
-                        .autocapitalization(.allCharacters)
+                        .textInputAutocapitalization(.characters)
                 }
                 
                 Section(header: Text("Contacto")) {
                     TextField("Persona de contacto", text: $contactPerson)
                     TextField("Email", text: $email)
                         .keyboardType(.emailAddress)
-                        .autocapitalization(.none)
+                        .textInputAutocapitalization(.never)
                     TextField("Teléfono", text: $phone)
                         .keyboardType(.phonePad)
                 }
@@ -314,11 +446,16 @@ struct ClientFormView: View {
                     Toggle("Cliente activo", isOn: $active)
                 }
             }
+            .scrollContentBackground(.hidden)
             .navigationTitle(isEditing ? "Editar Cliente" : "Nuevo Cliente")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancelar") {
-                        isPresented = false
+                        if let onCancel = onCancel {
+                            onCancel()
+                        } else {
+                            isPresented = false
+                        }
                     }
                 }
                 

@@ -8,7 +8,6 @@ struct Project: Identifiable, Hashable {
     var deadline: String
     var description: String
     var client: String
-    var manager: String
     var budget: Double?
     var startDate: String
     var team: [String]
@@ -26,7 +25,7 @@ struct Project: Identifiable, Hashable {
     
     // Constructor con valores predeterminados para facilitar la creación
     init(id: String, name: String, status: String, health: Double = 1.0, deadline: String, 
-         description: String = "", client: String = "", manager: String = "", 
+         description: String = "", client: String = "", 
          budget: Double? = nil, startDate: String = "", team: [String] = [], tasks: [ProjectTask] = [], points: [ProjectPoint]? = nil) {
         self.id = id
         self.name = name
@@ -35,7 +34,6 @@ struct Project: Identifiable, Hashable {
         self.deadline = deadline
         self.description = description
         self.client = client
-        self.manager = manager
         self.budget = budget
         self.startDate = startDate
         self.team = team

@@ -26,6 +26,7 @@ export const getProjects = async (req, res) => {
 // Obtener un proyecto por ID
 export const getProjectById = async (req, res) => {
     try {
+        // Primero buscamos el proyecto por su ID, pero sin popular los puntos
         const project = await Project.findById(req.params.id)
             .populate('client', 'name')
             .populate('team', 'fullName');
@@ -36,6 +37,9 @@ export const getProjectById = async (req, res) => {
                 message: 'Proyecto no encontrado'
             });
         }
+
+        // El proyecto ya tiene los IDs de los puntos en su array 'points'
+        // No necesitamos popular nada más
 
         res.json({
             ok: true,

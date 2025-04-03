@@ -5,7 +5,8 @@ import {
     getPoint,
     createPoint,
     updatePoint,
-    deletePoint
+    deletePoint,
+    getAllPoints
 } from '../../controllers/points/points.js';
 
 const router = express.Router();
@@ -15,6 +16,7 @@ router.use(requiereToken);
 
 // Rutas de puntos
 router.get('/project/:projectId', getPoints);
+router.get('/all', getAllPoints);
 router.get('/:id', getPoint);
 router.post('/project/:projectId', createPoint);
 router.put('/:id', updatePoint);

@@ -60,8 +60,74 @@ struct MaintenanceTask: Identifiable, Hashable {
         return (additionalData["damagedEquipment"] as? [String]) ?? []
     }
     
-    var cableInstalled: [String: String] {
-        return (additionalData["cableInstalled"] as? [String: String]) ?? [:]
+    var cableInstalled: [String: Any] {
+        // Primero intentamos con el formato de diccionario de strings
+        if let stringDict = additionalData["cableInstalled"] as? [String: String] {
+            return stringDict
+        }
+        
+        // Luego intentamos con el formato de diccionario de números
+        if let numDict = additionalData["cableInstalled"] as? [String: Int] {
+            return numDict
+        }
+        
+        // Si viene un diccionario genérico
+        if let genericDict = additionalData["cableInstalled"] as? [String: Any] {
+            return genericDict
+        }
+        
+        return [:]
+    }
+    
+    // Valor formateado para mostrar en la UI
+    var cableInstalledFormatted: [String: String] {
+        var result: [String: String] = [:]
+        
+        for (key, value) in cableInstalled {
+            if let stringValue = value as? String {
+                result[key] = stringValue
+            } else if let intValue = value as? Int {
+                result[key] = "\(intValue)"
+            } else if let doubleValue = value as? Double {
+                result[key] = "\(Int(doubleValue))"
+            } else {
+                result[key] = "\(value)"
+            }
+        }
+        
+        return result
+    }
+    
+    // Datos del proyecto y punto vinculado a esta tarea
+    var projectId: String? {
+        return additionalData["projectId"] as? String
+    }
+    
+    var projectName: String? {
+        return additionalData["projectName"] as? String
+    }
+    
+    var pointId: String? {
+        return additionalData["pointId"] as? String
+    }
+    
+    var pointType: String? {
+        return additionalData["pointType"] as? String
+    }
+    
+    var pointCoordinates: [Double]? {
+        // Intentar obtener del formato [Double]
+        if let coordinates = additionalData["pointCoordinates"] as? [Double], coordinates.count == 2 {
+            return coordinates
+        }
+        
+        // Intentar reconstruir a partir de latitude/longitude individuales
+        if let latitude = additionalData["pointLatitude"] as? Double,
+           let longitude = additionalData["pointLongitude"] as? Double {
+            return [latitude, longitude]
+        }
+        
+        return nil
     }
     
     // Fotos

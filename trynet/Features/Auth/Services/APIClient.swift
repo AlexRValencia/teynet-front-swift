@@ -93,6 +93,15 @@ enum APIError: Error {
     }
 }
 
+// Enum para métodos HTTP
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+    case patch = "PATCH"
+}
+
 class APIClient {
     static let shared = APIClient()
     
@@ -124,19 +133,35 @@ class APIClient {
         set { UserDefaults.standard.set(newValue, forKey: "authToken") }
     }
     
-    // Método genérico para realizar peticiones
+    // Método mejorado para realizar peticiones con enum de métodos HTTP
     func request<T: Decodable>(
-        endpoint: String,
-        method: String = "GET",
+        _ method: HTTPMethod,
+        path: String,
+        parameters: [String: String]? = nil,
         body: [String: Any]? = nil,
         requiresAuth: Bool = true
     ) -> AnyPublisher<T, APIError> {
-        guard let url = URL(string: baseURL + endpoint) else {
+        // Construir la URL con query parameters si existen
+        var urlString = baseURL + path
+        if let parameters = parameters, !parameters.isEmpty {
+            let queryItems = parameters.map { key, value in
+                URLQueryItem(name: key, value: value)
+            }
+            
+            var components = URLComponents(string: urlString)
+            components?.queryItems = queryItems
+            
+            if let urlWithParams = components?.url?.absoluteString {
+                urlString = urlWithParams
+            }
+        }
+        
+        guard let url = URL(string: urlString) else {
             return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = method
+        request.httpMethod = method.rawValue
         request.timeoutInterval = environment.timeoutInterval
         
         // Configurar headers
@@ -181,7 +206,10 @@ class APIClient {
             }
         }
         
-        print("📤 Request: \(method) \(url)")
+        print("📤 Request: \(method.rawValue) \(url)")
+        if let parameters = parameters, !parameters.isEmpty {
+            print("Parameters: \(parameters)")
+        }
         if let body = body {
             print("Body: \(body)")
         }
@@ -218,15 +246,9 @@ class APIClient {
                 return APIError.networkError(error)
             }
             .flatMap { (data: Data) -> AnyPublisher<T, APIError> in
-                // Intentamos decodificar la respuesta
                 let decoder = JSONDecoder()
-                
-                // Configurar el decodificador para ser más flexible
-                // Cambiamos la estrategia de decodificación para que no falle
-                // si hay campos que no coinciden exactamente
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 decoder.dateDecodingStrategy = .iso8601
-                decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "Infinity", negativeInfinity: "-Infinity", nan: "NaN")
                 
                 do {
                     print("⏳ Intentando decodificar respuesta...")
@@ -248,26 +270,14 @@ class APIClient {
                         switch decodingError {
                         case .keyNotFound(let key, let context):
                             print("🔑 Clave no encontrada: \(key.stringValue) en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
-                            // Añadir información adicional sobre el índice si es un array
-                            if let lastPathComponent = context.codingPath.last, 
-                               let index = lastPathComponent.intValue {
-                                print("📊 Índice: \(index)")
-                            }
-                        case .valueNotFound(let type, let context):
-                            print("📭 Valor no encontrado para tipo \(type) en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
                         case .typeMismatch(let type, let context):
-                            print("❌ Tipo incorrecto: esperaba \(type) en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
-                            // Añadir información sobre qué tipo se encontró si está disponible
-                            if let underlyingError = context.underlyingError {
-                                print("💥 Error subyacente: \(underlyingError)")
-                            }
+                            print("📊 Tipo incorrecto: esperaba \(type) en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                        case .valueNotFound(let type, let context):
+                            print("⚠️ Valor requerido no encontrado: esperaba \(type) en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
                         case .dataCorrupted(let context):
-                            print("⚠️ Datos corruptos en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
-                            if let underlyingError = context.underlyingError {
-                                print("💥 Error subyacente: \(underlyingError)")
-                            }
+                            print("🛑 Datos corruptos: \(context.debugDescription)")
                         @unknown default:
-                            print("🔍 Error de decodificación desconocido: \(decodingError)")
+                            print("🔍 Error de decodificación desconocido: \(error.localizedDescription)")
                         }
                     }
                     
@@ -276,5 +286,16 @@ class APIClient {
                 }
             }
             .eraseToAnyPublisher()
+    }
+    
+    // Método original para compatibilidad
+    func request<T: Decodable>(
+        endpoint: String,
+        method: String = "GET",
+        body: [String: Any]? = nil,
+        requiresAuth: Bool = true
+    ) -> AnyPublisher<T, APIError> {
+        let httpMethod = HTTPMethod(rawValue: method) ?? .get
+        return request(httpMethod, path: endpoint, body: body, requiresAuth: requiresAuth)
     }
 } 

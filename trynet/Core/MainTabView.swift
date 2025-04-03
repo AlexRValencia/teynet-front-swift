@@ -25,6 +25,7 @@ struct MainTabView: View {
                                 .accessibility(label: Text("Gestión de proyectos"))
                         }
                         .tag(TabSelection.projects)
+                        .id(TabSelection.projects)
                         
                     MaintenanceView(maintenanceManager: maintenanceManager)
                         .tabItem {
@@ -32,6 +33,7 @@ struct MainTabView: View {
                                 .accessibility(label: Text("Tareas de mantenimiento"))
                         }
                         .tag(TabSelection.maintenance)
+                        .id(TabSelection.maintenance)
                     
                     ReportsView()
                         .tabItem {
@@ -39,6 +41,7 @@ struct MainTabView: View {
                                 .accessibility(label: Text("Reportes y análisis"))
                         }
                         .tag(TabSelection.reports)
+                        .id(TabSelection.reports)
                     
                     InventoryView()
                         .tabItem {
@@ -46,6 +49,7 @@ struct MainTabView: View {
                                 .accessibility(label: Text("Gestión de inventario"))
                         }
                         .tag(TabSelection.inventory)
+                        .id(TabSelection.inventory)
                         
                     MonitoringView()
                         .tabItem {
@@ -53,6 +57,7 @@ struct MainTabView: View {
                                 .accessibility(label: Text("Monitoreo en vivo"))
                         }
                         .tag(TabSelection.monitoring)
+                        .id(TabSelection.monitoring)
                     
                     // Pestaña de administración solo visible para administradores
                     if isAdmin {
@@ -62,6 +67,7 @@ struct MainTabView: View {
                                     .accessibility(label: Text("Administración del sistema"))
                             }
                             .tag(TabSelection.admin)
+                            .id(TabSelection.admin)
                             // Usar lazy loading para que solo se cargue cuando se seleccione esta pestaña
                             .task {
                                 // Solo cargar datos cuando esta pestaña esté activa
@@ -70,6 +76,13 @@ struct MainTabView: View {
                                 }
                             }
                     }
+                }
+                .onAppear {
+                    // Solución para el problema de navegación en iOS 18
+                    print("TabView inicializado con \(tabViewModel.selectedTab)")
+                }
+                .onChange(of: tabViewModel.selectedTab) { _, newTab in 
+                    print("Cambiado a pestaña: \(newTab)")
                 }
             }
             

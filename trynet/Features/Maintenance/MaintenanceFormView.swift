@@ -20,6 +20,13 @@ struct MaintenanceFormView: View {
     @State private var location = "Torreón"
     @State private var siteName = ""
     
+    // Selección de punto existente
+    @State private var showingPointSelector = false
+    @State private var selectedProject: Project? = nil
+    @State private var selectedPoint: ProjectPoint? = nil
+    @ObservedObject private var projectViewModel = ProjectViewModel()
+    @ObservedObject private var projectManager = ProjectManager.shared
+    
     // Datos adicionales de equipamiento
     @State private var showingEquipmentDetailsSheet = false
     @State private var damagedEquipment: [String] = []
@@ -42,7 +49,7 @@ struct MaintenanceFormView: View {
     @State private var isCapturingInitialPhoto = true
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 // Sección 1: Información básica
                 Section(header: Text("Información básica")) {
@@ -67,7 +74,48 @@ struct MaintenanceFormView: View {
                     }
                 }
                 
-                // Sección 2: Ubicación
+                // Sección 2: Selección de punto existente
+                Section(header: Text("Punto de Proyecto")) {
+                    Button(action: {
+                        // Cargar proyectos antes de mostrar el selector
+                        showingPointSelector = true
+                    }) {
+                        HStack {
+                            if let point = selectedPoint, let project = selectedProject {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(point.name)
+                                        .foregroundColor(.primary)
+                                    
+                                    Text("\(project.name) • \(point.type.rawValue)")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    
+                                    Text(point.city)
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                            } else {
+                                Text("Seleccionar punto existente")
+                                    .foregroundColor(.blue)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    
+                    if selectedPoint != nil {
+                        Button(action: {
+                            selectedProject = nil
+                            selectedPoint = nil
+                        }) {
+                            Text("Eliminar selección")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
+                
+                // Sección 3: Ubicación
                 Section(header: Text("Ubicación")) {
                     Picker("Localidad", selection: $location) {
                         ForEach(locationOptions, id: \.self) {
@@ -79,7 +127,7 @@ struct MaintenanceFormView: View {
                         .autocapitalization(.words)
                 }
                 
-                // Sección 3: Detalles y asignación
+                // Sección 4: Detalles y asignación
                 Section(header: Text("Detalles")) {
                     DatePicker("Fecha programada", selection: $scheduledDate, displayedComponents: .date)
                     
@@ -99,7 +147,7 @@ struct MaintenanceFormView: View {
                     }
                 }
                 
-                // Sección 4: Equipo dañado
+                // Sección 5: Equipo dañado
                 Section(header: Text("Equipo dañado")) {
                     ForEach(damagedEquipment, id: \.self) { item in
                         HStack {
@@ -131,7 +179,7 @@ struct MaintenanceFormView: View {
                     }
                 }
                 
-                // Sección 5: Cables instalados
+                // Sección 6: Cables instalados
                 Section(header: Text("Cable instalado (metros)")) {
                     ForEach(Array(cableInstalled.keys.sorted()), id: \.self) { key in
                         if let value = cableInstalled[key], !value.isEmpty {
@@ -174,7 +222,7 @@ struct MaintenanceFormView: View {
                     }
                 }
                 
-                // Sección 6: Fotos (simuladas en esta implementación)
+                // Sección 7: Fotos (simuladas en esta implementación)
                 Section(header: Text("Fotografías")) {
                     Button(action: {
                         isCapturingInitialPhoto = true
@@ -209,16 +257,44 @@ struct MaintenanceFormView: View {
                 }
             }
             .navigationTitle("Nueva tarea")
-            .navigationBarItems(
-                leading: Button("Cancelar") {
-                    isPresented = false
-                },
-                trailing: Button("Guardar") {
-                    saveTask()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancelar") {
+                        isPresented = false
+                    }
                 }
-                .disabled(deviceName.isEmpty || description.isEmpty || assignedTo.isEmpty || siteName.isEmpty)
-            )
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Guardar") {
+                        saveTask()
+                    }
+                    .disabled(deviceName.isEmpty || description.isEmpty || assignedTo.isEmpty || siteName.isEmpty)
+                }
+            }
+            .sheet(isPresented: $showingPointSelector) {
+                ProjectPointSelectorView(
+                    isPresented: $showingPointSelector,
+                    selectedProject: $selectedProject,
+                    selectedPoint: $selectedPoint
+                )
+            }
             // Aquí se agregaría el ImagePicker en una implementación real
+        }
+        .onAppear {
+            // Si hay un punto seleccionado, rellenar automáticamente algunos campos
+            if let point = selectedPoint {
+                deviceName = point.name
+                location = point.city
+                siteName = point.location.address ?? "Sitio \(point.name)"
+            }
+            Task {
+                // Verificar si los proyectos ya están cargados
+                if projectManager.projects.isEmpty {
+                    await projectViewModel.refreshProjects()
+                    // Sincronizar los proyectos al ProjectManager
+                    projectManager.projects = projectViewModel.projects
+                }
+            }
         }
     }
     
@@ -226,23 +302,54 @@ struct MaintenanceFormView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         
-        let newTask = MaintenanceTask.createTask(
+        var additionalData: [String: Any] = [:]
+        
+        // Agregar información del punto y proyecto seleccionado si existe
+        if let project = selectedProject, let point = selectedPoint {
+            additionalData["projectId"] = project.id
+            additionalData["projectName"] = project.name
+            additionalData["pointId"] = point.id
+            additionalData["pointType"] = point.type.rawValue
+            additionalData["pointCoordinates"] = [point.location.latitude, point.location.longitude]
+        }
+        
+        // Agregar equipamiento dañado
+        if !damagedEquipment.isEmpty {
+            additionalData["damagedEquipment"] = damagedEquipment
+        }
+        
+        // Agregar cables instalados
+        if !cableInstalled.isEmpty {
+            additionalData["cableInstalled"] = cableInstalled
+        }
+        
+        // Agregar fotos
+        if !initialPhotos.isEmpty {
+            additionalData["initialPhotos"] = initialPhotos
+        }
+        
+        if !finalPhotos.isEmpty {
+            additionalData["finalPhotos"] = finalPhotos
+        }
+        
+        let newTask = MaintenanceTask(
+            id: UUID().uuidString,
             deviceName: deviceName,
             taskType: taskType,
             maintenanceType: maintenanceType,
             description: description,
+            status: "Pendiente",
             scheduledDate: dateFormatter.string(from: scheduledDate),
+            completedDate: nil,
             assignedTo: assignedTo,
             priority: priority,
             location: location,
             siteName: siteName,
-            damagedEquipment: damagedEquipment,
-            cableInstalled: cableInstalled,
-            initialPhotos: initialPhotos,
-            finalPhotos: finalPhotos
+            additionalData: additionalData
         )
         
         onSave(newTask)
+        isPresented = false
     }
     
     // Método simulado para agregar fotos (en la versión real usaría UIImagePickerController)
@@ -251,6 +358,249 @@ struct MaintenanceFormView: View {
             initialPhotos.append(image)
         } else {
             finalPhotos.append(image)
+        }
+    }
+}
+
+// Vista para seleccionar proyectos y puntos
+struct ProjectPointSelectorView: View {
+    @Binding var isPresented: Bool
+    @Binding var selectedProject: Project?
+    @Binding var selectedPoint: ProjectPoint?
+    
+    @ObservedObject private var projectManager = ProjectManager.shared
+    @ObservedObject private var projectViewModel = ProjectViewModel()
+    @State private var searchText = ""
+    @State private var selectedProjectId: String? = nil
+    @State private var isLoading = true // Estado para control de carga
+    
+    var filteredProjects: [Project] {
+        if searchText.isEmpty {
+            return projectManager.projects
+        } else {
+            return projectManager.projects.filter { project in
+                project.name.lowercased().contains(searchText.lowercased()) ||
+                project.client.lowercased().contains(searchText.lowercased())
+            }
+        }
+    }
+    
+    var pointsForSelectedProject: [ProjectPoint] {
+        guard let projectId = selectedProjectId else { return [] }
+        return projectManager.getProjectPoints(projectId: projectId)
+    }
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                // Barra de búsqueda para proyectos
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.secondary)
+                    
+                    TextField("Buscar proyecto", text: $searchText)
+                        .disableAutocorrection(true)
+                    
+                    if !searchText.isEmpty {
+                        Button(action: {
+                            searchText = ""
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                .padding(8)
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
+                .padding(.horizontal)
+                .padding(.top)
+                
+                if isLoading {
+                    // Mostrar indicador de carga
+                    Spacer()
+                    ProgressView("Cargando proyectos...")
+                    Spacer()
+                } else if projectManager.projects.isEmpty {
+                    // Mostrar mensaje cuando no hay proyectos
+                    Spacer()
+                    VStack(spacing: 15) {
+                        Image(systemName: "folder.badge.questionmark")
+                            .font(.system(size: 50))
+                            .foregroundColor(.gray)
+                        Text("No se encontraron proyectos")
+                            .font(.headline)
+                        Button(action: {
+                            loadProjects()
+                        }) {
+                            Text("Reintentar")
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 10)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                        .padding(.top, 10)
+                    }
+                    Spacer()
+                } else {
+                    // Lista de proyectos y puntos
+                    if selectedProjectId == nil {
+                        // Lista de proyectos
+                        List {
+                            Text("Seleccione un proyecto:")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .listRowBackground(Color.clear)
+                                .padding(.bottom, 5)
+                            
+                            ForEach(filteredProjects) { project in
+                                Button(action: {
+                                    selectedProjectId = project.id
+                                    projectManager.loadProjectPoints(projectId: project.id)
+                                }) {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text(project.name)
+                                                .font(.headline)
+                                            
+                                            Text(project.client)
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                        }
+                                        Spacer()
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.gray)
+                                    }
+                                    .contentShape(Rectangle())
+                                    .padding(.vertical, 5)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .listStyle(PlainListStyle())
+                    } else {
+                        // Lista de puntos del proyecto seleccionado
+                        VStack {
+                            // Cabecera con nombre del proyecto
+                            if let projectId = selectedProjectId, let project = projectManager.projects.first(where: { $0.id == projectId }) {
+                                HStack {
+                                    Button(action: {
+                                        selectedProjectId = nil
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "chevron.left")
+                                            Text("Proyectos")
+                                        }
+                                        .foregroundColor(.blue)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.horizontal)
+                                
+                                Text(project.name)
+                                    .font(.headline)
+                                    .padding(.vertical, 8)
+                            }
+                            
+                            if pointsForSelectedProject.isEmpty {
+                                VStack(spacing: 20) {
+                                    Image(systemName: "mappin.slash")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.gray)
+                                    
+                                    Text("No hay puntos en este proyecto")
+                                        .foregroundColor(.secondary)
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .padding()
+                            } else {
+                                List {
+                                    Text("Seleccione un punto:")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                        .listRowBackground(Color.clear)
+                                        .padding(.bottom, 5)
+                                    
+                                    ForEach(pointsForSelectedProject) { point in
+                                        Button(action: {
+                                            if let projectId = selectedProjectId, let project = projectManager.projects.first(where: { $0.id == projectId }) {
+                                                selectedProject = project
+                                                selectedPoint = point
+                                                isPresented = false
+                                            }
+                                        }) {
+                                            HStack {
+                                                Image(systemName: point.type.icon)
+                                                    .foregroundColor(point.type.color)
+                                                    .frame(width: 30)
+                                                
+                                                VStack(alignment: .leading, spacing: 4) {
+                                                    Text(point.name)
+                                                        .font(.headline)
+                                                    
+                                                    HStack {
+                                                        Text(point.type.rawValue)
+                                                            .font(.caption)
+                                                            .padding(.horizontal, 6)
+                                                            .padding(.vertical, 2)
+                                                            .background(point.type.color.opacity(0.2))
+                                                            .cornerRadius(4)
+                                                        
+                                                        Text(point.city)
+                                                            .font(.caption)
+                                                            .foregroundColor(.secondary)
+                                                    }
+                                                }
+                                                
+                                                Spacer()
+                                                
+                                                // Si este punto está seleccionado, mostrar un checkmark
+                                                if selectedPoint?.id == point.id {
+                                                    Image(systemName: "checkmark")
+                                                        .foregroundColor(.blue)
+                                                }
+                                            }
+                                            .contentShape(Rectangle())
+                                            .padding(.vertical, 5)
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                    }
+                                }
+                                .listStyle(PlainListStyle())
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle(selectedProjectId == nil ? "Seleccionar Proyecto" : "Seleccionar Punto")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancelar") {
+                        isPresented = false
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Recargar") {
+                        loadProjects()
+                    }
+                }
+            }
+            .onAppear {
+                loadProjects()
+            }
+        }
+    }
+    
+    private func loadProjects() {
+        isLoading = true
+        Task {
+            // Verificar si los proyectos ya están cargados
+            await projectViewModel.refreshProjects()
+            // Sincronizar los proyectos al ProjectManager
+            projectManager.projects = projectViewModel.projects
+            isLoading = false
         }
     }
 }

@@ -52,8 +52,11 @@ struct InventoryView: View {
                 updateStats()
                 inventoryManager.loadInventory()
             }
-            .onChange(of: inventoryManager.inventoryItems) { oldValue, newValue in
+            .onChange(of: inventoryManager.inventoryItems) { _, newValue in
                 updateStats()
+            }
+            .onChange(of: searchText) { _, newValue in
+                inventoryManager.searchItems(query: newValue)
             }
         }
     }
@@ -87,7 +90,7 @@ struct InventoryView: View {
                     .foregroundColor(.gray)
                 
                 TextField("Buscar en inventario", text: $searchText)
-                    .onChange(of: searchText) { oldValue, newValue in
+                    .onChange(of: searchText) { _, newValue in
                         inventoryManager.searchItems(query: newValue)
                     }
                 
@@ -526,28 +529,28 @@ struct InventoryItemDetailView: View {
     private var detailView: some View {
         Group {
             Section(header: Text("Información Básica")) {
-                DetailRow(label: "Nombre", value: item.name)
-                DetailRow(label: "Categoría", value: item.category)
-                DetailRow(label: "Cantidad", value: "\(item.quantity)")
-                DetailRow(label: "Disponible", value: "\(item.available)")
-                DetailRow(label: "Ubicación", value: item.location)
+                InventoryDetailRow(label: "Nombre", value: item.name)
+                InventoryDetailRow(label: "Categoría", value: item.category)
+                InventoryDetailRow(label: "Cantidad", value: "\(item.quantity)")
+                InventoryDetailRow(label: "Disponible", value: "\(item.available)")
+                InventoryDetailRow(label: "Ubicación", value: item.location)
             }
             
             Section(header: Text("Detalles adicionales")) {
                 if let price = item.price {
-                    DetailRow(label: "Precio unitario", value: "$\(String(format: "%.2f", price))")
+                    InventoryDetailRow(label: "Precio unitario", value: "$\(String(format: "%.2f", price))")
                 }
                 
                 if let supplier = item.supplier {
-                    DetailRow(label: "Proveedor", value: supplier)
+                    InventoryDetailRow(label: "Proveedor", value: supplier)
                 }
                 
                 if let serialNumber = item.serialNumber {
-                    DetailRow(label: "Número de serie", value: serialNumber)
+                    InventoryDetailRow(label: "Número de serie", value: serialNumber)
                 }
                 
                 if let lastCheckDate = item.lastCheckDate {
-                    DetailRow(label: "Última verificación", value: lastCheckDate)
+                    InventoryDetailRow(label: "Última verificación", value: lastCheckDate)
                 }
             }
             
@@ -655,7 +658,7 @@ struct InventoryItemDetailView: View {
 }
 
 // Componente para fila de detalle
-struct DetailRow: View {
+struct InventoryDetailRow: View {
     let label: String
     let value: String
     
