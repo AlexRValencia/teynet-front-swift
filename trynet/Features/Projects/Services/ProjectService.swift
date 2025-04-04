@@ -32,24 +32,53 @@ struct SimpleProjectResponse: Codable {
     
     // Convertir a la estructura normal
     func toProjectResponse() -> ProjectResponse {
+        let clientIdentifier: ClientIdentifier
+        
+        if let clientId = data.client {
+            clientIdentifier = .id(clientId)
+        } else {
+            clientIdentifier = .none
+        }
+        
+        // Transformar los IDs de equipo en objetos TeamMemberData
+        let teamMembers = data.team?.compactMap { teamId -> TeamMemberData in
+            // Intentar encontrar el nombre completo del usuario si está disponible
+            let userViewModel = UserAdminViewModel.shared
+            if !userViewModel.hasLoadedUsers {
+                userViewModel.loadUsers()
+            }
+            
+            if let user = userViewModel.users.first(where: { $0.id == teamId }) {
+                return TeamMemberData(
+                    _id: teamId,
+                    fullName: user.fullName,
+                    name: user.fullName,
+                    id: teamId
+                )
+            } else {
+                // Si no encontramos el usuario, usar solo el ID
+                return TeamMemberData(
+                    _id: teamId,
+                    fullName: nil,
+                    name: nil,
+                    id: teamId
+                )
+            }
+        }
+        
         return ProjectResponse(
             ok: ok,
             message: message,
             data: ProjectData(
                 id: data.id,
                 name: data.name,
-                client: .id(data.client),
+                client: clientIdentifier,
                 status: data.status,
                 health: data.health,
                 description: data.description,
                 startDate: data.startDate,
                 endDate: data.endDate,
-                team: data.team?.compactMap { TeamMemberData(
-                    _id: $0,
-                    fullName: nil,
-                    name: nil,
-                    id: $0
-                ) },
+                team: teamMembers,
                 points: data.points,
                 materials: data.materials,
                 createdBy: data.createdBy,
@@ -65,7 +94,7 @@ struct SimpleProjectResponse: Codable {
 struct SimpleProjectData: Codable {
     let id: String
     let name: String
-    let client: String // Aquí el cliente es un string (ID) en lugar de un objeto
+    let client: String? // Hacemos client opcional para manejar valores nulos
     let status: String?
     let health: Double
     let description: String?
@@ -127,41 +156,78 @@ struct ProjectData: Codable, Identifiable {
     
     // Función para convertir ProjectData a Project
     func toProject() -> Project {
-        let clientStr: String
+        // Obtener el nombre del cliente
+        var clientName = "Sin cliente"
         switch client {
         case .object(let clientData):
-            clientStr = clientData.safeName
+            clientName = clientData.safeName
         case .id(let clientId):
-            clientStr = clientId
+            // Intentar buscar el cliente por ID para obtener su nombre
+            let clientManager = ClientManager.shared
+            if let foundClient = clientManager.clients.first(where: { $0.id == clientId }) {
+                clientName = foundClient.name
+            } else {
+                // Si el cliente no se encuentra en la caché actual, usar el ID como fallback
+                clientName = clientId
+            }
+        case .none:
+            clientName = "Sin cliente"
         }
         
         // Formatear la fecha de forma legible
         let formattedStartDate = formatDate(startDate ?? "")
         let formattedEndDate = formatDate(endDate ?? "")
         
+        // Obtener nombres de los miembros del equipo
+        var teamMembers: [String] = []
+        // Primero obtener todos los IDs de los miembros del equipo
+        let teamIds = team?.compactMap { $0.effectiveId } ?? []
+        
+        // Buscar los nombres de usuario correspondientes a estos IDs
+        let userViewModel = UserAdminViewModel.shared
+        if !userViewModel.hasLoadedUsers {
+            userViewModel.loadUsers()
+        }
+        
+        for userId in teamIds {
+            if let user = userViewModel.users.first(where: { $0.id == userId }) {
+                teamMembers.append(user.fullName)
+            } else {
+                // Si no encontramos el usuario, busquemos en el objeto TeamMemberData directamente
+                if let memberData = team?.first(where: { $0.effectiveId == userId }),
+                   let fullName = memberData.fullName, !fullName.isEmpty {
+                    teamMembers.append(fullName)
+                } else {
+                    // Último recurso: usar el ID como fallback
+                    teamMembers.append(userId)
+                }
+            }
+        }
+        
         return Project(
             id: id, 
             name: name, 
-            status: status ?? "Sin estado",  // Valor por defecto para status
+            status: status ?? "Sin estado",
             health: health,
             deadline: formattedEndDate,
-            description: description ?? "",  // Valor por defecto para description
-            client: clientStr,  // Usar el cliente según el formato recibido
-            startDate: formattedStartDate,  // Fecha formateada
-            team: team?.compactMap { $0.effectiveId } ?? [],  // Usar compactMap para filtrar valores nil
-            tasks: [],  // Array vacío de tareas por defecto
+            description: description ?? "",
+            client: clientName,  // Usar el nombre del cliente en lugar del ID
+            clientId: client.id, // Guardamos el ID del cliente en un nuevo campo
+            startDate: formattedStartDate,
+            team: teamMembers,  // Usar los nombres de los miembros
+            teamIds: teamIds, // Guardar los IDs en un campo separado
+            tasks: [],
             points: points != nil ? points!.map { pointId -> ProjectPoint in
-                // Crear un ProjectPoint con valores por defecto
                 return ProjectPoint(
                     id: pointId,
                     name: "Punto sin nombre", 
-                    type: .CCTV,  // Tipo por defecto
+                    type: .CCTV,
                     location: ProjectPoint.Location(latitude: 0, longitude: 0, address: nil),
                     city: "",
                     materialName: nil,
                     material: nil
                 )
-            } : nil  // Si points es nil, devolvemos nil
+            } : nil
         )
     }
     
@@ -253,11 +319,27 @@ struct TeamMemberData: Codable {
 enum ClientIdentifier: Codable {
     case object(ClientData)
     case id(String)
+    case none
+    
+    // Obtener el ID del cliente de forma segura
+    var id: String? {
+        switch self {
+        case .object(let clientData):
+            return clientData.safeId
+        case .id(let clientId):
+            return clientId
+        case .none:
+            return nil
+        }
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         
-        if let clientData = try? container.decode(ClientData.self) {
+        if container.decodeNil() {
+            // Si es nulo, usamos el caso none
+            self = .none
+        } else if let clientData = try? container.decode(ClientData.self) {
             self = .object(clientData)
         } else if let clientId = try? container.decode(String.self) {
             self = .id(clientId)
@@ -277,6 +359,8 @@ enum ClientIdentifier: Codable {
             try container.encode(clientData)
         case .id(let clientId):
             try container.encode(clientId)
+        case .none:
+            try container.encodeNil()
         }
     }
 }
@@ -336,7 +420,7 @@ class ProjectService {
                                 if let decodingError = decodingError as? DecodingError {
                                     switch decodingError {
                                     case .keyNotFound(let key, let context):
-                                        let errorDetail = "🔑 Falta la clave '\(key.stringValue)' en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))"
+                                        let errorDetail = "�� Falta la clave '\(key.stringValue)' en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))"
                                         print(errorDetail)
                                     case .valueNotFound(let type, let context):
                                         let errorDetail = "📭 Valor nulo para tipo \(type) en \(context.codingPath.map { $0.stringValue }.joined(separator: "."))"
@@ -374,46 +458,69 @@ class ProjectService {
         
         // Añadir fechas si no están vacías
         if !project.startDate.isEmpty {
-            projectDict["startDate"] = project.startDate
+            // Convertir fecha de formato localizado a ISO8601
+            if let isoDate = convertToISODate(project.startDate) {
+                projectDict["startDate"] = isoDate
+            } else {
+                print("⚠️ No se pudo convertir la fecha de inicio: \(project.startDate)")
+                // Intentamos convertir a un formato que el backend pueda entender
+                projectDict["startDate"] = project.startDate
+            }
         }
         
         if !project.deadline.isEmpty {
-            projectDict["endDate"] = project.deadline
+            // Convertir fecha de formato localizado a ISO8601
+            if let isoDate = convertToISODate(project.deadline) {
+                projectDict["endDate"] = isoDate
+            } else {
+                print("⚠️ No se pudo convertir la fecha de fin: \(project.deadline)")
+                // Intentamos convertir a un formato que el backend pueda entender
+                projectDict["endDate"] = project.deadline
+            }
         }
         
         // Para el campo client necesitamos un ObjectId
-        // Verificamos si el cliente contiene un ID de MongoDB válido
-        if let clientId = extractClientId(from: project.client) {
-            // Si parece un ObjectId válido, lo usamos directamente
-            print("✅ ID de cliente encontrado: \(clientId)")
+        if let clientId = project.clientId, !clientId.isEmpty {
+            // Usamos directamente el ID del cliente proporcionado
             projectDict["client"] = clientId
-        } else {
-            // Intentamos buscar el cliente por nombre en el ClientManager
+            print("✅ Usando ID de cliente: \(clientId)")
+        } else if !project.client.isEmpty {
+            // Si no tenemos ID pero tenemos nombre, intentamos buscar el cliente por nombre
             let clientManager = ClientManager.shared
-            if let client = clientManager.clients.first(where: { $0.name == project.client }) {
-                // Si encontramos el cliente, usamos su ID
-                print("✅ Cliente encontrado en el gestor: \(client.name) con ID: \(client.id)")
-                projectDict["client"] = client.id
+            if let foundClient = clientManager.clients.first(where: { $0.name == project.client }) {
+                projectDict["client"] = foundClient.id
+                print("✅ Encontrado cliente por nombre: \(project.client) con ID: \(foundClient.id)")
             } else {
-                // Si no encontramos el cliente, mostramos advertencia
                 print("⚠️ ADVERTENCIA: No se encontró el cliente \"\(project.client)\" en la base de datos")
-                print("⚠️ Debe seleccionar un cliente existente antes de crear el proyecto")
-                
                 // Usamos un ID temporal para que el backend rechace la solicitud
                 projectDict["client"] = "000000000000000000000000" // ID inválido
             }
+        } else {
+            print("⚠️ ADVERTENCIA: No se proporcionó ID de cliente")
+            // Usamos un ID temporal para que el backend rechace la solicitud
+            projectDict["client"] = "000000000000000000000000" // ID inválido
         }
         
         // Si tiene miembros en el equipo, los enviamos como un array
-        if !project.team.isEmpty {
-            // El equipo debe ser un array de strings (IDs de los miembros)
-            // Si los IDs ya están en formato correcto, los usamos directamente
-            let validTeamIds = project.team.filter { 
-                $0.count == 24 && $0.range(of: "^[0-9a-f]{24}$", options: .regularExpression) != nil
+        if !project.teamIds.isEmpty {
+            // Usamos directamente los IDs del equipo proporcionados
+            projectDict["team"] = project.teamIds
+            print("✅ Usando IDs de equipo: \(project.teamIds)")
+        } else if !project.team.isEmpty {
+            // Si no tenemos IDs pero tenemos nombres, intentamos buscar los usuarios por nombre
+            let userViewModel = UserAdminViewModel.shared
+            let foundTeamIds = project.team.compactMap { memberName -> String? in
+                if let user = userViewModel.users.first(where: { $0.fullName == memberName }) {
+                    return user.id
+                }
+                return nil
             }
             
-            if !validTeamIds.isEmpty {
-                projectDict["team"] = validTeamIds
+            if !foundTeamIds.isEmpty {
+                projectDict["team"] = foundTeamIds
+                print("✅ Encontrados IDs de equipo por nombres: \(foundTeamIds)")
+            } else {
+                print("⚠️ ADVERTENCIA: No se encontraron IDs para los miembros del equipo")
             }
         }
         
@@ -451,5 +558,52 @@ class ProjectService {
         }
         // En caso contrario, asumimos que es un nombre y no un ID
         return nil
+    }
+    
+    // Función auxiliar para convertir fechas a formato ISO8601
+    private func convertToISODate(_ dateString: String) -> String? {
+        // Si la fecha está vacía, devolvemos nil
+        if dateString.isEmpty {
+            return nil
+        }
+        
+        // Creamos un formateador para el formato español "d 'de' MMMM, yyyy"
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "d 'de' MMMM, yyyy"
+        inputFormatter.locale = Locale(identifier: "es_ES")
+        
+        // Intentamos parsear con el formato español
+        if let date = inputFormatter.date(from: dateString) {
+            // Convertimos a formato ISO 8601
+            let outputFormatter = ISO8601DateFormatter()
+            outputFormatter.formatOptions = [.withInternetDateTime]
+            return outputFormatter.string(from: date)
+        }
+        
+        // Si no se puede parsear con el formato español, intentamos con otros formatos
+        let alternativeFormatters = [
+            "yyyy-MM-dd",
+            "dd/MM/yyyy",
+            "MM/dd/yyyy",
+            "yyyy/MM/dd"
+        ]
+        
+        let formatter = DateFormatter()
+        for format in alternativeFormatters {
+            formatter.dateFormat = format
+            if let date = formatter.date(from: dateString) {
+                let outputFormatter = ISO8601DateFormatter()
+                outputFormatter.formatOptions = [.withInternetDateTime]
+                return outputFormatter.string(from: date)
+            }
+        }
+        
+        // Si no se puede parsear con ningún formato, devolvemos nil
+        return nil
+    }
+    
+    // Función auxiliar para uso externo (pruebas)
+    func testDateConversion(dateString: String) -> String? {
+        return convertToISODate(dateString)
     }
 } 

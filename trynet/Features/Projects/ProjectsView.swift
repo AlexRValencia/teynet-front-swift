@@ -52,9 +52,10 @@ struct ProjectPoint: Identifiable {
     enum PointType: String, CaseIterable, Identifiable {
         case LPR = "LPR"
         case CCTV = "CCTV"
-        case ALARMA = "Alarma"
-        case RADIO_BASE = "Radio Base"
-        case RELAY = "Relay"
+        case ALARM = "ALARM"
+        case RADIO_BASE = "RADIO_BASE"
+        case RELAY = "RELAY"
+        case UNKNOWN = "Desconocido"
         
         var id: String { rawValue }
         
@@ -62,9 +63,10 @@ struct ProjectPoint: Identifiable {
             switch self {
             case .LPR: return "camera.metering.center.weighted"
             case .CCTV: return "camera.fill"
-            case .ALARMA: return "bell.fill"
+            case .ALARM: return "bell.fill"
             case .RADIO_BASE: return "antenna.radiowaves.left.and.right"
             case .RELAY: return "poweroutlet.type.b.fill"
+            case .UNKNOWN: return "questionmark.circle.fill"
             }
         }
         
@@ -72,9 +74,10 @@ struct ProjectPoint: Identifiable {
             switch self {
             case .LPR: return .blue
             case .CCTV: return .purple
-            case .ALARMA: return .red
+            case .ALARM: return .red
             case .RADIO_BASE: return .orange
             case .RELAY: return .green
+            case .UNKNOWN: return .gray
             }
         }
     }
@@ -882,8 +885,14 @@ struct NewProjectView: View {
                     dateFormatter.dateFormat = "d 'de' MMMM, yyyy"
                     dateFormatter.locale = Locale(identifier: "es_ES")
                     
-                    // Usar nombre de cliente seleccionado o texto ingresado
-                    let clientNameToUse = selectedClient?.name ?? clientName
+                    // Obtener correctamente el ID del cliente
+                    let clientId = selectedClient?.id ?? ""
+                    let clientName = selectedClient?.name ?? ""
+                    
+                    // Obtener los IDs y nombres de los miembros del equipo
+                    let teamMemberIds = userAdminViewModel.users
+                        .filter { user in teamMembers.contains(user.fullName) }
+                        .map { $0.id }
                     
                     let newProject = Project(
                         id: UUID().uuidString,
@@ -892,16 +901,18 @@ struct NewProjectView: View {
                         health: status == "Finalizado" ? 1.0 : 0.0,
                         deadline: dateFormatter.string(from: deadlineDate),
                         description: description,
-                        client: selectedClient != nil ? selectedClient!.id : clientNameToUse,
+                        client: clientName, // Usar el nombre del cliente
+                        clientId: clientId, // Guardar también el ID
                         startDate: dateFormatter.string(from: startDate),
-                        team: teamMembers,
+                        team: teamMembers, // Nombres de los miembros
+                        teamIds: teamMemberIds, // IDs de los miembros
                         tasks: []
                     )
                     
                     onSave(newProject)
                     isPresented = false
                 }
-                .disabled(projectName.isEmpty || (selectedClient == nil && clientName.isEmpty))
+                .disabled(projectName.isEmpty || selectedClient == nil)
             )
             .sheet(isPresented: $showingClientSelector) {
                 ClientSelectorView(
@@ -1962,27 +1973,38 @@ struct ProjectPointsView: View {
         NavigationView {
             VStack {
                 // Barra de filtros
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        FilterChip(
-                            label: "Todos",
-                            isSelected: selectedFilter == nil,
-                            action: { selectedFilter = nil }
-                        )
-                        
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Filtrar por tipo:")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            FilterChip(
+                                label: "Todos",
+                                isSelected: selectedFilter == nil,
+                                action: { selectedFilter = nil }
+                            )
+                            
                             ForEach(ProjectPoint.PointType.allCases) { type in
                                 FilterChip(
                                     label: type.rawValue, 
                                     icon: type.icon, 
                                     color: type.color,
-                                isSelected: selectedFilter == type,
-                                action: { selectedFilter = type }
-                            )
+                                    isSelected: selectedFilter == type,
+                                    action: { selectedFilter = type }
+                                )
+                            }
                         }
+                        .padding(.horizontal)
+                        .padding(.vertical, 6)
                     }
-                    .padding(.horizontal)
+                    .scrollIndicators(.hidden)
+                    .background(Color(.systemBackground))
+                    .frame(height: 52)
                 }
-                .padding(.vertical, 8)
+                .padding(.vertical, 4)
                 
                 // Lista de puntos filtrada
                 let filteredPoints = projectManager.getProjectPoints(projectId: project.id)
@@ -2041,37 +2063,50 @@ struct FilterChip: View {
     
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 4) {
+            HStack(spacing: 5) {
                 if let icon = icon {
-                Image(systemName: icon)
-                    .font(.caption)
+                    Image(systemName: icon)
+                        .font(.caption)
+                        .frame(width: 16, height: 16)
                 }
                 
                 Text(label)
                     .font(.caption)
+                    .lineLimit(1)
             }
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
-            .background(isSelected ? color.opacity(0.2) : Color(.systemGray5))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(isSelected ? color.opacity(0.2) : Color(.systemGray6))
             .foregroundColor(isSelected ? color : .primary)
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(isSelected ? color : Color.clear, lineWidth: 1)
+                    .stroke(isSelected ? color : Color.clear, lineWidth: 1.5)
             )
         }
+        .buttonStyle(PlainButtonStyle())
+        .contentShape(Rectangle())
     }
 }
 
 // Componentes para dividir la vista PointDetailView
 struct PointMapView: View {
     let point: ProjectPoint
+    @State private var cameraPosition: MapCameraPosition = .automatic
     
     var body: some View {
                 ZStack(alignment: .topTrailing) {
-            Map {
+            Map(position: $cameraPosition) {
                 Marker("Ubicación", coordinate: point.location.coordinate)
                     .tint(.red)
+            }
+            .onAppear {
+                cameraPosition = .camera(MapCamera(
+                    centerCoordinate: point.location.coordinate,
+                    distance: 000, // 6km de distancia
+                    heading: 0,
+                    pitch: 0
+                ))
             }
                         .frame(height: 200)
             .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -2686,7 +2721,7 @@ class ProjectManager: ObservableObject {
                 let serverPoint = ProjectPoint(
                     id: pointData.id,
                     name: pointData.name,
-                    type: ProjectPoint.PointType(rawValue: pointData.type) ?? .CCTV,
+                    type: ProjectPoint.PointType(rawValue: pointData.type) ?? .UNKNOWN,
                     location: ProjectPoint.Location(
                         latitude: pointData.latitude,
                         longitude: pointData.longitude,
@@ -2775,7 +2810,7 @@ class ProjectManager: ObservableObject {
                         return ProjectPoint(
                             id: pointData.id,
                             name: pointData.name,
-                            type: ProjectPoint.PointType(rawValue: pointData.type) ?? .CCTV,
+                            type: ProjectPoint.PointType(rawValue: pointData.type) ?? .UNKNOWN,
                             location: ProjectPoint.Location(
                                 latitude: pointData.location.latitude,
                                 longitude: pointData.location.longitude,
@@ -2810,9 +2845,11 @@ struct MapSelectionView: View {
     
     @State private var searchQuery = ""
     @State private var searchResults: [MKMapItem] = []
-    @State private var position: MapCameraPosition = .region(MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 25.5428, longitude: -103.4068),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    @State private var position: MapCameraPosition = .camera(MapCamera(
+        centerCoordinate: CLLocationCoordinate2D(latitude: 25.5428, longitude: -103.4068),
+        distance: 6000, // 6 km de distancia
+        heading: 0,
+        pitch: 0
     ))
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var selectedMapItem: MKMapItem?
@@ -2839,6 +2876,15 @@ struct MapSelectionView: View {
                             }
                         }
                         .mapStyle(.standard)
+                        .onAppear {
+                            // Configurar el zoom inicial a 6 km
+                            position = .camera(MapCamera(
+                                centerCoordinate: CLLocationCoordinate2D(latitude: 25.5428, longitude: -103.4068),
+                                distance: 6000, // 6 km de distancia
+                                heading: 0,
+                                pitch: 0
+                            ))
+                        }
                         .onMapCameraChange { context in
                             self.visibleRegion = context.region
                         }

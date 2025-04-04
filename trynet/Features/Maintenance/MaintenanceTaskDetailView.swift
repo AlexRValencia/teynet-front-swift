@@ -831,15 +831,24 @@ struct MapSnapshotView: View {
     let latitude: Double
     let longitude: Double
     let title: String
+    @State private var cameraPosition: MapCameraPosition
+    
+    init(latitude: Double, longitude: Double, title: String) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.title = title
+        // Inicializar la posición de la cámara con un valor
+        self._cameraPosition = State(initialValue: .camera(MapCamera(
+            centerCoordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+            distance: 6000, // 6km de distancia
+            heading: 0,
+            pitch: 0
+        )))
+    }
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Map(position: .constant(MapCameraPosition.region(
-                MKCoordinateRegion(
-                    center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
-                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                )
-            ))) {
+            Map(position: $cameraPosition) {
                 Marker(title, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                     .tint(.red)
             }

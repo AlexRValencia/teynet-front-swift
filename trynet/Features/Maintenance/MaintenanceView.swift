@@ -22,9 +22,9 @@ struct MaintenanceView: View {
         let tasksFilteredByStatusAndType = maintenanceManager.filteredTasks
         
         let filteredBySearch = searchText.isEmpty ? tasksFilteredByStatusAndType : tasksFilteredByStatusAndType.filter { task in
-            task.deviceName.localizedCaseInsensitiveContains(searchText) ||
-            task.description.localizedCaseInsensitiveContains(searchText) ||
-            task.siteName.localizedCaseInsensitiveContains(searchText) ||
+                task.deviceName.localizedCaseInsensitiveContains(searchText) ||
+                task.description.localizedCaseInsensitiveContains(searchText) ||
+                task.siteName.localizedCaseInsensitiveContains(searchText) ||
             task.location.localizedCaseInsensitiveContains(searchText) ||
             (task.projectName ?? "").localizedCaseInsensitiveContains(searchText)
         }
@@ -83,51 +83,51 @@ struct MaintenanceView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                if isLandscape {
-                    // Diseño optimizado para modo horizontal
+            if isLandscape {
+                // Diseño optimizado para modo horizontal
                     HStack(alignment: .top, spacing: 16) {
-                        // Panel izquierdo con controles y estadísticas
+                    // Panel izquierdo con controles y estadísticas
                         VStack(spacing: 16) {
-                            // Barra de búsqueda
-                            searchBarView
-                            
-                            // Panel de bienvenida compacto para landscape
-                            if showWelcome {
-                                welcomePanel(compact: true)
-                                    .padding(.vertical, 8)
-                            }
-                            
+                        // Barra de búsqueda
+                        searchBarView
+                        
+                        // Panel de bienvenida compacto para landscape
+                        if showWelcome {
+                            welcomePanel(compact: true)
+                                .padding(.vertical, 8)
+                        }
+                        
                             // Estadísticas en modo vertical para landscape
                             VStack(spacing: 12) {
                                 MaintenanceStatCard(
-                                    title: "Pendientes",
-                                    count: statistics.pending,
+                                title: "Pendientes",
+                                count: statistics.pending,
                                     icon: "clock.fill",
                                     color: .orange
-                                )
-                                
+                            )
+                            
                                 MaintenanceStatCard(
-                                    title: "En Desarrollo",
-                                    count: statistics.inProgress,
+                                title: "En Desarrollo",
+                                count: statistics.inProgress,
                                     icon: "gear",
                                     color: .blue
-                                )
-                                
+                            )
+                            
                                 MaintenanceStatCard(
-                                    title: "Finalizados",
-                                    count: statistics.completed,
+                                title: "Finalizados",
+                                count: statistics.completed,
                                     icon: "checkmark.circle.fill",
                                     color: .green
-                                )
-                            }
-                            
-                            // Filtros
+                            )
+                        }
+                        
+                        // Filtros
                             filtersSection
                         }
                         .frame(width: 220)
                         .padding(.vertical)
-                        
-                        // Panel derecho con la lista de tareas
+                    
+                    // Panel derecho con la lista de tareas
                         taskListView
                             .frame(maxWidth: .infinity)
                             .refreshable {
@@ -135,19 +135,19 @@ struct MaintenanceView: View {
                             }
                     }
                     .padding(.horizontal)
-                } else {
-                    // Diseño para modo vertical
-                    // Barra de búsqueda
-                    searchBarView
+            } else {
+                // Diseño para modo vertical
+                        // Barra de búsqueda
+                        searchBarView
                         .padding(.horizontal)
-                    
-                    // Panel de bienvenida (solo visible inicialmente)
-                    if showWelcome {
-                        welcomePanel(compact: false)
+                        
+                        // Panel de bienvenida (solo visible inicialmente)
+                        if showWelcome {
+                            welcomePanel(compact: false)
                             .padding(.horizontal)
                             .padding(.bottom, 8)
-                    }
-                    
+                        }
+                        
                     // Estadísticas rápidas en horizontal para portrait
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
@@ -177,7 +177,7 @@ struct MaintenanceView: View {
                     
                     // Filtros compactos en modo horizontal
                     filtersCompactSection
-                        .padding(.horizontal)
+                    .padding(.horizontal)
                     
                     // Lista de tareas
                     taskListView
@@ -206,19 +206,19 @@ struct MaintenanceView: View {
             }
         }
         .sheet(isPresented: $showingAddForm) {
-            MaintenanceFormView(
-                isPresented: $showingAddForm, 
-                onSave: { task in
-                    maintenanceManager.addTask(task)
-                    // Ocultar el panel de bienvenida cuando se cree una tarea
-                    if !maintenanceManager.tasks.isEmpty {
-                        showWelcome = false
+                MaintenanceFormView(
+                    isPresented: $showingAddForm, 
+                    onSave: { task in
+                        maintenanceManager.addTask(task)
+                        // Ocultar el panel de bienvenida cuando se cree una tarea
+                        if !maintenanceManager.tasks.isEmpty {
+                            showWelcome = false
+                        }
                     }
-                }
-            )
-            .navigationTitle("Nueva Tarea")
-            .navigationBarTitleDisplayMode(.inline)
-        }
+                )
+                .navigationTitle("Nueva Tarea")
+                .navigationBarTitleDisplayMode(.inline)
+            }
         .sheet(isPresented: $showingCalendarFilter) {
             DateFilterView(
                 startDate: $dateRangeStart,
@@ -259,25 +259,25 @@ struct MaintenanceView: View {
     
     // Barra de búsqueda con botón de añadir
     private var searchBarView: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(.gray)
-            
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                
             TextField("Buscar tareas de mantenimiento", text: $searchText)
                 .autocapitalization(.none)
-            
-            if !searchText.isEmpty {
-                Button(action: {
-                    searchText = ""
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.gray)
+                
+                if !searchText.isEmpty {
+                    Button(action: {
+                        searchText = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                    }
                 }
             }
-        }
-        .padding(10)
-        .background(Color(.systemGray6))
-        .cornerRadius(10)
+            .padding(10)
+            .background(Color(.systemGray6))
+            .cornerRadius(10)
         .padding(.vertical, 8)
     }
     
@@ -286,18 +286,18 @@ struct MaintenanceView: View {
         VStack(spacing: compact ? 10 : 16) {
             Image(systemName: "wrench.and.screwdriver.fill")
                 .font(.system(size: compact ? 30 : 40))
-                .foregroundColor(.blue)
+                    .foregroundColor(.blue)
             
             VStack(spacing: 8) {
                 Text("¡Bienvenido al módulo de Mantenimiento!")
-                    .font(compact ? .headline : .title3)
-                    .fontWeight(.bold)
+                .font(compact ? .headline : .title3)
+                .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                
+            
                 Text("Gestiona tus tareas de mantenimiento, registra el progreso y genera informes detallados de cada servicio.")
                     .font(compact ? .caption : .body)
                     .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
+                .multilineTextAlignment(.center)
                     .lineLimit(compact ? 2 : nil)
             }
             
@@ -762,9 +762,9 @@ struct MaintenanceStatCard: View {
                     .font(.title3)
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("\(count)")
+                Text("\(count)")
                         .font(.title3)
-                        .fontWeight(.bold)
+                    .fontWeight(.bold)
                         .foregroundColor(color)
                     
                     Text(title)
@@ -793,11 +793,11 @@ struct MaintenanceStatCard: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(color)
-                }
-                
-                Text(title)
+            }
+            
+            Text(title)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                .foregroundColor(.secondary)
             }
             .padding()
             .frame(width: 130, height: 90)
@@ -819,8 +819,8 @@ struct MaintenanceTaskCard: View {
             // Encabezado con nombre, proyecto y prioridad
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(task.deviceName)
-                        .font(.headline)
+                Text(task.deviceName)
+                    .font(.headline)
                         .foregroundColor(.primary)
                     
                     if let projectName = task.projectName {
@@ -870,8 +870,8 @@ struct MaintenanceTaskCard: View {
             VStack(spacing: 5) {
                 ProgressView(value: task.progress, total: 1.0)
                     .progressViewStyle(LinearProgressViewStyle(tint: progressColor(task.progress)))
-                
-                HStack {
+            
+            HStack {
                     Text("Progreso: \(Int(task.progress * 100))%")
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -879,13 +879,13 @@ struct MaintenanceTaskCard: View {
                     Spacer()
                     
                     HStack(spacing: 4) {
-                        Image(systemName: "calendar")
+                Image(systemName: "calendar")
                             .font(.caption)
-                            .foregroundColor(.secondary)
-                        
-                        Text(task.scheduledDate)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                    .foregroundColor(.secondary)
+                
+                Text(task.scheduledDate)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
                     }
                 }
             }
@@ -971,7 +971,7 @@ struct MaintenanceTaskRow: View {
                                 .foregroundColor(.secondary)
                                 .font(.caption)
                             Text(projectName)
-                                .font(.caption)
+                    .font(.caption)
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
                         }
@@ -983,13 +983,13 @@ struct MaintenanceTaskRow: View {
                 VStack(alignment: .trailing, spacing: 4) {
                     MaintenanceStatusBadge(status: task.status)
                         .padding(.trailing, 4)
-                    
-                    Text(task.maintenanceType)
-                        .font(.caption)
-                        .padding(4)
+                
+                Text(task.maintenanceType)
+                    .font(.caption)
+                    .padding(4)
                         .background(task.typeColor.opacity(0.1))
                         .foregroundColor(task.typeColor)
-                        .cornerRadius(4)
+                    .cornerRadius(4)
                 }
             }
             

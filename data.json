@@ -22,7 +22,7 @@
                 "28.695162"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Piedras Negras"
     },
     {
@@ -74,7 +74,7 @@
                 "28.6863312"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Piedras Negras"
     },
     {
@@ -347,7 +347,7 @@
                 "25.534207"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -451,7 +451,7 @@
                 "25.534452"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -503,7 +503,7 @@
                 "25.524154"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -529,7 +529,7 @@
                 "25.566893"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -607,7 +607,7 @@
                 "25.543953"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -646,7 +646,7 @@
                 "25.546097"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -685,7 +685,7 @@
                 "25.538388"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -880,7 +880,7 @@
                 "25.563198"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -1010,7 +1010,7 @@
                 "25.574350"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -1088,7 +1088,7 @@
                 "25.535070"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -1491,7 +1491,7 @@
                 "25.536787"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Torre\u00f3n"
     },
     {
@@ -1647,7 +1647,7 @@
                 "29.329472"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Acu\u00f1a"
     },
     {
@@ -1686,7 +1686,7 @@
                 "26.953893"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Monclova"
     },
     {
@@ -1790,7 +1790,7 @@
                 "26.953148"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Monclova"
     },
     {
@@ -1816,7 +1816,7 @@
                 "26.952422"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Monclova"
     },
     {
@@ -1829,7 +1829,7 @@
                 ""
             ]
         },
-        "type": "",
+        "type": "CCTV",
         "city": "Monclova"
     },
     {
@@ -1842,7 +1842,7 @@
                 "26.896805"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Monclova"
     },
     {
@@ -1855,7 +1855,7 @@
                 "26.853445"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Monclova"
     },
     {
@@ -1946,7 +1946,7 @@
                 "26.943789"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Monclova"
     },
     {
@@ -1998,7 +1998,7 @@
                 "26.916251"
             ]
         },
-        "type": "",
+        "type": "UNKNOWN",
         "city": "Monclova"
     },
     {

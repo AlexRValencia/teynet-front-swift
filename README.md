@@ -159,4 +159,49 @@ git pull origin main
 
 ## Licencia
 
-Este proyecto está licenciado bajo [tu licencia]. 
+Este proyecto está licenciado bajo [tu licencia].
+
+# Instrucciones para importar puntos a MongoDB
+
+Este proyecto contiene scripts para convertir datos de puntos geográficos al formato requerido por MongoDB.
+
+## Archivos
+
+- `data.json`: Archivo original con los datos de los puntos.
+- `puntos_mongodb.json`: Archivo convertido con el formato adecuado para importar a MongoDB.
+- `convertir_puntos.js`: Script para convertir el formato.
+
+## Pasos para la conversión
+
+1. Ejecutar el script de conversión:
+   ```
+   node convertir_puntos.js
+   ```
+
+2. El script generará un archivo `puntos_mongodb.json` con el formato adecuado para MongoDB.
+
+## Importación a MongoDB
+
+Para importar los datos directamente a MongoDB, puedes usar el comando `mongoimport`:
+
+```bash
+mongoimport --uri="mongodb://tuUsuario:tuContraseña@tuHost:tuPuerto/tuBaseDeDatos" --collection=points --file=puntos_mongodb.json --jsonArray
+```
+
+O si estás usando MongoDB Atlas:
+
+```bash
+mongoimport --uri="mongodb+srv://tuUsuario:tuContraseña@tuCluster.mongodb.net/tuBaseDeDatos" --collection=points --file=puntos_mongodb.json --jsonArray
+```
+
+## Notas importantes
+
+- El script realiza validaciones básicas de los datos:
+  - Convierte las coordenadas a números
+  - Asigna valores por defecto a campos vacíos
+  - Normaliza los tipos de puntos según el esquema
+  - No incluye los puntos que no tienen proyecto asignado
+
+- Todos los puntos son asignados al mismo usuario creador (definido en el script)
+- La fecha de creación y actualización es la misma para todos los puntos
+- No se asigna un ID específico, MongoDB lo generará automáticamente 

@@ -8,7 +8,7 @@ const pointSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['LPR', 'CCTV', 'ALARMA', 'RADIO_BASE', 'RELAY'],
+        enum: ['LPR', 'CCTV', 'ALARMA', 'RADIO BASE', 'RELAY', 'DESCONOCIDO'],
         required: [true, 'El tipo de punto es obligatorio']
     },
     location: {

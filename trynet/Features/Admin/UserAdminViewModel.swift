@@ -3,6 +3,9 @@ import Combine
 import SwiftUI
 
 class UserAdminViewModel: ObservableObject {
+    // Instancia compartida para acceso global
+    static let shared = UserAdminViewModel()
+    
     // Estado de la lista de usuarios
     @Published var users: [AdminUser] = []
     @Published var filteredUsers: [AdminUser] = []

@@ -29,7 +29,7 @@ struct MainTabView: View {
                         
                     MaintenanceView(maintenanceManager: maintenanceManager)
                         .tabItem {
-                            Label("Mantenimiento", systemImage: "wrench.and.screwdriver")
+                            Label("Mantenimientos", systemImage: "wrench.and.screwdriver")
                                 .accessibility(label: Text("Tareas de mantenimiento"))
                         }
                         .tag(TabSelection.maintenance)

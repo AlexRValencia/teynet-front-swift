@@ -26,7 +26,7 @@ const clientSchema = new mongoose.Schema({
         type: String,
         trim: true,
         default: '',
-        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Proporcione un correo electrónico válido']
+        // match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Proporcione un correo electrónico válido']
     },
     phone: {
         type: String,

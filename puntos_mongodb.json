@@ -1,0 +1,4322 @@
+[
+  {
+    "name": "P319-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.5133118,
+        28.7049211
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "PC4",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.521493,
+        28.695162
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "P316-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.5503545,
+        28.6863312
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "P318-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.6023092,
+        28.7722564
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "P315-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.521493,
+        28.695162
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "PR1",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.5503545,
+        28.6863312
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "P317-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        0,
+        0
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "P320-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.5136324,
+        28.7060801
+      ]
+    },
+    "city": "Piedras Negras",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T209-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.449237,
+        25.575702
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T131-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.403706,
+        25.598031
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T118-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.436659,
+        25.557835
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T124-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.452442,
+        25.545423
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T130-ALARM",
+    "type": "ALARM",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.400375,
+        25.610762
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T121-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.437515,
+        25.550639
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T155-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.453695,
+        25.540254
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T226-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.420889,
+        25.526224
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T141-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.37053,
+        25.552096
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T140-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.37973,
+        25.55831
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T194-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.3661103,
+        25.504351
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T205-ALARM",
+    "type": "ALARM",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.444717,
+        25.538553
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T219-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.39514,
+        25.544617
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T123-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.448767,
+        25.548635
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T222-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.391353,
+        25.552704
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T126-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.36781,
+        25.643031
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T129-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.399731,
+        25.61171
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T215-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.468961,
+        25.544801
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TC4",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.301807,
+        25.534207
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T183-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.237058,
+        25.532308
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T188-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.428333,
+        25.597051
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T154-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.452828,
+        25.540248
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T149-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.406056,
+        25.531395
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T162-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.431033,
+        25.536634
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T179-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.31046,
+        25.353455
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T168-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.403886,
+        25.538024
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TC2",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.249866,
+        25.534452
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T161-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.429889,
+        25.538224
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T132-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.388631,
+        25.61104
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T223-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.39814,
+        25.56269
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TR8-1",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.40598,
+        25.524154
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T230-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.392406,
+        25.54763
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TR2",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.385656,
+        25.566893
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T150-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.385278,
+        25.506418
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T227-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.429064,
+        25.533444
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T128-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.392156,
+        25.61919
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T184-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.231922,
+        25.522279
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T121-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.437515,
+        25.550639
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TR3",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.348199,
+        25.543953
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T152-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.446214,
+        25.538553
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T174-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.35791,
+        25.546097
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T143",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.396653,
+        25.546097
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T173-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.361861,
+        25.534943
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T208-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.44565,
+        25.576468
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T170-E",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.400519,
+        25.538388
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T185-CCT",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.216347,
+        25.527469
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T221-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.391016,
+        25.551952
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T225-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.39689,
+        25.565497
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T213-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.452658,
+        25.558133
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T127-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.377658,
+        25.633859
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T171-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.396053,
+        25.537977
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T116-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.429416,
+        25.563849
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T142-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.370739,
+        25.542926
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T232-ALARM",
+    "type": "ALARM",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.452643,
+        25.552434
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T175-LPR-NEW",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.32904,
+        25.53469
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T122-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.445563,
+        25.552263
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T153-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.446656,
+        25.535742
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T166-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.407511,
+        25.536647
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T169-CCTV",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.40082,
+        25.537817
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T224-E",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.398619,
+        25.563198
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T210-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.449642,
+        25.566535
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T137-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.402844,
+        25.582489
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T196-ALARM",
+    "type": "ALARM",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.348199,
+        25.543953
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T181-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.254258,
+        25.535242
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T233-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.413878,
+        25.55838
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T136-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.407917,
+        25.588767
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T114-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.415676,
+        25.574419
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T193-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.366978,
+        25.49782
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T198-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.383737,
+        25.523001
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TR4",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.449019,
+        25.57435
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T195-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.365889,
+        25.521734
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T204-ALARM",
+    "type": "ALARM",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.434217,
+        25.541235
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T125-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.461347,
+        25.544248
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T182-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.250161,
+        25.53522
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T158-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.431303,
+        25.544885
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TR3-1",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.365749,
+        25.53507
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T160-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.434078,
+        25.538242
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T190-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.343586,
+        25.534817
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T199-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.38661,
+        25.521946
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T147-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.415292,
+        25.516399
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T159-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.431186,
+        25.538224
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T197-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.375893,
+        25.53302
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T139-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.382869,
+        25.56396
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T167-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.407383,
+        25.535391
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T186-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.223964,
+        25.537883
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T145-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.410431,
+        25.496489
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T211-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.449275,
+        25.566509
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T133-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.37491,
+        25.62271
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T138-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.39165,
+        25.57638
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T156-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.434333,
+        25.534966
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T146-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.406136,
+        25.511292
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T178-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.300968,
+        25.534835
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T189-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.420983,
+        25.593535
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T203-ALARM",
+    "type": "ALARM",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.432578,
+        25.538354
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T135-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.446097,
+        25.56112
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T148-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.415311,
+        25.521078
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T134-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.373193,
+        25.619719
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T119-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.433253,
+        25.557717
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T115-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.420214,
+        25.571391
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T157-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.434197,
+        25.544782
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T172-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.4166,
+        25.546533
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T117-CCVT",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.43151,
+        25.56211
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T180-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.302206,
+        25.533594
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T187-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.238511,
+        25.538038
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T144-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.399892,
+        25.507648
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T229-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.438897,
+        25.520058
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "TR6",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.43447,
+        25.536787
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T192-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.379605,
+        25.496426
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T176-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.325422,
+        25.53986
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T164-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.420878,
+        25.547558
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T324-RELAY",
+    "type": "RELAY",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.232935,
+        25.52299
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T120-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.440575,
+        25.554509
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "T177-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -103.318714,
+        25.539844
+      ]
+    },
+    "city": "Torreón",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "A4-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.930422,
+        29.322071
+      ]
+    },
+    "city": "Acuña",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "A6-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.013629,
+        29.345309
+      ]
+    },
+    "city": "Acuña",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "A5-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.013629,
+        29.345309
+      ]
+    },
+    "city": "Acuña",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "A3-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.929583,
+        29.324741
+      ]
+    },
+    "city": "Acuña",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "A1-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.912208,
+        29.292554
+      ]
+    },
+    "city": "Acuña",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "AC4",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.976379,
+        29.329472
+      ]
+    },
+    "city": "Acuña",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "A2-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -100.926088,
+        29.324015
+      ]
+    },
+    "city": "Acuña",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M28-CCTV-1",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.442443,
+        26.935636
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Mairport-1",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.460466,
+        26.953893
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M3-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.442707,
+        26.859189
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M12-CCTV-1",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.458149,
+        26.954588
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M8-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.381013,
+        26.37181
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M14-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.449875,
+        26.92642
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M9-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.378074,
+        26.974825
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M4-CCTV-1",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.427344,
+        26.866452
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M38-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.392384,
+        26.914715
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Mairport-2",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.45978,
+        26.953148
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M11-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.409178,
+        26.958323
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "MC4",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.459456,
+        26.952422
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M18-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        0,
+        0
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "MR5",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.393511,
+        26.896805
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "MR2",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.409942,
+        26.853445
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M6-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.402107,
+        26.874039
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M20-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.428983,
+        26.913088
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M4-CCTV-2",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.426994,
+        26.868826
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M48-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.4215,
+        26.907995
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M13-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.416554,
+        26.900747
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M25-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.446216,
+        26.939724
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "MR3",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.414805,
+        26.943789
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M22-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.424089,
+        26.919497
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M42-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.430798,
+        26.927584
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M28-CCTV-2",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.443586,
+        26.935946
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "MR4",
+    "type": "UNKNOWN",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.436529,
+        26.916251
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M19-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.41368,
+        26.906878
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M32-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.415874,
+        26.930616
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M5-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.405131,
+        26.871038
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M23-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.442472,
+        26.921824
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M7-CCTV",
+    "type": "CCTV",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.390719,
+        26.926099
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "M1-LPR",
+    "type": "LPR",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -101.422329,
+        26.831362
+      ]
+    },
+    "city": "Monclova",
+    "material": [],
+    "operational": true,
+    "project": {
+      "$oid": "67efd1e54af2df41849fde15"
+    },
+    "createdBy": {
+      "$oid": "64881a2a1a5262f1a5ff254c"
+    },
+    "createdAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "updatedAt": {
+      "$date": "2025-04-03T10:08:03.590Z"
+    },
+    "__v": 0
+  }
+]

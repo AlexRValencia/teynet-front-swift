@@ -7,10 +7,12 @@ struct Project: Identifiable, Hashable {
     var health: Double // Salud del proyecto basada en el estado operativo de los dispositivos
     var deadline: String
     var description: String
-    var client: String
+    var client: String // Ahora contiene el nombre del cliente
+    var clientId: String? // ID del cliente para operaciones de backend
     var budget: Double?
     var startDate: String
-    var team: [String]
+    var team: [String] // Ahora contiene los nombres de los miembros
+    var teamIds: [String] // IDs de los miembros para operaciones de backend
     var tasks: [ProjectTask]
     var points: [ProjectPoint]? // Puntos del proyecto (opcional)
     
@@ -25,8 +27,10 @@ struct Project: Identifiable, Hashable {
     
     // Constructor con valores predeterminados para facilitar la creación
     init(id: String, name: String, status: String, health: Double = 1.0, deadline: String, 
-         description: String = "", client: String = "", 
-         budget: Double? = nil, startDate: String = "", team: [String] = [], tasks: [ProjectTask] = [], points: [ProjectPoint]? = nil) {
+         description: String = "", client: String = "", clientId: String? = nil,
+         budget: Double? = nil, startDate: String = "", 
+         team: [String] = [], teamIds: [String] = [], 
+         tasks: [ProjectTask] = [], points: [ProjectPoint]? = nil) {
         self.id = id
         self.name = name
         self.status = status
@@ -34,9 +38,11 @@ struct Project: Identifiable, Hashable {
         self.deadline = deadline
         self.description = description
         self.client = client
+        self.clientId = clientId
         self.budget = budget
         self.startDate = startDate
         self.team = team
+        self.teamIds = teamIds
         self.tasks = tasks
         self.points = points
     }
